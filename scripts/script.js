@@ -13,6 +13,14 @@ function SeatReservation(name, initialMeal) {
     });    
 }
 
+
+function Warband(name, ex){
+    var self = this;
+
+    self.name = name;
+    self.n = 
+}
+
 // Overall viewmodel for this screen, along with initial state
 function ReservationsViewModel() {
     var self = this;
@@ -29,6 +37,22 @@ function ReservationsViewModel() {
     	{ warbandName : "Garrick's Reavers", expansion : "Shadespire", n : 5},
     	{ warbandName : "Sepulchral Guard", expansion : "Shadespire", n : 7}
     ];
+
+
+
+      fighters = {
+      "steelheart": {
+        warband: "Steelheart's Champions",
+        name: "Severin Steelheart",
+        wounds: 3
+      },
+      "garrick": {
+        warband: "Garrick's reavers",
+        name: "Garrick Gorebeard",
+        wounds: 3
+      }
+    };
+
 
     // Editable data
     self.seats = ko.observableArray([
