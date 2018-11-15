@@ -6,7 +6,6 @@ warbands =
     expansion : "Shadespire"
     num_fighters : 3
 
-
   "Garricks's Reavers" :
     name : "Garricks's Reavers"
     expansion : "Shadespire"
@@ -54,4 +53,5 @@ f2 =
 
 
   ]
+
 

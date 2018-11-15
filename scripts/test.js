@@ -59,6 +59,10 @@ f2 = {
 };
 
 
+mywarband = warbands["Steelheart's Champions"]
+myfighters = f2.cards.filter(fighter => fighter.warband == mywarband.name)
+
+console.log(myfighters)
 
 // console.log(f2.cards.filter(fighter => fighter.wounds > 3))
-console.log(f2.cards.filter(fighter => fighter.warband == "Garrick's Reavers"))
+// console.log(f2.cards.filter(fighter => fighter.warband == "Garrick's Reavers"))
