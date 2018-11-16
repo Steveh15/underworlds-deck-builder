@@ -16,41 +16,39 @@
   </head>  
   <body>
     <h1>Hi there!</h1>
-    Changes
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
-
-
-  <h2>Your seat reservations (<span data-bind="text: seats().length"></span>)</h2>
 
 <table>
     <thead><tr>
-        <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
+        <th>Fighter</th>
     </tr></thead>
-    <tbody data-bind="foreach: seats">
+    <tbody data-bind="foreach: computedFighters">
         <tr>
-            <td><input data-bind="value: name" /></td>
-            <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
-            <td data-bind="text: formattedPrice"></td>
-            <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+            <td data-bind="text: name"></td>
         </tr>    
     </tbody>
 </table>
 
-<button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button>
-
-
+<!-- <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button> -->
 
 
 
 <p>
+  Select Warband:
+  <select data-bind="options: warbands,
+                       optionsText: 'name',
+                       value: selectedWarband,
+                       optionsCaption: 'Choose...'"></select>
+</p>
+<div data-bind="visible: selectedWarband"> <!-- Appears when you select something -->
+  You have chosen a warband with
+  <span data-bind="text: selectedWarband() ? selectedWarband().num_fighters : 'unknown'"></span>
+  fighters.
+</div>
+<!-- <td><select data-bind="options: $root.warbands, value: name, optionsText: 'name'"></select></td> -->
 
-<td><select data-bind="options: $root.warbands, value: meal, optionsText: 'warbandName'"></select></td>
-
-<h3 data-bind="visible: totalSurcharge() > 0">
+<!-- <h3 data-bind="visible: totalSurcharge() > 0">
     Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
-</h3>
+</h3> -->
 
 
   </body>

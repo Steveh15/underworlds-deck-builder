@@ -1,6 +1,3 @@
-/* If you're feeling fancy you can add interactivity 
-    to your site with Javascript */
-
 // Class to represent a row in the seat reservations grid
 function SeatReservation(name, initialMeal) {
     var self = this;
@@ -11,14 +8,6 @@ function SeatReservation(name, initialMeal) {
         var price = self.meal().price;
         return price ? "$" + price.toFixed(2) : "None";        
     });    
-}
-
-
-function Warband(name, ex){
-    var self = this;
-
-    self.name = name;
-    self.n = 
 }
 
 // Overall viewmodel for this screen, along with initial state
@@ -32,33 +21,66 @@ function ReservationsViewModel() {
         { mealName: "Ultimate (whole zebra)", price: 290 }
     ];    
 
-    self.warbands = [
-    	{ warbandName : "Steelheart's Champions", expansion : "Shadespire", n : 3},
-    	{ warbandName : "Garrick's Reavers", expansion : "Shadespire", n : 5},
-    	{ warbandName : "Sepulchral Guard", expansion : "Shadespire", n : 7}
-    ];
-
-
-
-      fighters = {
-      "steelheart": {
-        warband: "Steelheart's Champions",
-        name: "Severin Steelheart",
-        wounds: 3
-      },
-      "garrick": {
-        warband: "Garrick's reavers",
-        name: "Garrick Gorebeard",
-        wounds: 3
-      }
-    };
-
-
     // Editable data
     self.seats = ko.observableArray([
         new SeatReservation("Steve", self.availableMeals[0]),
         new SeatReservation("Bert", self.availableMeals[0])
     ]);
+
+    self.warbands = [
+        {
+          name: "Steelheart's Champions",
+          set: "Shadespire",
+          num_fighters: 3
+        },
+        {
+          name: "Garricks's Reavers",
+          set: "Shadespire",
+          num_fighters: 5
+        },
+        {
+            name: "Sepulchral Guard",
+            set: "Shadespire",
+            num_fighters : 7
+        }
+    ];
+
+    self.fighters = [
+        {
+          name: "Severin Steelheart",
+          warband : "Steelheart's Champions",
+          wounds: 3
+        },
+        {
+          name: "Angharad Brightshield",
+          warband : "Steelheart's Champions",
+          wounds: 4
+        },
+        {
+          name: "Garrick Gorebeard",
+          warband : "Garrick's Reavers",
+          wounds: 4
+        },
+        {
+          name: "Blooded Saek",
+          warband : "Garrick's Reavers",
+          wounds: 3
+        }
+      ]
+
+      self.selectedWarband = ko.observable();
+      self.selectedFighters = ko.observableArray(self.fighters);
+
+      self.warNull = ko.computed(function(){
+        //   return self.fighters;
+        return typeof self.selectedWarband;
+      });
+
+
+      self.computedFighters = ko.computed(function(){
+        //   return self.fighters;
+        return self.selectedWarband.name;
+      });
 
     // Computed data
     self.totalSurcharge = ko.computed(function() {
