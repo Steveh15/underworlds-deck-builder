@@ -28,8 +28,6 @@
     </tbody>
 </table>
 
-<!-- <button data-bind="click: addSeat, enable: seats().length < 5">Reserve another seat</button> -->
-
 
 
 <p>
@@ -44,12 +42,17 @@
   <span data-bind="text: selectedWarband() ? selectedWarband().num_fighters : 'unknown'"></span>
   fighters.
 </div>
-<!-- <td><select data-bind="options: $root.warbands, value: name, optionsText: 'name'"></select></td> -->
 
-<!-- <h3 data-bind="visible: totalSurcharge() > 0">
-    Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
-</h3> -->
 
+
+<div style="background-color:lightblue" data-bind = "event : {mouseover : $root.addOne}">
+  <h3>This is a heading</h3>
+  <p>This is a paragraph.</p>
+</div>
+
+<p>
+  <div data-bind="text : test()"></div>
+</p>
 
   </body>
 </html>

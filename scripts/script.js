@@ -1,31 +1,7 @@
-// Class to represent a row in the seat reservations grid
-function SeatReservation(name, initialMeal) {
-    var self = this;
-    self.name = name;
-    self.meal = ko.observable(initialMeal);
-
-    self.formattedPrice = ko.computed(function() {
-        var price = self.meal().price;
-        return price ? "$" + price.toFixed(2) : "None";        
-    });    
-}
 
 // Overall viewmodel for this screen, along with initial state
-function ReservationsViewModel() {
+function WarbandViewModel() {
     var self = this;
-
-    // Non-editable catalog data - would come from the server
-    self.availableMeals = [
-        { mealName: "Standard (sandwich)", price: 0 },
-        { mealName: "Premium (lobster)", price: 34.95 },
-        { mealName: "Ultimate (whole zebra)", price: 290 }
-    ];    
-
-    // Editable data
-    self.seats = ko.observableArray([
-        new SeatReservation("Steve", self.availableMeals[0]),
-        new SeatReservation("Bert", self.availableMeals[0])
-    ]);
 
     self.warbands = [
         {
@@ -34,7 +10,7 @@ function ReservationsViewModel() {
           num_fighters: 3
         },
         {
-          name: "Garricks's Reavers",
+          name: "Garrick's Reavers",
           set: "Shadespire",
           num_fighters: 5
         },
@@ -65,36 +41,36 @@ function ReservationsViewModel() {
           name: "Blooded Saek",
           warband : "Garrick's Reavers",
           wounds: 3
+        },
+        {
+            name : "Sepulchral Warden",
+            warband : "Sepulchral Guard",
+            wounds : 4
         }
       ]
 
       self.selectedWarband = ko.observable();
-      self.selectedFighters = ko.observableArray(self.fighters);
-
-      self.warNull = ko.computed(function(){
-        //   return self.fighters;
-        return typeof self.selectedWarband;
-      });
-
 
       self.computedFighters = ko.computed(function(){
-        //   return self.fighters;
-        return self.selectedWarband.name;
+        if(typeof self.selectedWarband() == "undefined"){
+            return []
+        } else {
+            return self.fighters.filter(fighter => fighter.warband == self.selectedWarband().name);
+        }
+       
       });
 
-    // Computed data
-    self.totalSurcharge = ko.computed(function() {
-       var total = 0;
-       for (var i = 0; i < self.seats().length; i++)
-           total += self.seats()[i].meal().price;
-       return total;
-    });    
 
-    // Operations
-    self.addSeat = function() {
-        self.seats.push(new SeatReservation("", self.availableMeals[0]));
-    }
-    self.removeSeat = function(seat) { self.seats.remove(seat) }
+      self.test = ko.observable(1);
+
+      self.addOne = function(){
+        self.test(self.test() + 1)
+      }
+
 }
 
-ko.applyBindings(new ReservationsViewModel());
+function message() {
+  console.log("Helasd");
+}
+
+ko.applyBindings(new WarbandViewModel());
