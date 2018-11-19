@@ -17,8 +17,6 @@
 </head>
 
 <body>
-    <h1>Hi there!</h1>
-
 
     <p>
         Select Warband:
@@ -46,13 +44,6 @@
 
 
 
-    <!-- <div data-bind="visible: selectedWarband"> 
-  You have chosen a warband with <span data-bind="text: selectedWarband() ? selectedWarband().num_fighters : 'unknown'"></span> fighters.
-</div>
-<div data-bind="visible: selectedFighter">
-  You have selected <span data-bind="text: selectedFighter() ? selectedFighter().name : 'unknown'"></span>.
-</div> -->
-
     <table>
         <thead>
             <tr>
@@ -72,23 +63,13 @@
             <tr>
                 <td>
                     <b>M: </b><span data-bind="text:  selectedFighter().movement"> </span>
-                    <b>D: </b><span data-bind="text : selectedFighter().defence.value + '/' + selectedFighter().defence.char">
-                    </span>
+                    <b>D: </b><span data-bind="text : selectedFighter().defence.value + '/' + selectedFighter().defence.char"></span>
                     <b>W: </b><span data-bind="text : selectedFighter().wounds"> </span>
                 </td>
                 <td>
                     <b>M: </b><span data-bind="text:  selectedFighter().inspiredVersion.movement"> </span>
-                    <b>D: </b><span data-bind="text : selectedFighter().inspiredVersion.defence.value + '/' + selectedFighter().inspiredVersion.defence.char">
-                    </span>
+                    <b>D: </b><span data-bind="text : selectedFighter().inspiredVersion.defence.value + '/' + selectedFighter().inspiredVersion.defence.char"></span>
                     <b>W: </b><span data-bind="text : selectedFighter().inspiredVersion.wounds"> </span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span data-bind="text:  selectedFighter().text"> </span>
-                </td>
-                <td>
-                    <span data-bind="text:  selectedFighter().inspiredVersion.text"> </span>
                 </td>
             </tr>
 
@@ -104,6 +85,9 @@
                             <tr>
                                 <td>
                                     <div data-bind="text: name"></div>
+                                    <b>R: </b><span data-bind="text : range"> </span>
+                                    <b>A: </b><span data-bind="text : value + '/' + char"></span>
+                                    <b>DMG: </b><span data-bind="text : dmg"> </span>
                                 </td>
                             </tr>
                         </tbody>
@@ -120,48 +104,26 @@
                             <tr>
                                 <td>
                                     <div data-bind="text: name"></div>
+                                    <b>R: </b><span data-bind="text : range"> </span>
+                                    <b>A: </b><span data-bind="text : value + '/' + char"></span>
+                                    <b>DMG: </b><span data-bind="text : dmg"> </span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </td>
             </tr>
-        </tbody>
-    </table>
-<!-- 
-    <table>
-        <thead>
-            <tr>
-                <th>Attack</th>
-            </tr>
-        </thead>
-        <tbody data-bind="foreach: selectedAttack">
             <tr>
                 <td>
-                    <div data-bind="text: name"></div>
+                    <span data-bind="html:  selectedFighter().text"> </span>
+                </td>
+                <td>
+                    <span data-bind="html:  selectedFighter().inspiredVersion.text"> </span>
                 </td>
             </tr>
+
         </tbody>
     </table>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Attack</th>
-            </tr>
-        </thead>
-        <tbody data-bind="foreach: selectedInspiredAttack">
-            <tr>
-                <td>
-                    <div data-bind="text: name"></div>
-                </td>
-            </tr>
-        </tbody>
-    </table> -->
-
-    <p>
-        <!-- You have selected <span data-bind="text : selectedFighter().name"></span> -->
-    </p>
 
 </body>
 

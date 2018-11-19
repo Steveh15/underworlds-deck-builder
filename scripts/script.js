@@ -33,7 +33,7 @@ function WarbandViewModel() {
               name : "Sigmarite Broadsword",
               range : 1,
               value : 2,
-              char : "%HAMMER%",
+              char : "%H%",
               dmg : 3
             }
           ],
@@ -49,18 +49,18 @@ function WarbandViewModel() {
                 name : "Sigmarite Broadsword",
                 range : 1,
                 value : 2,
-                char : "%HAMMER%",
+                char : "%H%",
                 dmg : 3
               },
               {
                 name : "Mighty Swing",
                 range : 1,
                 value : 2,
-                char : "%HAMMER%",
+                char : "%H%",
                 dmg : 2
               }
             ],
-            text : "Mighty Swing : Targets all adjacent enemies. Roll for each",
+            text : "<strong> Mighty Swing:</strong> Targets all adjacent enemies. Roll for each.",
             inspired : true
           }
         },
