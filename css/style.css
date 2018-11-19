@@ -9,3 +9,17 @@ h1 {
   font-style: italic;
   color: #373fff;
 }
+
+
+
+.cardbox {
+  border-color: red;
+  border-width: 1px;
+  background-color: lightblue;
+  border-style: solid;
+  max-width: 250px;
+}
+
+table { 
+  table-layout:fixed; width:500px;
+}

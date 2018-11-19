@@ -23,6 +23,10 @@ fighters = {
     name: "Angharad Brightshield",
     wounds: 4
   },
+  "Obryn the Bold": {
+    name: "Obryn the Bold",
+    wounds: 4
+  },
   "Garrick Gorebeard": {
     name: "Garrick Gorebeard",
     wounds: 4

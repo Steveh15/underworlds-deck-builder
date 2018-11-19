@@ -25,12 +25,74 @@ function WarbandViewModel() {
         {
           name: "Severin Steelheart",
           warband : "Steelheart's Champions",
-          wounds: 3
+          movement : 3,
+          defence : {value : 1, char : "%S%"},
+          wounds: 4,
+          attacks : [
+            {
+              name : "Sigmarite Broadsword",
+              range : 1,
+              value : 2,
+              char : "%HAMMER%",
+              dmg : 3
+            }
+          ],
+          inspire_cond : "This Fighter rolls a %S% or a %CRIT% when the target of an attack.",
+          inspiredVersion :{
+            name: "Steelheart Inspired",
+            warband : "Steelheart's Champions",
+            movement : 3,
+            defence : {value : 2, char : "%S%"},
+            wounds: 4,
+            attacks : [
+              {
+                name : "Sigmarite Broadsword",
+                range : 1,
+                value : 2,
+                char : "%HAMMER%",
+                dmg : 3
+              },
+              {
+                name : "Mighty Swing",
+                range : 1,
+                value : 2,
+                char : "%HAMMER%",
+                dmg : 2
+              }
+            ],
+            text : "Mighty Swing : Targets all adjacent enemies. Roll for each",
+            inspired : true
+          }
         },
         {
           name: "Angharad Brightshield",
           warband : "Steelheart's Champions",
-          wounds: 4
+          movement : 3,
+          defence : {value : 1, char : "%S%"},
+          wounds: 4,
+          inspiredVersion :   {
+            name: "Brightshield Inspired",
+            warband : "Steelheart's Champions",
+            movement : 3,
+            defence : {value : 2, char : "%S%"},
+            wounds: 4,
+            inspired : true
+          }
+        },
+        {
+          name: "Obryn the Bold",
+          warband : "Steelheart's Champions",
+          movement : 3,
+          defence : {value : 1, char : "%S%"},
+          wounds: 4,
+          inspiredVersion : {
+            name: "Obryn Inspired",
+            warband : "Steelheart's Champions",
+            movement : 3,
+            defence : {value : 2, char : "%S%"},
+            wounds: 4,
+            inspired : true
+          }
         },
         {
           name: "Garrick Gorebeard",
@@ -50,7 +112,9 @@ function WarbandViewModel() {
       ]
 
       self.selectedWarband = ko.observable();
-
+      self.selectedFighter = ko.observable();
+      self.selectedAttack = ko.observableArray();
+      self.selectedInspiredAttack = ko.observableArray();
       self.computedFighters = ko.computed(function(){
         if(typeof self.selectedWarband() == "undefined"){
             return []
@@ -61,16 +125,18 @@ function WarbandViewModel() {
       });
 
 
-      self.test = ko.observable(1);
 
-      self.addOne = function(){
-        self.test(self.test() + 1)
+
+      self.selectedWarband(self.warbands[0]);
+
+      self.selectFighter = function(fighter){
+        if(typeof fighter != "undefined"){
+          self.selectedFighter(fighter);
+          self.selectedAttack(fighter.attacks)
+          self.selectedInspiredAttack(fighter.inspiredVersion.attacks)
+        }
       }
 
-}
-
-function message() {
-  console.log("Helasd");
 }
 
 ko.applyBindings(new WarbandViewModel());
