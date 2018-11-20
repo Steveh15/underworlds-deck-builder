@@ -11,19 +11,52 @@ h1 {
 }
 
 
+.wrapper{
+  border: 1px solid green;
+}
+
+.warband{
+  border-color: blue;
+  border-width: 1px;
+  border-style: solid;
+  max-width: 500px;
+  display: inline-block;
+}
+
+.cards{
+  border-color: red;
+  border-width: 1px;
+  border-style: solid;
+  max-width: 600px;
+  display: inline-block;
+}
+
+.attacktable{
+  border: 3px solid green;
+  table-layout:fixed;
+  width:220px;
+}
+
+.fightertable{
+  border: 3px solid royalblue;
+  table-layout:fixed;
+  width: 450px;
+
+}
+
 
 .cardbox {
   border-color: red;
   border-width: 1px;
   background-color: lightblue;
   border-style: solid;
-  max-width: 250px;
+  max-width: 220px;
 }
 
-table { 
+/* table { 
   table-layout:fixed;
   width:500px;
-}
+} */
 
 /* table { 
   table-layout:fixed;

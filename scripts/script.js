@@ -8,16 +8,6 @@ function WarbandViewModel() {
       name: "Steelheart's Champions",
       set: "Shadespire",
       num_fighters: 3
-    },
-    {
-      name: "Garrick's Reavers",
-      set: "Shadespire",
-      num_fighters: 5
-    },
-    {
-      name: "Sepulchral Guard",
-      set: "Shadespire",
-      num_fighters: 7
     }
   ];
 
@@ -149,21 +139,6 @@ function WarbandViewModel() {
         ],
         inspired: true
       }
-    },
-    {
-      name: "Garrick Gorebeard",
-      warband: "Garrick's Reavers",
-      wounds: 4
-    },
-    {
-      name: "Blooded Saek",
-      warband: "Garrick's Reavers",
-      wounds: 3
-    },
-    {
-      name: "Sepulchral Warden",
-      warband: "Sepulchral Guard",
-      wounds: 4
     }
   ]
 
@@ -189,7 +164,7 @@ function WarbandViewModel() {
   // });
 
 
-  // self.selectedWarband(self.warbands[0]);
+  self.selectedWarband(self.warbands[0]);
 
   self.selectFighter = function (fighter) {
     if (typeof fighter != "undefined") {
