@@ -11,79 +11,44 @@ h1 {
 }
 
 
+.app-body{
+  width: 100%;
+  padding: 0;
+  margin: 0%;
+}
+
 .wrapper{
-  border: 1px solid green;
-}
-
-.warband{
-  border-color: blue;
-  border-width: 1px;
-  border-style: solid;
-  max-width: 500px;
-  display: inline-block;
-}
-
-.cards{
-  border-color: red;
-  border-width: 1px;
-  border-style: solid;
-  max-width: 600px;
-  display: inline-block;
-}
-
-.attacktable{
-  border: 3px solid green;
-  table-layout:fixed;
-  width:220px;
-}
-
-.fightertable{
-  border: 3px solid royalblue;
-  table-layout:fixed;
-  width: 450px;
+  border: 2px solid green;
+  width: 100%;
+  padding: 0;
+  margin: 0%;
+  float : left;
+  clear : left;
 
 }
 
-
-.cardbox {
-  border-color: red;
-  border-width: 1px;
-  background-color: lightblue;
-  border-style: solid;
-  max-width: 220px;
+.navbar{
+  border: 1px solid blue;
 }
 
-/* table { 
-  table-layout:fixed;
-  width:500px;
-} */
+.deck-manager{
+  border: 1px solid purple;
+}
 
-/* table { 
-  table-layout:fixed;
-  width:500px;
-  border-radius:10px;
-  -moz-border-radius:10px;
-  -webkit-border-radius:10px;
-  -khtml-border-radius: 10px;
-} */
 
-/* table {
-  border-collapse: collapse;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 3px solid black;
-  border-radius: 7px;
-  -moz-border-radius: 7px;
-  padding: 0px;
-} */
-/* table, td {
-  border: 1px solid black;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  padding: 0px;
-} */
+.warband-browser{
+  border: 1px solid red;
+  float: left;
+  clear : left;
+}
 
-tr {
-  vertical-align: top;
+.warband-browser-hidden{
+  border: 1px solid red;
+  float: left;
+  height: 100%;
+}
 
+.card-browser{
+  border: 1px solid yellow;
+  height: 100%;
 }
