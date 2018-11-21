@@ -22,8 +22,13 @@
 
     <div class="wrapper">
         <div class="navbar">
-            <select data-bind="options: $root.warbands, value: name, optionsText: 'name'"></select>
-            <button type="button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
+            Select Warband:
+            <select data-bind="options: warbands,
+                             optionsText: 'name',
+                             value: selectedWarband"></select>
+
+            <button type="
+                    button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
         </div>
         <div class="deck-manager">
             <strong>Warband Name</strong>
@@ -62,7 +67,7 @@
 
         <div class="card-browser" data-bind="visible: showCardView">
             Card View
-            <p> A Line </p>
+            <p data-bind="text : selectedWarband().name"> A Line </p>
             <p> A Line </p>
             <p> A Line </p>
             <p> A Line </p>

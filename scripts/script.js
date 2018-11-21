@@ -7,10 +7,10 @@ function CardViewerViewModel() {
   this.showCardView = ko.observable(true);
   this.showDeckView = ko.observable(false);
   this.loggedIn = ko.observable(false);
+  this.selectedWarband = ko.observable();
 
 
   this.warbands = exportObj.warbands();
-
 
   this.ViewWarband = function () {
 
