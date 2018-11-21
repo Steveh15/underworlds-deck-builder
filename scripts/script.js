@@ -6,6 +6,7 @@ function CardViewerViewModel() {
   this.showWarbandBrowser = ko.observable(true);
   this.showCardView = ko.observable(true);
   this.showDeckView = ko.observable(false);
+  this.loggedIn = ko.observable(false);
 
 
   this.ViewWarband = function () {
@@ -31,7 +32,25 @@ function CardViewerViewModel() {
     }
   };
 
+  this.logInOut = function () {
+    if (this.loggedIn() == false) {
+      this.loggedIn(true);
+    } else {
+      this.loggedIn(false);
+    }
+  };
+
+
+  this.logIn = function () {
+    this.loggedIn(true);
+  };
+
+
+  this.logOut = function () {
+    this.loggedIn(false);
+  };
 
 }
+
 
 ko.applyBindings(new CardViewerViewModel());

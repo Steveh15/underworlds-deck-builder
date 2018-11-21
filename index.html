@@ -25,7 +25,7 @@
                 <option value="garrick">Garricks's Reavers</option>
             </select>
             <button data-bind="click: ViewWarband">View Warband</button>
-            <button type="button">Log in</button>
+            <button type="button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'">Button</button>
         </div>
         <div class="deck-manager">
             <strong>Warband Name</strong>
@@ -38,10 +38,10 @@
             </select>
 
             <div>
-                <button type="button">Save</button>
-                <button type="button">Save as</button>
-                <button type="button">Delete</button>
-                <button type="button">Load Warband</button>
+                <button type="button" data-bind="visible : loggedIn">Save</button>
+                <button type="button" data-bind="visible : loggedIn">Save as</button>
+                <button type="button" data-bind="visible : loggedIn">Delete</button>
+                <button type="button" data-bind="visible : loggedIn">Load Warband</button>
                 <button type="button">New Warband</button>
                 <button type="button" data-bind="click: cardViewButton">Card View</button>
                 <button type="button" data-bind="click: deckViewButton">Deck View</button>
@@ -60,6 +60,12 @@
 
         <div class="card-browser" data-bind="visible: showCardView">
             Card View
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
         </div>
 
         <div class="card-browser" data-bind="visible: showDeckView">
