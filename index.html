@@ -24,8 +24,7 @@
                 <option value="steelheart">Steelheart's Champions</option>
                 <option value="garrick">Garricks's Reavers</option>
             </select>
-            <button data-bind="click: ViewWarband">View Warband</button>
-            <button type="button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'">Button</button>
+            <button type="button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
         </div>
         <div class="deck-manager">
             <strong>Warband Name</strong>
@@ -45,6 +44,10 @@
                 <button type="button">New Warband</button>
                 <button type="button" data-bind="click: cardViewButton">Card View</button>
                 <button type="button" data-bind="click: deckViewButton">Deck View</button>
+            </div>
+
+            <div>
+                <button data-bind="click: ViewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View'"></button>
             </div>
 
 
