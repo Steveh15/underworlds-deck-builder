@@ -1,7 +1,28 @@
 
 
-// var exportObj;
+var exportObj;
 
-// exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
+exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
-// exportObj.cards = "sdadas"
+
+exportObj.fighters = function () {
+
+    return {
+        "Steelheart's Champions": {
+            [
+                {
+                    name: "Severin Steelheart"
+                },
+                {
+                    name: "Angharad Brightshield"
+                },
+                {
+                    name: "Obryn the Bold"
+                }
+            ]
+        }
+    };
+
+};
+
+
