@@ -9,6 +9,9 @@ function CardViewerViewModel() {
   this.loggedIn = ko.observable(false);
 
 
+  this.warbands = exportObj.warbands();
+
+
   this.ViewWarband = function () {
 
     if (this.showWarbandBrowser() == true) {
@@ -29,14 +32,6 @@ function CardViewerViewModel() {
     if (this.showDeckView() == false) {
       this.showCardView(false);
       this.showDeckView(true);
-    }
-  };
-
-  this.logInOut = function () {
-    if (this.loggedIn() == false) {
-      this.loggedIn(true);
-    } else {
-      this.loggedIn(false);
     }
   };
 
