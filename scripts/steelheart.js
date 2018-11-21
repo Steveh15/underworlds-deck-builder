@@ -5,24 +5,24 @@ var exportObj;
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 
-exportObj.fighters = function () {
+exportObj.steelheart = function () {
 
     return {
-        "Steelheart's Champions": {
-            [
-                {
-                    name: "Severin Steelheart"
-                },
-                {
-                    name: "Angharad Brightshield"
-                },
-                {
-                    name: "Obryn the Bold"
-                }
-            ]
-        }
-    };
+        fighters: [
+            "Steelheart",
+            "Obryn",
+            "Agharad"
+        ],
+        objectiveCards: [
 
+        ],
+        upgradeCards: [
+
+        ],
+        ployCards: [
+
+        ]
+    };
 };
 
 

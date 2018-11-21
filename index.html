@@ -63,9 +63,26 @@
             <p>Warband browser goes here</p>
             <p>Warband browser goes here</p>
             <p>Warband browser goes here</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fighter</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="
+                foreach: selectedFighters()">
+                    <tr>
+                        <td>
+                            <div data-bind="text: name"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <div class="card-browser" data-bind="visible: showCardView">
+        <div class="
+                                card-browser" data-bind="visible: showCardView">
             Card View
             <p data-bind="text : selectedWarband().name"> A Line </p>
             <p> A Line </p>
