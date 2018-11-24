@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- import the webpage's javascript file -->
+    <script src="scripts/warbands.js" defer></script>
+    <script src="scripts/steelheart.js" defer></script>
     <script src="scripts/script.js" defer></script>
 </head>
 
@@ -20,28 +22,94 @@
 
     <div class="wrapper">
         <div class="navbar">
-            Select Warband : Warband Viewer : Log in
+            Select Warband:
+            <select data-bind="options: warbands,
+                             optionsText: 'name',
+                             value: selectedWarband"></select>
+
+            <button type="
+                    button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
         </div>
         <div class="deck-manager">
-            Deck Name : Load Deck : Save Deck
+            <strong>Warband Name</strong>
+            <span> : </span>
+            <input type="text" name="warbandName" value="Warband name">
+            <span> : </span>
+            <select>
+                <option value="competitive">Competitive</option>
+                <option value="free">Free</option>
+            </select>
+
+            <div>
+                <button type="button" data-bind="visible : loggedIn">Save</button>
+                <button type="button" data-bind="visible : loggedIn">Save as</button>
+                <button type="button" data-bind="visible : loggedIn">Delete</button>
+                <button type="button" data-bind="visible : loggedIn">Load Warband</button>
+                <button type="button">New Warband</button>
+                <button type="button" data-bind="click: cardViewButton">Card View</button>
+                <button type="button" data-bind="click: deckViewButton">Deck View</button>
+            </div>
+
+            <div>
+                <button data-bind="click: ViewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View'"></button>
+            </div>
+
+
         </div>
 
-        <div class="warband-browser">
+        <!-- <div id="mySidenav" class="sidenav"> -->
+        <div class=" warband-browser" data-bind="visible: showWarbandBrowser">
             <p>Warband browser goes here</p>
             <p>Warband browser goes here</p>
             <p>Warband browser goes here</p>
             <p>Warband browser goes here</p>
-        </div>
-        <div class="warband-browser-hidden">
-            <p>Show this when we want to hide the other bit</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fighter</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="
+                foreach: selectedFighters()">
+                    <tr>
+                        <td>
+                            <div data-bind="text: name"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
+        <div class="
+                                card-browser" data-bind="visible: showCardView">
+            Card View
+            <p data-bind="text : selectedWarband().name"> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+        </div>
 
-        <div class="card-browser">
-            Card browser goes here
+        <div class="card-browser" data-bind="visible: showDeckView">
+            Deck View
         </div>
 
     </div>
+
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
 
 
 </body>

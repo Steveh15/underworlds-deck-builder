@@ -4,12 +4,10 @@ warbands =
   "Steelheart's Champions" :
     name : "Steelheart's Champions"
     expansion : "Shadespire"
-    num_fighters : 3
 
   "Garricks's Reavers" :
     name : "Garricks's Reavers"
     expansion : "Shadespire"
-    num_fighters : 5
   
 
 fighters =
@@ -28,7 +26,7 @@ fighters =
     wounds : 4
 
   "Blooded Saek" : 
-    name : "Blooded Saek"
+    name : "Blooded Sek"
     wounds : 3
 
 
