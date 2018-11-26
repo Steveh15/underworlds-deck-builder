@@ -13,119 +13,103 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- import the webpage's javascript file -->
+    <script src="scripts/coffee-compiled.js" defer></script>
     <script src="scripts/script.js" defer></script>
 </head>
 
-<body>
+<body class="app-body">
 
-
-    <p>
-        Select Warband:
-        <select data-bind="options: warbands,
+    <div class="wrapper">
+        <div class="navbar">
+            Select Warband:
+            <select data-bind="options: warbands,
                              optionsText: 'name',
-                             value: selectedWarband,
-                             optionsCaption: 'Choose...'"></select>
-    </p>
+                             value: selectedWarband"></select>
+
+            <button type="
+                    button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
+        </div>
+        <div class="deck-manager">
+            <strong>Warband Name</strong>
+            <span> : </span>
+            <input type="text" name="warbandName" value="Warband name">
+            <span> : </span>
+            <select>
+                <option value="competitive">Competitive</option>
+                <option value="free">Free</option>
+            </select>
+
+            <div>
+                <button type="button" data-bind="visible : loggedIn">Save</button>
+                <button type="button" data-bind="visible : loggedIn">Save as</button>
+                <button type="button" data-bind="visible : loggedIn">Delete</button>
+                <button type="button" data-bind="visible : loggedIn">Load Warband</button>
+                <button type="button">New Warband</button>
+                <button type="button" data-bind="click: cardViewButton">Card View</button>
+                <button type="button" data-bind="click: deckViewButton">Deck View</button>
+            </div>
+
+            <div>
+                <button data-bind="click: ViewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View'"></button>
+            </div>
 
 
-    <table data-bind="visible: selectedWarband">
-        <thead>
-            <tr>
-                <th>Fighter</th>
-            </tr>
-        </thead>
-        <tbody data-bind="
-        foreach: computedFighters">
-            <tr>
-                <td>
-                    <div data-bind="text: name, event : {mouseover : $root.selectFighter($data)}" class="cardbox"></div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
 
-    <table data-bind="visible : selectedWarband">
+        <!-- <div id="mySidenav" class="sidenav"> -->
+        <div class=" warband-browser" data-bind="visible: showWarbandBrowser">
+            <p>Warband browser goes here</p>
+            <p>Warband browser goes here</p>
+            <p>Warband browser goes here</p>
+            <p>Warband browser goes here</p>
 
-        <thead>
-            <tr>
-                <th>Fighter</th>
-                <th>Inspired</th>
-            </tr>
-        </thead>
-        <tbody>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fighter</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="
+                foreach: selectedFighters()">
+                    <tr>
+                        <td>
+                            <div data-bind="text: name"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <tr>
-                <td>
-                    <div data-bind="text: selectedFighter().name"></div>
-                </td>
-                <td>
-                    <div data-bind="text: selectedFighter().inspiredVersion.name"></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <b>M: </b><span data-bind="text:  selectedFighter().movement"> </span>
-                    <b>D: </b><span data-bind="text : selectedFighter().defence.value + '/' + selectedFighter().defence.char"></span>
-                    <b>W: </b><span data-bind="text : selectedFighter().wounds"> </span>
-                </td>
-                <td>
-                    <b>M: </b><span data-bind="text:  selectedFighter().inspiredVersion.movement"> </span>
-                    <b>D: </b><span data-bind="text : selectedFighter().inspiredVersion.defence.value + '/' + selectedFighter().inspiredVersion.defence.char"></span>
-                    <b>W: </b><span data-bind="text : selectedFighter().inspiredVersion.wounds"> </span>
-                </td>
-            </tr>
+        <div class="
+                                card-browser" data-bind="visible: showCardView">
+            Card View
+            <p data-bind="text : selectedWarband().name"> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+            <p> A Line </p>
+        </div>
 
-            <tr>
-                <td>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody data-bind="foreach: selectedAttack">
-                            <tr>
-                                <td>
-                                    <div data-bind="text: name"></div>
-                                    <b>R: </b><span data-bind="text : range"> </span>
-                                    <b>A: </b><span data-bind="text : value + '/' + char"></span>
-                                    <b>DMG: </b><span data-bind="text : dmg"> </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-                <td>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody data-bind="foreach: selectedInspiredAttack">
-                            <tr>
-                                <td>
-                                    <div data-bind="text: name"></div>
-                                    <b>R: </b><span data-bind="text : range"> </span>
-                                    <b>A: </b><span data-bind="text : value + '/' + char"></span>
-                                    <b>DMG: </b><span data-bind="text : dmg"> </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span data-bind="html:  selectedFighter().text"> </span>
-                </td>
-                <td>
-                    <span data-bind="html:  selectedFighter().inspiredVersion.text"> </span>
-                </td>
-            </tr>
+        <div class="card-browser" data-bind="visible: showDeckView">
+            Deck View
+        </div>
 
-        </tbody>
-    </table>
+    </div>
+
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+
 
 </body>
 
