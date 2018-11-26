@@ -1,32 +1,12 @@
-exportObj.fighters = function() {};
-
-[
-  {
-    name: "Severin Steelheart",
-    warband: "Steelheart's Champions",
-    captain: true,
-    movement: 3,
-    defence: {
-      value: 1,
-      char: "%S%"
-    },
-    wounds: 4,
-    attacks: [
-      {
-        name: "Sigmarite Broadsword",
-        range: 1,
-        value: 2,
-        char: "%H%",
-        dmg: 3
-      }
-    ],
-    inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
-    inspiredVersion: {
-      name: "Steelheart Inspired",
+exportObj.fighters = function() {
+  return [
+    {
+      name: "Severin Steelheart",
       warband: "Steelheart's Champions",
+      captain: true,
       movement: 3,
       defence: {
-        value: 2,
+        value: 1,
         char: "%S%"
       },
       wounds: 4,
@@ -37,43 +17,43 @@ exportObj.fighters = function() {};
           value: 2,
           char: "%H%",
           dmg: 3
-        },
-        {
-          name: "Mighty Swing",
-          range: 1,
-          value: 2,
-          char: "%H%",
-          dmg: 2
         }
       ],
-      text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
-    }
-  },
-  {
-    name: "Angharad Brightshield",
-    warband: "Steelheart's Champions",
-    movement: 3,
-    defence: {
-      value: 1,
-      char: "%S%"
-    },
-    wounds: 4,
-    attacks: [
-      {
-        name: "Sigmarite Hammer",
-        range: 1,
-        value: 3,
-        char: "%H%",
-        dmg: 2
+      inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
+      inspiredVersion: {
+        name: "Steelheart Inspired",
+        warband: "Steelheart's Champions",
+        movement: 3,
+        defence: {
+          value: 2,
+          char: "%S%"
+        },
+        wounds: 4,
+        attacks: [
+          {
+            name: "Sigmarite Broadsword",
+            range: 1,
+            value: 2,
+            char: "%H%",
+            dmg: 3
+          },
+          {
+            name: "Mighty Swing",
+            range: 1,
+            value: 2,
+            char: "%H%",
+            dmg: 2
+          }
+        ],
+        text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
       }
-    ],
-    inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
-    inspiredVersion: {
-      name: "Brightshield Inspired",
+    },
+    {
+      name: "Angharad Brightshield",
       warband: "Steelheart's Champions",
       movement: 3,
       defence: {
-        value: 2,
+        value: 1,
         char: "%S%"
       },
       wounds: 4,
@@ -84,44 +64,43 @@ exportObj.fighters = function() {};
           value: 3,
           char: "%H%",
           dmg: 2
-        },
-        {
-          name: "Furious Parry",
-          range: 1,
-          value: 2,
-          char: "%H%",
-          dmg: 1
         }
       ],
-      text: "<strong> <div>Furious Parry<div>Reaction: </strong> During an Attack action that targets this fighter and has failed, this fighter cannot be driven back and you can make this Attack action. It must target the attacker."
-    }
-  },
-  {
-    name: "Obryn the Bold",
-    warband: "Steelheart's Champions",
-    movement: 3,
-    defence: {
-      value: 1,
-      char: "%S%"
-    },
-    wounds: 4,
-    attacks: [
-      {
-        name: "Sigmarite Grandhammer",
-        range: 1,
-        value: 2,
-        char: "%H%",
-        dmg: 3,
-        text: "Knockback 1"
+      inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
+      inspiredVersion: {
+        name: "Brightshield Inspired",
+        warband: "Steelheart's Champions",
+        movement: 3,
+        defence: {
+          value: 2,
+          char: "%S%"
+        },
+        wounds: 4,
+        attacks: [
+          {
+            name: "Sigmarite Hammer",
+            range: 1,
+            value: 3,
+            char: "%H%",
+            dmg: 2
+          },
+          {
+            name: "Furious Parry",
+            range: 1,
+            value: 2,
+            char: "%H%",
+            dmg: 1
+          }
+        ],
+        text: "<strong> <div>Furious Parry<div>Reaction: </strong> During an Attack action that targets this fighter and has failed, this fighter cannot be driven back and you can make this Attack action. It must target the attacker."
       }
-    ],
-    inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
-    inspiredVersion: {
-      name: "Obryn Inspired",
+    },
+    {
+      name: "Obryn the Bold",
       warband: "Steelheart's Champions",
       movement: 3,
       defence: {
-        value: 2,
+        value: 1,
         char: "%S%"
       },
       wounds: 4,
@@ -133,53 +112,46 @@ exportObj.fighters = function() {};
           char: "%H%",
           dmg: 3,
           text: "Knockback 1"
-        },
-        {
-          name: "Overhead Strike",
-          range: 1,
-          value: 2,
-          char: "%H%",
-          dmg: 3,
-          text: "Cleave"
         }
-      ]
-    }
-  },
-  {
-    name: "Averon Stormsire",
-    warband: "Stormsire's Cursebreakers",
-    captain: true,
-    magic: 2,
-    movement: 3,
-    defence: {
-      value: 1,
-      char: "%S%"
+      ],
+      inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
+      inspiredVersion: {
+        name: "Obryn Inspired",
+        warband: "Steelheart's Champions",
+        movement: 3,
+        defence: {
+          value: 2,
+          char: "%S%"
+        },
+        wounds: 4,
+        attacks: [
+          {
+            name: "Sigmarite Grandhammer",
+            range: 1,
+            value: 2,
+            char: "%H%",
+            dmg: 3,
+            text: "Knockback 1"
+          },
+          {
+            name: "Overhead Strike",
+            range: 1,
+            value: 2,
+            char: "%H%",
+            dmg: 3,
+            text: "Cleave"
+          }
+        ]
+      }
     },
-    wounds: 4,
-    attacks: [
-      {
-        name: "Incantor's Staff",
-        range: 2,
-        value: 2,
-        char: "%H%",
-        dmg: 2
-      }
-    ],
-    spells: [
-      {
-        name: "Fulmination",
-        range: 3,
-        dmg: 1
-      }
-    ],
-    inspire_cond: "This fighter successfully casts a spell.",
-    inspiredVersion: {
-      name: "Stormsire Inspired",
+    {
+      name: "Averon Stormsire",
       warband: "Stormsire's Cursebreakers",
+      captain: true,
       magic: 2,
       movement: 3,
       defence: {
-        value: 2,
+        value: 1,
         char: "%S%"
       },
       wounds: 4,
@@ -196,13 +168,41 @@ exportObj.fighters = function() {};
         {
           name: "Fulmination",
           range: 3,
-          dmg: 2
+          dmg: 1
         }
       ],
-      text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
+      inspire_cond: "This fighter successfully casts a spell.",
+      inspiredVersion: {
+        name: "Stormsire Inspired",
+        warband: "Stormsire's Cursebreakers",
+        magic: 2,
+        movement: 3,
+        defence: {
+          value: 2,
+          char: "%S%"
+        },
+        wounds: 4,
+        attacks: [
+          {
+            name: "Incantor's Staff",
+            range: 2,
+            value: 2,
+            char: "%H%",
+            dmg: 2
+          }
+        ],
+        spells: [
+          {
+            name: "Fulmination",
+            range: 3,
+            dmg: 2
+          }
+        ],
+        text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
+      }
     }
-  }
-];
+  ];
+};
 
 exportObj.warbands = function() {
   return [
