@@ -24,10 +24,13 @@ function CardViewerViewModel() {
   };
 
   this.cardViewButton = function () {
+
+  // 0 == this.showCardView() && (this.showCardView(!0), this.showDeckView(!1))
     if (this.showCardView() == false) {
       this.showCardView(true);
       this.showDeckView(false);
     }
+
   };
 
   this.deckViewButton = function () {

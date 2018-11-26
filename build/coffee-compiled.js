@@ -4,6 +4,7 @@ exportObj.fighters = function() {};
   {
     name: "Severin Steelheart",
     warband: "Steelheart's Champions",
+    captain: true,
     movement: 3,
     defence: {
       value: 1,
@@ -19,7 +20,7 @@ exportObj.fighters = function() {};
         dmg: 3
       }
     ],
-    inspire_cond: "This Fighter rolls a %S% or a %CRIT% when the target of an attack.",
+    inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
     inspiredVersion: {
       name: "Steelheart Inspired",
       warband: "Steelheart's Champions",
@@ -45,8 +46,7 @@ exportObj.fighters = function() {};
           dmg: 2
         }
       ],
-      text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each.",
-      inspired: true
+      text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
     }
   },
   {
@@ -67,7 +67,7 @@ exportObj.fighters = function() {};
         dmg: 2
       }
     ],
-    inspire_cond: "This Fighter rolls a %S% or a %CRIT% when the target of an attack.",
+    inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
     inspiredVersion: {
       name: "Brightshield Inspired",
       warband: "Steelheart's Champions",
@@ -93,8 +93,7 @@ exportObj.fighters = function() {};
           dmg: 1
         }
       ],
-      text: "<strong> <div>Furious Parry<div>Reaction: </strong> During an Attack action that targets this fighter and has failed, this fighter cannot be driven back and you can make this Attack action. It must target the attacker.",
-      inspired: true
+      text: "<strong> <div>Furious Parry<div>Reaction: </strong> During an Attack action that targets this fighter and has failed, this fighter cannot be driven back and you can make this Attack action. It must target the attacker."
     }
   },
   {
@@ -116,7 +115,7 @@ exportObj.fighters = function() {};
         text: "Knockback 1"
       }
     ],
-    inspire_cond: "This Fighter rolls a %S% or a %CRIT% when the target of an attack.",
+    inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack.",
     inspiredVersion: {
       name: "Obryn Inspired",
       warband: "Steelheart's Champions",
@@ -143,8 +142,64 @@ exportObj.fighters = function() {};
           dmg: 3,
           text: "Cleave"
         }
+      ]
+    }
+  },
+  {
+    name: "Averon Stormsire",
+    warband: "Stormsire's Cursebreakers",
+    captain: true,
+    magic: 2,
+    movement: 3,
+    defence: {
+      value: 1,
+      char: "%S%"
+    },
+    wounds: 4,
+    attacks: [
+      {
+        name: "Incantor's Staff",
+        range: 2,
+        value: 2,
+        char: "%H%",
+        dmg: 2
+      }
+    ],
+    spells: [
+      {
+        name: "Fulmination",
+        range: 3,
+        dmg: 1
+      }
+    ],
+    inspire_cond: "This fighter successfully casts a spell.",
+    inspiredVersion: {
+      name: "Stormsire Inspired",
+      warband: "Stormsire's Cursebreakers",
+      magic: 2,
+      movement: 3,
+      defence: {
+        value: 2,
+        char: "%S%"
+      },
+      wounds: 4,
+      attacks: [
+        {
+          name: "Incantor's Staff",
+          range: 2,
+          value: 2,
+          char: "%H%",
+          dmg: 2
+        }
       ],
-      inspired: true
+      spells: [
+        {
+          name: "Fulmination",
+          range: 3,
+          dmg: 2
+        }
+      ],
+      text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
     }
   }
 ];
@@ -156,16 +211,12 @@ exportObj.warbands = function() {
       set: "Shadespire"
     },
     {
-      name: "Garrick's Reavers",
-      set: "Shadespire"
+      name: "Stormsire's Cursebreakers",
+      set: "Nightvault"
     },
     {
-      name: "Ironjaw's Boyz",
-      set: "Shadespire"
-    },
-    {
-      name: "The Sepulchral Guard",
-      set: "Shadespire"
+      name: "Eyes of the Nine",
+      set: "Nightvault"
     }
   ];
 };

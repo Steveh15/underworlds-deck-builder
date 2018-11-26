@@ -8,15 +8,11 @@ exportObj.warbands = ->
 			set : "Shadespire"
 		}
 		{
-			name : "Garrick's Reavers"
-			set : "Shadespire"
+			name : "Stormsire's Cursebreakers"
+			set : "Nightvault"
 		}
 		{
-			name : "Ironjaw's Boyz"
-			set : "Shadespire"
-		}
-		{
-			name : "The Sepulchral Guard"
-			set : "Shadespire"
+			name : "Eyes of the Nine"
+			set : "Nightvault"
 		}
 	]
