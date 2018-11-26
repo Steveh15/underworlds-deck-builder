@@ -1,0 +1,24 @@
+{
+  "name": "underworlds-deck-builder",
+  "version": "0.0.1",
+  "description": "A deck builder for UW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Steveh15/underworlds-deck-builder.git"
+  },
+  "author": "Stephen Mackie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Steveh15/underworlds-deck-builder/issues"
+  },
+  "homepage": "https://github.com/Steveh15/underworlds-deck-builder#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-coffee": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}
