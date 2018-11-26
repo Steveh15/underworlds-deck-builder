@@ -1,5 +1,5 @@
 
-
+exportObj = exports ? this
 
 exportObj.warbands = ->
 	[

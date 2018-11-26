@@ -1,4 +1,6 @@
 
+exportObj = exports ? this
+
 exportObj.fighters = ->
 	[
 		{
@@ -178,9 +180,62 @@ exportObj.fighters = ->
 				text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
 			}
 		}
+		{
+			name: "Vortemis the All-Seeing"
+			warband: "Eyes of the Nine"
+			captain: true
+			magic: 2
+			movement: 4
+			defence: { value: 1, char: "%E%" }
+			wounds: 4
+			attacks: [
+				{
+					name: "Tzeentchain Runestaff"
+					range: 2
+					value: 2
+					char: "%H%"
+					dmg: 2
+				}
+			]
+			spells: [
+				{
+				name: "Bolt of Change"
+				range: 3
+				dmg: 1
+				}
+			]
+			inspire_cond: "This fighter makes a successful Attack action with a Range of 3 or more"
+			text: "<div><strong>Action:</strong><div> If there is no friendly Blue Horror or Brimstone Horrors on the battlefield, place a friendly Blue Horror on any starting hex."
+			inspiredVersion: {
+				name: "Vortemis the All-Seeing"
+				warband: "Eyes of the Nine"
+				captain: true
+				magic: 2
+				movement: 4
+				defence: { value: 2, char: "%E%" }
+				wounds: 4
+				attacks: [
+					{
+						name: "Tzeentchain Runestaff"
+						range: 2
+						value: 2
+						char: "%H%"
+						dmg: 2
+					}
+				]
+				spells: [
+					{
+					name: "Bolt of Change"
+					range: 3
+					dmg: 2
+					}
+				]
+				text: "<div><strong>Action:</strong><div> If there is no friendly Blue Horror or Brimstone Horrors on the battlefield, place a friendly Blue Horror on any starting hex."
+			}
+		}
 	]
 
-
+exportObj = exports ? this
 
 exportObj.warbands = ->
 	[
