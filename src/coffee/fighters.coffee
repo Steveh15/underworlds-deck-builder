@@ -233,4 +233,21 @@ exportObj.fighters = ->
 				text: "<div><strong>Action:</strong><div> If there is no friendly Blue Horror or Brimstone Horrors on the battlefield, place a friendly Blue Horror on any starting hex."
 			}
 		}
+		{
+			name: "Brimstone Horrors"
+			warband: "Eyes of the Nine"
+			movement: 3
+			defence: { value: 1, char: "%E%" }
+			wounds: 1
+			attacks: [
+				{
+					name: "Magical Flames"
+					range: 3
+					value: 2
+					char: "%S%"
+					dmg: 1
+				}
+			]
+			text: "<div><strong>Magical Flames</strong><div> <strong>Reaction :</strong> After the first time this fighter makes this Attack action in a phase, make another Attack action with this fighter. Do not place this fighter during set up. This fighter cannot be given Attack action upgrades, and cannot be Inspired. If this fighter is taken out of action, flip this fighter card over. It keeps any upgrades."
+		}
 	]

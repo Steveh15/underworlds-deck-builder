@@ -9,21 +9,24 @@ function CardViewerViewModel() {
   this.loggedIn = ko.observable(false);
 
   this.selectedWarband = ko.observable();
+  this.selectedFighter = ko.observable();
 
   this.warbands = exportObj.warbands();
-  this.test = ko.observable(exportObj.fighters()[0]);
 
   self.computedFighters = ko.computed(function () {
     if (typeof self.selectedWarband() == "undefined") {
       return []
     } else {
-      // var fighters = self.fighters.filter(fighter => fighter.warband == self.selectedWarband().name);
-      // self.selectFighter = fighters[0]
-      // return fighters;
       return exportObj.fighters().filter(fighter => fighter.warband == self.selectedWarband().name);
     }
 
   });
+
+  self.selectFighter = function (fighter) {
+    if (typeof fighter != "undefined") {
+      self.selectedFighter(fighter);
+    }
+  }
 
 
   this.ViewWarband = function () {
