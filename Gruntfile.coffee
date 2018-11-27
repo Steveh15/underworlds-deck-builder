@@ -8,11 +8,11 @@ module.exports = (grunt) ->
                     runtime: 'window'
                     sourceMap: true
                 files:
-                    'build/coffee-compiled.js': ['src/coffee/*.coffee']
+                    'build/coffee-compiled.js': ['src/coffee/*.coffee', 'src/*.coffee']
 
 
         watch:
-            files: '**/*.coffee'
+            files: ['**/*.coffee']
             tasks: ['coffee']
 
 

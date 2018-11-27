@@ -1,4 +1,4 @@
-var exportObj;
+var CardViewerViewModel, exportObj, scoring;
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -289,6 +289,40 @@ exportObj.fighters = function() {
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
+scoring = {
+  endPhase: 1,
+  thirdEndPhase: 2,
+  immiediate: 3
+};
+
+exportObj.objectives = function() {
+  return [
+    {
+      setID: 1,
+      cardID: 1,
+      name: "Something",
+      glory: 1,
+      faction: "Steelheat's Champions",
+      scoreTime: scoring.endPhase
+    },
+    {
+      setID: 1,
+      cardID: 2,
+      name: "Something Else",
+      glory: 2,
+      faction: "Steelheat's Champions",
+      scoreTime: scoring.thirdEndPhase
+    }
+  ];
+};
+
+// exportObj.fighters().filter(fighter => fighter.warband == self.selectedWarband().name);
+console.log(exportObj.objectives().filter(function(fighter) {
+  return fighter.scoreTime === scoring.endPhase;
+}));
+
+exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
+
 exportObj.warbands = function() {
   return [
     {
@@ -305,5 +339,65 @@ exportObj.warbands = function() {
     }
   ];
 };
+
+CardViewerViewModel = function() {
+  var self;
+  self = this;
+  self.showWarbandBrowser = ko.observable(true);
+  self.showWarbandBrowser = ko.observable(true);
+  self.showCardView = ko.observable(true);
+  self.showDeckView = ko.observable(false);
+  self.loggedIn = ko.observable(false);
+  self.selectedWarband = ko.observable();
+  self.selectedFighter = ko.observable();
+  self.allObjectives = ko.observableArray();
+  self.filteredObjectives = ko.observableArray();
+  self.deckObjectives = ko.observableArray();
+  self.allPloys = ko.observableArray();
+  self.filteredPloys = ko.observableArray();
+  self.deckPloys = ko.observableArray();
+  self.warbands = exportObj.warbands();
+  self.computedFighters = ko.computed(function() {
+    if (typeof self.selectedWarband() === "undefined") {
+      return [];
+    } else {
+      return exportObj.fighters().filter(function(fighter) {
+        return fighter.warband === self.selectedWarband().name;
+      });
+    }
+  });
+  self.selectFighter = function(fighter) {
+    if (typeof fighter !== "undefined") {
+      self.selectedFighter(fighter);
+    }
+  };
+  self.viewWarband = function() {
+    if (self.showWarbandBrowser() === true) {
+      return self.showWarbandBrowser(false);
+    } else {
+      return self.showWarbandBrowser(true);
+    }
+  };
+  self.cardViewButton = function() {
+    if (self.showCardView() === false) {
+      self.showCardView(true);
+      return self.showDeckView(false);
+    }
+  };
+  self.deckViewButton = function() {
+    if (self.showDeckView() === false) {
+      self.showCardView(false);
+      return self.showCardView(true);
+    }
+  };
+  self.logIn = function() {
+    return self.loggedIn(true);
+  };
+  self.logOut = function() {
+    return self.loggedIn(false);
+  };
+};
+
+ko.applyBindings(new CardViewerViewModel());
 
 //# sourceMappingURL=coffee-compiled.js.map
