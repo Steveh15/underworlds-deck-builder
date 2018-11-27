@@ -253,6 +253,8 @@
 
         <div class="card-browser" data-bind="visible: showCardView">
             Card View
+            <div data-bind="text : test()"></div>
+            <button type="button" data-bind="click: setURL">Set URL</button>
         </div>
 
         <div class="card-browser" data-bind="visible: showDeckView">

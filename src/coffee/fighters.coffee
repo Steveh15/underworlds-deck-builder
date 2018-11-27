@@ -132,6 +132,7 @@ exportObj.fighters = ->
 		{
 			name: "Garrek Gorebeard"
 			warband: "Garrek's Reavers"
+			captain: true
 			movement: 4
 			defence: { value: 1, char: "%DODGE%" }
 			wounds: 4
@@ -190,7 +191,7 @@ exportObj.fighters = ->
 				warband: "Garrek's Reavers"
 				movement: 5
 				defence: { value: 1, char: "%DODGE%" }
-				wounds: 4
+				wounds: 3
 				attacks: [
 					{
 						name: "Chained Axe"
@@ -207,7 +208,109 @@ exportObj.fighters = ->
 						dmg: 2
 					}
 				]
-				text: "<strong>Savage Whirl: </strong> Targets all adjacent enemies - roll for each."
+				text: "<div><strong>Savage Whirl</strong></div> Targets all adjacent enemies - roll for each."
+			}
+		}
+		{
+			name: "Blooded Saek"
+			warband: "Garrek's Reavers"
+			movement: 4
+			defence: { value: 1, char: "%DODGE%" }
+			wounds: 3
+			attacks: [
+				{
+					name: "Great Axe"
+					range: 1
+					value: 2
+					char: "%H%"
+					dmg: 3
+				}
+			]
+			inspire_cond: "At least three fighters are out of action"
+			inspiredVersion: {
+				name: "Saek Inspired"
+				warband: "Garrek's Reavers"
+				movement: 5
+				defence: { value: 1, char: "%DODGE%" }
+				wounds: 3
+				attacks: [
+					{
+					name: "Great Axe"
+					range: 1
+					value: 2
+					char: "%H%"
+					dmg: 3
+					text: "Cleave"
+					}
+				]
+			}
+		}
+		{
+			name: "Targor"
+			warband: "Garrek's Reavers"
+			movement: 4
+			defence: { value: 1, char: "%DODGE%" }
+			wounds: 2
+			attacks: [
+				{
+					name: "Gore-Axe and Blade"
+					range: 1
+					value: 2
+					char: "%S%"
+					dmg: 1
+				}
+			]
+			inspire_cond: "At least three fighters are out of action"
+			inspiredVersion: {
+				name: "Targor Inspired"
+				warband: "Garrek's Reavers"
+				movement: 5
+				defence: { value: 1, char: "%DODGE%" }
+				wounds: 2
+				attacks: [
+					{
+					name: "Gore-Axe and Blade"
+					range: 1
+					value: 3
+					char: "%S%"
+					dmg: 2
+					}
+				]
+			}
+		}
+		{
+			name: "Arnulf"
+			warband: "Garrek's Reavers"
+			movement: 4
+			defence: { value: 1, char: "%DODGE%" }
+			wounds: 2
+			attacks: [
+				{
+					name: "Piercing Blade and Axe"
+					range: 1
+					value: 2
+					char: "%S%"
+					dmg: 1
+				}
+			]
+			inspire_cond: "At least three fighters are out of action"
+			text: "<div><strong>Piercing Blade and Axe</strong></div> On a critical hit, this Attack action deals 1 extra damage."
+			inspiredVersion: {
+				name: "Arnulf Inspired"
+				warband: "Garrek's Reavers"
+				movement: 5
+				defence: { value: 1, char: "%DODGE%" }
+				wounds: 2
+				attacks: [
+					{
+					name: "Piercing Blade and Axe"
+					range: 1
+					value: 3
+					char: "%S%"
+					dmg: 1
+					}
+				]
+				text: "<div><strong>Piercing Blade and Axe</strong></div> On a critical hit, this Attack action deals 1 extra damage."
 			}
 		}
 		{

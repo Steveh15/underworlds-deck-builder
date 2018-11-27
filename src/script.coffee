@@ -15,6 +15,12 @@ CardViewerViewModel = ->
 	self.filteredPloys = ko.observableArray()
 	self.deckPloys = ko.observableArray()
 	self.warbands = exportObj.warbands()
+
+	self.test = ko.observable(window.location.search)
+
+
+	self.setURL = ->
+		window.location.href = ""
 	
 	self.computedFighters = ko.computed () ->
 		if typeof self.selectedWarband() == "undefined"
