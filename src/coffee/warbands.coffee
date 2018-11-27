@@ -8,6 +8,10 @@ exportObj.warbands = ->
 			set: "Shadespire"
 		}
 		{
+			name: "Garrek's Reavers"
+			set: "Shadespire"
+		}
+		{
 			name: "Stormsire's Cursebreakers"
 			set: "Nightvault"
 		}

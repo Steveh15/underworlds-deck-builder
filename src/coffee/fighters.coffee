@@ -130,6 +130,87 @@ exportObj.fighters = ->
 			}
 		}
 		{
+			name: "Garrek Gorebeard"
+			warband: "Garrek's Reavers"
+			movement: 4
+			defence: { value: 1, char: "%DODGE%" }
+			wounds: 4
+			attacks: [
+				{
+					name: "Blooddrinker Axe"
+					range: 1
+					value: 2
+					char: "%H%"
+					dmg: 2
+				}
+			]
+			inspire_cond: "At least three fighters are out of action"
+			inspiredVersion: {
+				name: "Garrek Inspired"
+				warband: "Garrek's Reavers"
+				movement: 5
+				defence: { value: 1, char: "%DODGE%" }
+				wounds: 4
+				attacks: [
+					{
+						name: "Awakened Axe"
+						range: 1
+						value: 2
+						char: "%H%"
+						dmg: 3
+					}
+				]
+			}
+		}
+		{
+			name: "Karsus the Chained"
+			warband: "Garrek's Reavers"
+			movement: 4
+			defence: { value: 1, char: "%DODGE%" }
+			wounds: 3
+			attacks: [
+				{
+					name: "Chained Axe"
+					range: 2
+					value: 3
+					char: "%S%"
+					dmg: 1
+				}
+				{
+					name: "Brutal Chop"
+					range: 1
+					value: 3
+					char: "%S%"
+					dmg: 2
+				}
+			]
+			inspire_cond: "At least three fighters are out of action"
+			inspiredVersion: {
+				name: "Karsus Inspired"
+				warband: "Garrek's Reavers"
+				movement: 5
+				defence: { value: 1, char: "%DODGE%" }
+				wounds: 4
+				attacks: [
+					{
+						name: "Chained Axe"
+						range: 2
+						value: 3
+						char: "%S%"
+						dmg: 2
+					}
+					{
+						name: "Savage Whirl"
+						range: 1
+						value: 2
+						char: "%S%"
+						dmg: 2
+					}
+				]
+				text: "<strong>Savage Whirl: </strong> Targets all adjacent enemies - roll for each."
+			}
+		}
+		{
 			name: "Averon Stormsire"
 			warband: "Stormsire's Cursebreakers"
 			captain: true
