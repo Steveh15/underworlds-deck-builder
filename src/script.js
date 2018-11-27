@@ -17,7 +17,10 @@ function CardViewerViewModel() {
     if (typeof self.selectedWarband() == "undefined") {
       return []
     } else {
-      return exportObj.fighters().filter(fighter => fighter.warband == self.selectedWarband().name);
+      // return exportObj.fighters().filter(fighter => fighter.warband == self.selectedWarband().name);
+      return exportObj.fighters().filter(function (fighter) {
+        return fighter.warband == self.selectedWarband().name;
+      });
     }
 
   });

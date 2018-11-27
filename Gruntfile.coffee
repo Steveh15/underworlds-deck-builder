@@ -19,7 +19,7 @@ module.exports = (grunt) ->
         uglify:
             my_target:
               files:
-                'docs/scripts/scripts.min.js': ['src/coffee/coffee-compiled.js', 'src/script.js']
+                'docs/scripts/scripts.min.js': ['build/coffee-compiled.js', 'src/script.js']
 
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -32,6 +32,7 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'build', [
         'coffee'
+        'uglify'
     ]
 
 
