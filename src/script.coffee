@@ -1,7 +1,3 @@
-
-
-
-
 CardViewerViewModel = ->
 
 	self = this
@@ -10,7 +6,6 @@ CardViewerViewModel = ->
 	self.showCardView = ko.observable(true)
 	self.showDeckView = ko.observable(false)
 	self.loggedIn = ko.observable(false)
-
 	self.selectedWarband = ko.observable()
 	self.selectedFighter = ko.observable()
 	self.allObjectives = ko.observableArray()
@@ -19,7 +14,6 @@ CardViewerViewModel = ->
 	self.allPloys = ko.observableArray()
 	self.filteredPloys = ko.observableArray()
 	self.deckPloys = ko.observableArray()
-
 	self.warbands = exportObj.warbands()
 	
 	self.computedFighters = ko.computed () ->
@@ -32,9 +26,6 @@ CardViewerViewModel = ->
 		if typeof fighter != "undefined"
 			self.selectedFighter fighter
 		return
-
-
-
 
 	self.viewWarband = ->
 		if self.showWarbandBrowser() == true
@@ -58,9 +49,6 @@ CardViewerViewModel = ->
 	self.logOut = ->
 		self.loggedIn false
 
-
 	return
 
 ko.applyBindings new CardViewerViewModel()
-
-

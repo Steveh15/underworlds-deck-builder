@@ -1,24 +1,18 @@
-
-// Overall viewmodel for this screen, along with initial state
 function CardViewerViewModel() {
-  var self = this;
 
+  var self = this;
   this.showWarbandBrowser = ko.observable(true);
   this.showCardView = ko.observable(true);
   this.showDeckView = ko.observable(false);
   this.loggedIn = ko.observable(false);
-
   this.selectedWarband = ko.observable();
   this.selectedFighter = ko.observable();
-
   this.allObjectives = ko.observableArray();
   this.filteredObjectives = ko.observableArray();
   this.deckObjectives = ko.observableArray();
-
   this.allPloys = ko.observableArray();
   this.filteredPloys = ko.observableArray();
   this.deckPloys = ko.observableArray();
-
   this.warbands = exportObj.warbands();
 
   self.computedFighters = ko.computed(function () {
@@ -37,7 +31,6 @@ function CardViewerViewModel() {
       self.selectedFighter(fighter);
     }
   }
-
 
   this.viewWarband = function () {
     if (this.showWarbandBrowser() == true) {
@@ -70,7 +63,5 @@ function CardViewerViewModel() {
   };
 
 };
-
-
 
 ko.applyBindings(new CardViewerViewModel());

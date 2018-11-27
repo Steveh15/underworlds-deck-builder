@@ -31,4 +31,4 @@ exportObj.objectives = ->
 
 # exportObj.fighters().filter(fighter => fighter.warband == self.selectedWarband().name);
 
-console.log exportObj.objectives().filter (fighter) -> fighter.scoreTime == scoring.endPhase
+# console.log exportObj.objectives().filter (fighter) -> fighter.scoreTime == scoring.endPhase

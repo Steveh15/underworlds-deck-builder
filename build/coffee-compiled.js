@@ -317,10 +317,8 @@ exportObj.objectives = function() {
 };
 
 // exportObj.fighters().filter(fighter => fighter.warband == self.selectedWarband().name);
-console.log(exportObj.objectives().filter(function(fighter) {
-  return fighter.scoreTime === scoring.endPhase;
-}));
 
+// console.log exportObj.objectives().filter (fighter) -> fighter.scoreTime == scoring.endPhase
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
 exportObj.warbands = function() {
