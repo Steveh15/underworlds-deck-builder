@@ -22,7 +22,7 @@
     <div class="wrapper">
         <div class="navbar">
             Select Warband:
-            <select data-bind="options: warbands,
+            <select data-bind="options: $root.warbands,
                              optionsText: 'name',
                              value: selectedWarband"></select>
 
@@ -32,7 +32,8 @@
         <div class="deck-manager">
             <strong data-bind='text : selectedWarband().name'></strong>
             <span> : </span>
-            <input type="text" name="warbandName" value="Warband name">
+            <input type="text" data-bind="value : deckName">
+
             <span> : </span>
             <select>
                 <option value="competitive">Competitive</option>
@@ -77,8 +78,9 @@
             </table>
 
 
-            <!-- <table data-bind="visible : selectedWarband" class="fightertable"> -->
-            <table data-bind="if : selectedWarband" class="fightertable">
+
+            <!-- 
+            <table data-bind="if : selectedWarband()" class="fightertable">
                 <thead>
                     <tr>
                         <th>Fighter</th>
@@ -182,70 +184,6 @@
                     </tr>
 
                 </tbody>
-            </table>
-
-            <!-- <table data-bind="if : selectedWarband && !$root.selectedFighter().inspiredVersion" class="fightertable">
-                <thead>
-                    <tr>
-                        <th>Fighter</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <td>
-                            <div data-bind="text: selectedFighter().name"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div data-bind="if: selectedFighter().magic">
-                                <strong>Magic: </strong><span data-bind="text:  selectedFighter().magic"></span>
-                            </div>
-                            <b>M: </b><span data-bind="text:  selectedFighter().movement"> </span>
-                            <b>D: </b><span data-bind="text : selectedFighter().defence.value + '/' + selectedFighter().defence.char"></span>
-                            <b>W: </b><span data-bind="text : selectedFighter().wounds"> </span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <table class="attacktable">
-                                <tbody data-bind="foreach: selectedFighter().attacks">
-                                    <tr>
-                                        <td>
-                                            <div data-bind="text: name"></div>
-                                            <b>R: </b><span data-bind="text : range"> </span>
-                                            <b>A: </b><span data-bind="text : value + '/' + char"></span>
-                                            <b>DMG: </b><span data-bind="text : dmg"> </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <table class="attacktable" data-bind="if: selectedFighter().magic, visible: selectedFighter().magic">
-                                <tbody data-bind="foreach: selectedFighter().spells">
-                                    <tr>
-                                        <td>
-                                            <div data-bind="text: name"></div>
-                                            <b>R: </b><span data-bind="text : range"> </span>
-                                            <b>DMG: </b><span data-bind="text : dmg"> </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span data-bind="html:  selectedFighter().text"> </span>
-                        </td>
-                    </tr>
-
-                </tbody>
             </table> -->
 
 
@@ -253,8 +191,8 @@
 
         <div class="card-browser" data-bind="visible: showCardView">
             Card View
-            <div data-bind="text : test()"></div>
-            <button type="button" data-bind="click: setURL">Set URL</button>
+            <!-- <button type="button" data-bind="click: $root.setURL('a','b')">Set URL</button> -->
+            <!-- <button type="button" data-bind="click: setURL.bind($data,'a','b')">Set URL</button> -->
         </div>
 
         <div class="card-browser" data-bind="visible: showDeckView">
