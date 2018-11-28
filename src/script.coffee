@@ -108,19 +108,19 @@ CardViewerViewModel = ->
 			self.deckName(deckNameParm)
 
 		warbandParm = self.getParameterByName("w")
-		console.log "loaded : " + warbandParm
 		if warbandParm != ""
 			loadedWarband = exportObj.warbands().filter((warband) -> warband.name == warbandParm)[0]
-			console.log(loadedWarband)
 			self.selectedWarband(loadedWarband)
 			
 		return
 
 
-	self.aClick = (name) ->
-		console.log name  + "Hmmmmm"
+	self.selectWarband = (warbandName) ->
+		self.selectedWarband(exportObj.warbands().filter((warband) -> warband.name == warbandName)[0])
 		return
 
+	self.ShadespireWarbands = (set) ->
+		return exportObj.warbands().filter((warband) -> warband.set == set)
 
 	return
 

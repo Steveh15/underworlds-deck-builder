@@ -24,34 +24,29 @@
 
         <!-- Navbar -->
         <div class="navbar">
-            <!-- <div class="dropdown">
-                <span>Select Warband</span>
-                <div class="dropdown-content">
-                    <p>Hello World!</p>
-                </div> -->
-            <!-- <select data-bind="options: $root.warbands,
-                             optionsText: 'name',
-                             value: selectedWarband,
-                             optionsCaption: 'Choose...',
-                             optionsAfterRender: initFunc"></select> -->
-
-            <!-- ,
-                             optionsCaption: 'Choose...' -->
-
-            <!-- <button type="
-                button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button> -->
-
             <ul>
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+                    <a href="javascript:void(0)" class="dropbtn"><span data-bind="text : selectedWarband() ? selectedWarband().name : 'Select Warband' "></span></a>
                     <div class="dropdown-content">
-                        <table>
-
-                            <tbody>
+                        <table class="warband-table">
+                            <tbody data-bind="foreach: ShadespireWarbands('Shadespire')">
                                 <tr>
                                     <td>
-                                        <div class="cardbox" data-bind="click : $root.aClick.bind('asdsad')">
-                                            <strong>Steelheart's Champions</strong>
+                                        <div class="cardbox" data-bind="click : $root.selectWarband.bind($data, $data.name)">
+                                            <strong data-bind="
+                                            text: $data.name"></strong>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody data-bind="foreach: ShadespireWarbands('Nightvault')">
+                                <tr>
+                                    <td>
+                                        <div class="cardbox" data-bind="click : $root.selectWarband.bind($data, $data.name)">
+                                            <strong data-bind="
+                                                text: $data.name"></strong>
                                         </div>
                                     </td>
                                 </tr>
@@ -106,6 +101,7 @@
                 foreach: computedFighters">
                     <tr>
                         <td>
+                            <!-- $root.selectWarband.bind($data, $data.name) -->
                             <div data-bind="event : {mouseover : $root.selectFighter($data)}" class="cardbox">
                                 <strong data-bind="text: $data.captain ? 'Cap: ' : ''"></strong>
                                 <strong data-bind="text: $data.name"></strong>
@@ -176,6 +172,7 @@
                                             <b>R: </b><span data-bind="text : range"> </span>
                                             <b>A: </b><span data-bind="text : value + '/' + char"></span>
                                             <b>DMG: </b><span data-bind="text : dmg"> </span>
+                                            <div data-bind="if: $data.text"><strong data-bind="text: text"></strong></div>
                                         </td>
                                     </tr>
                                 </tbody>

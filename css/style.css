@@ -86,6 +86,13 @@ table td{
 }
 
 
+.warband-table{
+  border: 1px solid red;
+  float: left;
+  clear : left;
+}
+
+
 
 ul {
   list-style-type: none;
