@@ -55,13 +55,16 @@ CardViewerViewModel = ->
 		else
 			return decodeURIComponent(results[1].replace(/\+/g, " "))
 
-	# self.deckName.subscribe (newValue) ->
-	# 	self.setURL 'dn', newValue
-	# 	return
+	self.deckName.subscribe (newValue) ->
+		self.setURL 'dn', newValue
+		return
 
-	# self.selectedWarband.subscribe (newValue) ->
-	# 	self.setURL 'w', newValue.name
-	# 	return
+	self.selectedWarband.subscribe (newValue) ->
+		if typeof newValue == "undefined"
+			self.setURL 'w', ""
+		else
+			self.setURL 'w', newValue.name
+		return
 
 	
 	self.computedFighters = ko.computed () ->
@@ -105,12 +108,17 @@ CardViewerViewModel = ->
 			self.deckName(deckNameParm)
 
 		warbandParm = self.getParameterByName("w")
-		console.log warbandParm
-		if warbandParm == ""
-			self.selectedWarband(self.warbands[1])
-		else
-			self.selectedWarband(exportObj.warbands().filter (warband) -> warband.name == warbandParm)
+		console.log "loaded : " + warbandParm
+		if warbandParm != ""
+			loadedWarband = exportObj.warbands().filter((warband) -> warband.name == warbandParm)[0]
+			console.log(loadedWarband)
+			self.selectedWarband(loadedWarband)
 			
+		return
+
+
+	self.aClick = (name) ->
+		console.log name  + "Hmmmmm"
 		return
 
 
@@ -120,7 +128,9 @@ CardViewerViewModel = ->
 
 
 cvm = new CardViewerViewModel()
+
+ko.options.useOnlyNativeEvents = true
 ko.applyBindings cvm
 
 
-# cvm.initFunc()
+cvm.initFunc()

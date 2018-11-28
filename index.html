@@ -20,20 +20,54 @@
 <body class="app-body">
 
     <div class="wrapper">
+
+
+        <!-- Navbar -->
         <div class="navbar">
-            Select Warband:
-            <select data-bind="options: $root.warbands,
+            <!-- <div class="dropdown">
+                <span>Select Warband</span>
+                <div class="dropdown-content">
+                    <p>Hello World!</p>
+                </div> -->
+            <!-- <select data-bind="options: $root.warbands,
                              optionsText: 'name',
-                             value: selectedWarband"></select>
+                             value: selectedWarband,
+                             optionsCaption: 'Choose...',
+                             optionsAfterRender: initFunc"></select> -->
 
             <!-- ,
                              optionsCaption: 'Choose...' -->
 
-            <button type=" button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
+            <!-- <button type="
+                button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button> -->
+
+            <ul>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+                    <div class="dropdown-content">
+                        <table>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="cardbox" data-bind="click : $root.aClick.bind('asdsad')">
+                                            <strong>Steelheart's Champions</strong>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                <li><a href="#Login">Login</a></li>
+
+            </ul>
+
         </div>
+
+        <!-- Deck Manager bar -->
         <div class="deck-manager">
-            <strong data-bind='text : selectedWarband().name'></strong>
-            <span> : </span>
+            <span data-bind="if : selectedWarband"><strong data-bind="text : selectedWarband().name + ':'"></strong></span>
             <input type="text" data-bind="value : deckName">
 
             <span> : </span>
@@ -59,8 +93,10 @@
 
         </div>
 
+
+        <!-- Warband Browser -->
         <div class="warband-browser" data-bind="visible: showWarbandBrowser, if: showWarbandBrowser">
-            <table>
+            <table data-bind="if : selectedWarband">
                 <thead>
                     <tr>
                         <th>Fighter</th>
@@ -80,8 +116,6 @@
             </table>
 
 
-
-            <!-- 
             <table data-bind="if : selectedWarband()" class="fightertable">
                 <thead>
                     <tr>
@@ -186,7 +220,7 @@
                     </tr>
 
                 </tbody>
-            </table> -->
+            </table>
 
 
         </div>
@@ -200,20 +234,6 @@
         </div>
 
     </div>
-
-
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
-    </script>
-
 
 </body>
 
