@@ -8,7 +8,7 @@ CardViewerViewModel = ->
 	self.loggedIn = ko.observable(false)
 	
 	self.selectedFighter = ko.observable()
-	self.deckName = ko.observable("Unnamed deck")
+	self.deckName = ko.observable()
 	self.allObjectives = ko.observableArray()
 	self.filteredObjectives = ko.observableArray()
 	self.deckObjectives = ko.observableArray()
@@ -16,39 +16,52 @@ CardViewerViewModel = ->
 	self.filteredPloys = ko.observableArray()
 	self.deckPloys = ko.observableArray()
 	self.warbands = exportObj.warbands()
-	self.selectedWarband = ko.observable(self.warbands[0])
+	self.selectedWarband = ko.observable()
 
 
 
-	self.setURL = (key,value) ->
+	self.setURL = (key, value) ->
 
 		keyEn = encodeURI key
 		valueEn = encodeURI value
 		kvp = document.location.search.substr(1).split '&'
 		
-		i=kvp.length
+		i = kvp.length
 	
-		while(i--) 
+		while( i-- )
 			x = kvp[i].split('=')
-			if x[0]==keyEn
-				x[1] = valueEn;
+			if x[0] == keyEn
+				x[1] = valueEn
 				kvp[i] = x.join('=')
-				break;
+				break
 
-		if i<0 
-			kvp[kvp.length] = [keyEn,valueEn].join '='
+		if i < 0
+			kvp[kvp.length] = [keyEn, valueEn].join '='
 		
 		newurl = window.location.protocol + "//" + window.location.host  +  window.location.pathname + '?' + kvp.join '&'
-		window.history.pushState({path:newurl},'',newurl);
+		window.history.pushState({ path: newurl }, '', newurl)
 		return
 
-	self.deckName.subscribe (newValue) -> 
-		self.setURL 'dn', newValue
-		return
 
-	self.selectedWarband.subscribe (newValue) -> 
-		self.setURL 'w', newValue.name
-		return
+
+	# ripped from http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
+	self.getParameterByName = (name) ->
+		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]")
+		regexS = "[\\?&]" + name + "=([^&#]*)"
+		regex = new RegExp(regexS)
+		results = regex.exec(window.location.search)
+		if results == null
+			return ""
+		else
+			return decodeURIComponent(results[1].replace(/\+/g, " "))
+
+	# self.deckName.subscribe (newValue) ->
+	# 	self.setURL 'dn', newValue
+	# 	return
+
+	# self.selectedWarband.subscribe (newValue) ->
+	# 	self.setURL 'w', newValue.name
+	# 	return
 
 	
 	self.computedFighters = ko.computed () ->
@@ -84,6 +97,30 @@ CardViewerViewModel = ->
 	self.logOut = ->
 		self.loggedIn false
 
+	self.initFunc = ->
+		deckNameParm = self.getParameterByName("dn")
+		if deckNameParm == ""
+			self.deckName("Unnamed Deck")
+		else
+			self.deckName(deckNameParm)
+
+		warbandParm = self.getParameterByName("w")
+		console.log warbandParm
+		if warbandParm == ""
+			self.selectedWarband(self.warbands[1])
+		else
+			self.selectedWarband(exportObj.warbands().filter (warband) -> warband.name == warbandParm)
+			
+		return
+
+
 	return
 
-ko.applyBindings new CardViewerViewModel()
+
+
+
+cvm = new CardViewerViewModel()
+ko.applyBindings cvm
+
+
+# cvm.initFunc()

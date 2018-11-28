@@ -26,8 +26,10 @@
                              optionsText: 'name',
                              value: selectedWarband"></select>
 
-            <button type="
-                    button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
+            <!-- ,
+                             optionsCaption: 'Choose...' -->
+
+            <button type=" button" data-bind="click: loggedIn() ? logOut : logIn, text : loggedIn() ? 'Log Out' : 'Log In'"></button>
         </div>
         <div class="deck-manager">
             <strong data-bind='text : selectedWarband().name'></strong>
@@ -191,8 +193,6 @@
 
         <div class="card-browser" data-bind="visible: showCardView">
             Card View
-            <!-- <button type="button" data-bind="click: $root.setURL('a','b')">Set URL</button> -->
-            <!-- <button type="button" data-bind="click: setURL.bind($data,'a','b')">Set URL</button> -->
         </div>
 
         <div class="card-browser" data-bind="visible: showDeckView">
