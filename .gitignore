@@ -2,7 +2,3 @@ node_modules/
 *.map
 build/
 assets/wound.svg
-font/wu-fonts.eot
-font/wu-fonts.woff2
-font/wu-fonts.woff
-font/wu-fonts.svg

@@ -434,16 +434,7 @@ exportObj.fightersCommon = ->
 			text: "<div><strong>Magical Flames</strong><div> <strong>Reaction :</strong> After the first time this fighter makes this Attack action in a phase, make another Attack action with this fighter. Do not place this fighter during set up. This fighter cannot be given Attack action upgrades, and cannot be Inspired. If this fighter is taken out of action, flip this fighter card over. It keeps any upgrades."
 		}
 	]
-
-
-# exportObj.newFighters = (data) ->
-# 	for index, fighter of data
-# 		# console.log fighter.name
-# 		fighter.name = "poop"
-# 		console.log fighter.name
-# 		# fighter.defence.char = fighter.defence.char.replace(/%S%/g, '<i class="icon-shield"></i>')
-
-
+	
 exportObj.fighters = () ->
 	data = exportObj.fightersCommon()
 	for index, fighter of data
