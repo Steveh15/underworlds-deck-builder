@@ -17,7 +17,9 @@ CardViewerViewModel = ->
 	self.deckPloys = ko.observableArray()
 	self.warbands = exportObj.warbands()
 	self.selectedWarband = ko.observable()
+ 
 
+	self.test = ko.observable(exportObj.fighters()[0].name)
 
 
 	self.setURL = (key, value) ->
@@ -92,7 +94,7 @@ CardViewerViewModel = ->
 	self.deckViewButton = ->
 		if self.showDeckView() == false
 			self.showCardView false
-			self.showCardView true
+			self.showDeckView true
 
 	self.logIn = ->
 		self.loggedIn true

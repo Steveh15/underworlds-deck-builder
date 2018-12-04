@@ -1,44 +1,44 @@
 
 exportObj = exports ? this
 
-exportObj.fighters = ->
+exportObj.fightersCommon = ->
 	[
 		{
 			name: "Severin Steelheart"
 			warband: "Steelheart's Champions"
 			captain: true
 			movement: 3
-			defence: { value: 1, char: "%S%" }
+			defence: { value: 1, char: "%SHIELD%" }
 			wounds: 4
 			attacks: [
 				{
 					name: "Sigmarite Broadsword"
 					range: 1
 					value: 2
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 3
 				}
 			]
-			inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack."
+			inspire_cond: "This fighter rolls a %SHIELD% or a %CRIT% when the target of an attack."
 			inspiredVersion: {
 				name: "Steelheart Inspired"
 				warband: "Steelheart's Champions"
 				movement: 3
-				defence: { value: 2, char: "%S%" }
+				defence: { value: 2, char: "%SHIELD%" }
 				wounds: 4
 				attacks: [
 					{
 						name: "Sigmarite Broadsword"
 						range: 1
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 3
 					}
 					{
 						name: "Mighty Swing"
 						range: 1
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 2
 					}
 				]
@@ -49,37 +49,37 @@ exportObj.fighters = ->
 			name: "Angharad Brightshield"
 			warband: "Steelheart's Champions"
 			movement: 3
-			defence: { value: 1, char: "%S%" }
+			defence: { value: 1, char: "%SHIELD%" }
 			wounds: 4
 			attacks: [
 				{
 					name: "Sigmarite Hammer"
 					range: 1
 					value: 3
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 2
 				}
 			]
-			inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack."
+			inspire_cond: "This fighter rolls a %SHIELD% or a %CRIT% when the target of an attack."
 			inspiredVersion: {
 				name: "Brightshield Inspired"
 				warband: "Steelheart's Champions"
 				movement: 3
-				defence: { value: 2, char: "%S%" }
+				defence: { value: 2, char: "%SHIELD%" }
 				wounds: 4
 				attacks: [
 					{
 						name: "Sigmarite Hammer"
 						range: 1
 						value: 3
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 2
 					}
 					{
 						name: "Furious Parry"
 						range: 1
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 1
 					}
 				]
@@ -90,31 +90,31 @@ exportObj.fighters = ->
 			name: "Obryn the Bold"
 			warband: "Steelheart's Champions"
 			movement: 3
-			defence: { value: 1, char: "%S%" }
+			defence: { value: 1, char: "%SHIELD%" }
 			wounds: 4
 			attacks: [
 				{
 					name: "Sigmarite Grandhammer"
 					range: 1
 					value: 2
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 3
 					text: "Knockback 1"
 				}
 			]
-			inspire_cond: "This fighter rolls a %S% or a %CRIT% when the target of an attack."
+			inspire_cond: "This fighter rolls a %SHIELD% or a %CRIT% when the target of an attack."
 			inspiredVersion: {
 				name: "Obryn Inspired"
 				warband: "Steelheart's Champions"
 				movement: 3
-				defence: { value: 2, char: "%S%" }
+				defence: { value: 2, char: "%SHIELD%" }
 				wounds: 4
 				attacks: [
 					{
 						name: "Sigmarite Grandhammer"
 						range: 1
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 3
 						text: "Knockback 1"
 					}
@@ -122,7 +122,7 @@ exportObj.fighters = ->
 						name: "Overhead Strike"
 						range: 1
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 3
 						text: "Cleave"
 					}
@@ -141,7 +141,7 @@ exportObj.fighters = ->
 					name: "Blooddrinker Axe"
 					range: 1
 					value: 2
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 2
 				}
 			]
@@ -157,7 +157,7 @@ exportObj.fighters = ->
 						name: "Awakened Axe"
 						range: 1
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 3
 					}
 				]
@@ -174,14 +174,14 @@ exportObj.fighters = ->
 					name: "Chained Axe"
 					range: 2
 					value: 3
-					char: "%S%"
+					char: "%SWORDS%"
 					dmg: 1
 				}
 				{
 					name: "Brutal Chop"
 					range: 1
 					value: 3
-					char: "%S%"
+					char: "%SWORDS%"
 					dmg: 2
 				}
 			]
@@ -197,14 +197,14 @@ exportObj.fighters = ->
 						name: "Chained Axe"
 						range: 2
 						value: 3
-						char: "%S%"
+						char: "%SWORDS%"
 						dmg: 2
 					}
 					{
 						name: "Savage Whirl"
 						range: 1
 						value: 2
-						char: "%S%"
+						char: "%SWORDS%"
 						dmg: 2
 					}
 				]
@@ -222,7 +222,7 @@ exportObj.fighters = ->
 					name: "Great Axe"
 					range: 1
 					value: 2
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 3
 				}
 			]
@@ -238,7 +238,7 @@ exportObj.fighters = ->
 					name: "Great Axe"
 					range: 1
 					value: 2
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 3
 					text: "Cleave"
 					}
@@ -256,7 +256,7 @@ exportObj.fighters = ->
 					name: "Gore-Axe and Blade"
 					range: 1
 					value: 2
-					char: "%S%"
+					char: "%SWORDS%"
 					dmg: 1
 				}
 			]
@@ -272,7 +272,7 @@ exportObj.fighters = ->
 					name: "Gore-Axe and Blade"
 					range: 1
 					value: 3
-					char: "%S%"
+					char: "%SWORDS%"
 					dmg: 2
 					}
 				]
@@ -289,7 +289,7 @@ exportObj.fighters = ->
 					name: "Piercing Blade and Axe"
 					range: 1
 					value: 2
-					char: "%S%"
+					char: "%SWORDS%"
 					dmg: 1
 				}
 			]
@@ -306,7 +306,7 @@ exportObj.fighters = ->
 					name: "Piercing Blade and Axe"
 					range: 1
 					value: 3
-					char: "%S%"
+					char: "%SWORDS%"
 					dmg: 1
 					}
 				]
@@ -319,14 +319,14 @@ exportObj.fighters = ->
 			captain: true
 			magic: 2
 			movement: 3
-			defence: { value: 1, char: "%S%" }
+			defence: { value: 1, char: "%SHIELD%" }
 			wounds: 4
 			attacks: [
 				{
 					name: "Incantor's Staff"
 					range: 2
 					value: 2
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 2
 				}
 			]
@@ -343,14 +343,14 @@ exportObj.fighters = ->
 				warband: "Stormsire's Cursebreakers"
 				magic: 2
 				movement: 3
-				defence: { value: 2, char: "%S%" }
+				defence: { value: 2, char: "%SHIELD%" }
 				wounds: 4
 				attacks: [
 					{
 						name: "Incantor's Staff"
 						range: 2
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 2
 					}
 				]
@@ -361,7 +361,6 @@ exportObj.fighters = ->
 						dmg: 2
 					}
 				]
-				text: "<div><strong> Mighty Swing</strong><div> Targets all adjacent enemies. Roll for each."
 			}
 		}
 		{
@@ -370,14 +369,14 @@ exportObj.fighters = ->
 			captain: true
 			magic: 2
 			movement: 4
-			defence: { value: 1, char: "%E%" }
+			defence: { value: 1, char: "%DODGE%" }
 			wounds: 4
 			attacks: [
 				{
 					name: "Tzeentchain Runestaff"
 					range: 2
 					value: 2
-					char: "%H%"
+					char: "%HAMMER%"
 					dmg: 2
 				}
 			]
@@ -396,14 +395,14 @@ exportObj.fighters = ->
 				captain: true
 				magic: 2
 				movement: 4
-				defence: { value: 2, char: "%E%" }
+				defence: { value: 2, char: "%DODGE%" }
 				wounds: 4
 				attacks: [
 					{
 						name: "Tzeentchain Runestaff"
 						range: 2
 						value: 2
-						char: "%H%"
+						char: "%HAMMER%"
 						dmg: 2
 					}
 				]
@@ -421,17 +420,49 @@ exportObj.fighters = ->
 			name: "Brimstone Horrors"
 			warband: "Eyes of the Nine"
 			movement: 3
-			defence: { value: 1, char: "%E%" }
+			defence: { value: 1, char: "%DODGE%" }
 			wounds: 1
 			attacks: [
 				{
 					name: "Magical Flames"
 					range: 3
 					value: 2
-					char: "%S%"
+					char : "%SWORDS%"
 					dmg: 1
 				}
 			]
 			text: "<div><strong>Magical Flames</strong><div> <strong>Reaction :</strong> After the first time this fighter makes this Attack action in a phase, make another Attack action with this fighter. Do not place this fighter during set up. This fighter cannot be given Attack action upgrades, and cannot be Inspired. If this fighter is taken out of action, flip this fighter card over. It keeps any upgrades."
 		}
 	]
+
+
+# exportObj.newFighters = (data) ->
+# 	for index, fighter of data
+# 		# console.log fighter.name
+# 		fighter.name = "poop"
+# 		console.log fighter.name
+# 		# fighter.defence.char = fighter.defence.char.replace(/%S%/g, '<i class="icon-shield"></i>')
+
+
+exportObj.fighters = () ->
+	data = exportObj.fightersCommon()
+	for index, fighter of data
+		fighter.defence.char = fighter.defence.char.replace(/%SHIELD%/g, '<i class="icon-shield"></i>')
+		fighter.defence.char = fighter.defence.char.replace(/%DODGE%/g, '<i class="icon-dodge"></i>')
+
+		
+
+		for index, attack of fighter.attacks
+			attack.char = attack.char.replace(/%SWORDS%/g, '<i class="icon-sword"></i>')
+			attack.char = attack.char.replace(/%HAMMER%/g, '<i class="icon-hammer"></i>')
+
+		if fighter.inspiredVersion?
+			fighter.inspire_cond = fighter.inspire_cond.replace(/%SHIELD%/g, '<i class="icon-shield"></i>')
+			fighter.inspire_cond = fighter.inspire_cond.replace(/%CRIT%/g, "<span class = 'testclass'><strong class='icon-crit'></strong></span>")
+			fighter.inspiredVersion.defence.char = fighter.inspiredVersion.defence.char.replace(/%SHIELD%/g, '<i class="icon-shield"></i>')
+			fighter.inspiredVersion.defence.char = fighter.inspiredVersion.defence.char.replace(/%DODGE%/g, '<i class="icon-dodge"></i>')
+			for index, attack of fighter.inspiredVersion.attacks
+				attack.char = attack.char.replace(/%SWORDS%/g, '<i class="icon-sword"></i>')
+				attack.char = attack.char.replace(/%HAMMER%/g, '<i class="icon-hammer"></i>')
+
+	return data

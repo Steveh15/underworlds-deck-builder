@@ -77,8 +77,9 @@
                 <button type="button" data-bind="visible : loggedIn">Delete</button>
                 <button type="button" data-bind="visible : loggedIn">Load Warband</button>
                 <button type="button">New Warband</button>
-                <button type="button" data-bind="click: cardViewButton">Card View</button>
-                <button type="button" data-bind="click: deckViewButton">Deck View</button>
+                <button type="button" data-bind="click:  $root.cardViewButton.bind($data)">Card View</button>
+                <button type="button" data-bind="click:  $root.deckViewButton.bind($data)">Deck View</button>
+                <!-- data-bind="click : $root.selectWarband.bind($data, $data.name)"> -->
             </div>
 
             <div>
@@ -113,12 +114,12 @@
 
 
             <table data-bind="if : selectedWarband()" class="fightertable">
-                <thead>
+                <!-- <thead>
                     <tr>
                         <th>Fighter</th>
                         <th data-bind="if : $root.selectedFighter().inspiredVersion">Inspired</th>
                     </tr>
-                </thead>
+                </thead> -->
                 <tbody>
 
                     <tr>
@@ -129,23 +130,36 @@
                             <div data-bind="text: selectedFighter().inspiredVersion.name"></div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr data-bind="if : (selectedFighter().magic || selectedFighter().inspiredVersion ? true : false) && selectedFighter().inspiredVersion.magic">
                         <td>
                             <div data-bind="if: selectedFighter().magic">
                                 <strong>Magic: </strong><span data-bind="text:  selectedFighter().magic"></span>
                             </div>
-                            <b>M: </b><span data-bind="text:  selectedFighter().movement"> </span>
-                            <b>D: </b><span data-bind="text : selectedFighter().defence.value + '/' + selectedFighter().defence.char"></span>
-                            <b>W: </b><span data-bind="text : selectedFighter().wounds"> </span>
                         </td>
-                        <td data-bind="if : $root.selectedFighter().inspiredVersion">
+                        <td>
                             <div data-bind="if: selectedFighter().inspiredVersion.magic">
                                 <strong>Magic: </strong><span data-bind="text:  selectedFighter().inspiredVersion.magic"></span>
                             </div>
-                            <b>M: </b><span data-bind="text:  selectedFighter().inspiredVersion.movement"> </span>
-                            <b>D: </b><span data-bind="text : selectedFighter().inspiredVersion.defence.value + '/' + selectedFighter().inspiredVersion.defence.char"></span>
-                            <b>W: </b><span data-bind="text : selectedFighter().inspiredVersion.wounds"> </span>
                         </td>
+                    </tr>
+                    <tr>
+
+                        <td class="testclass">
+                            <b class="icon-range">: </b><span data-bind="text:selectedFighter().movement"> </span>
+                            <span data-bind="html: selectedFighter().defence.char"></span><b>:</b><span data-bind="text:selectedFighter().defence.value"></span>
+                            <i class="icon-wound"></i><b>:</b><span data-bind="text:selectedFighter().wounds">
+                            </span>
+                        </td>
+
+                        <td data-bind="if: $root.selectedFighter().inspiredVersion" class="testclass">
+                            <b class="icon-range">: </b><span data-bind="text:selectedFighter().inspiredVersion.movement">
+                            </span>
+                            <span data-bind="html:selectedFighter().inspiredVersion.defence.char"></span><b>:</b><span
+                                data-bind="text:selectedFighter().inspiredVersion.defence.value"></span>
+                            <i class="icon-wound"></i><b>: </b><span data-bind="text:selectedFighter().inspiredVersion.wounds">
+                            </span>
+                        </td>
+
                     </tr>
 
                     <tr>
@@ -155,9 +169,11 @@
                                     <tr>
                                         <td>
                                             <div data-bind="text: name"></div>
-                                            <b>R: </b><span data-bind="text : range"> </span>
-                                            <b>A: </b><span data-bind="text : value + '/' + char"></span>
-                                            <b>DMG: </b><span data-bind="text : dmg"> </span>
+                                            <span class="testclass">
+                                                <b class="icon-range">: </b><span data-bind="text : range"> </span>
+                                                <span data-bind="html: char"></span><b>:</b><span data-bind="text:value"></span>
+                                                <b class="icon-damage">: </b><span data-bind="text : dmg"> </span>
+                                            </span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -169,10 +185,11 @@
                                     <tr>
                                         <td>
                                             <div data-bind="text: name"></div>
-                                            <b>R: </b><span data-bind="text : range"> </span>
-                                            <b>A: </b><span data-bind="text : value + '/' + char"></span>
-                                            <b>DMG: </b><span data-bind="text : dmg"> </span>
-                                            <div data-bind="if: $data.text"><strong data-bind="text: text"></strong></div>
+                                            <span class="testclass">
+                                                <b class="icon-range">: </b><span data-bind="text : range"> </span>
+                                                <span data-bind="html: char"></span><b>:</b><span data-bind="text:value"></span>
+                                                <b class="icon-damage">: </b><span data-bind="text : dmg"> </span>
+                                            </span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -186,8 +203,10 @@
                                     <tr>
                                         <td>
                                             <div data-bind="text: name"></div>
-                                            <b>R: </b><span data-bind="text : range"> </span>
-                                            <b>DMG: </b><span data-bind="text : dmg"> </span>
+                                            <span class="testclass">
+                                                <b class="icon-range">: </b><span data-bind="text : range"> </span>
+                                                <b class="icon-damage">: </b><span data-bind="text : dmg"> </span>
+                                            </span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -199,8 +218,10 @@
                                     <tr>
                                         <td>
                                             <div data-bind="text: name"></div>
-                                            <b>R: </b><span data-bind="text : range"> </span>
-                                            <b>DMG: </b><span data-bind="text : dmg"> </span>
+                                            <span class="testclass">
+                                                <b class="icon-range">: </b><span data-bind="text : range"> </span>
+                                                <b class="icon-damage">: </b><span data-bind="text : dmg"> </span>
+                                            </span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -209,7 +230,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <span data-bind="html:  selectedFighter().text"> </span>
+                            <div><span data-bind="html:  selectedFighter().text"> </span></div>
+                            <div data-bind="if : $root.selectedFighter().inspiredVersion"><strong>Inspire condition:
+                                </strong><span data-bind="html:  selectedFighter().inspire_cond"></span></div>
                         </td>
                         <td data-bind="if : $root.selectedFighter().inspiredVersion">
                             <span data-bind="html:  selectedFighter().inspiredVersion.text"> </span>
@@ -222,11 +245,16 @@
 
         </div>
 
-        <div class="card-browser" data-bind="visible: showCardView">
+        <div class="card-browser" data-bind="if: showCardView">
             Card View
+            <div><i class="icon-damage"></i></div>
+            <div class="testclass">Hello there <i class="icon-damage"></i> </div>
+
+            <span data-bind="text : test"></span>
+
         </div>
 
-        <div class="card-browser" data-bind="visible: showDeckView">
+        <div class="card-browser" data-bind="if: $root.showDeckView">
             Deck View
         </div>
 
