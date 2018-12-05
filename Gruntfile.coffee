@@ -8,7 +8,7 @@ module.exports = (grunt) ->
                     runtime: 'window'
                     sourceMap: true
                 files:
-                    'build/coffee-compiled.js': ['src/coffee/*.coffee', 'src/*.coffee']
+                    'build/coffee-compiled.js': ['src/*.coffee']
 
 
         watch:
@@ -19,20 +19,35 @@ module.exports = (grunt) ->
         uglify:
             my_target:
               files:
-                'docs/scripts/scripts.min.js': ['build/coffee-compiled.js', 'src/script.js']
+                'docs/js/yawb.min.js': ['build/coffee-compiled.js']
+
+
+        pug:
+            compile:
+                expand: true
+                cwd: 'pug/'
+                src: ['**/*.pug']
+                dest: 'docs/'
+                ext: '.html'
+                options:
+                    pretty: true
 
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-uglify'
+    grunt.loadNpmTasks 'grunt-contrib-pug'
 
     grunt.registerTask 'default', [
         'coffee'
+        'uglify'
+        'pug'
     ]
 
 
     grunt.registerTask 'build', [
         'coffee'
-        'uglify'
+        
+
     ]
 
 

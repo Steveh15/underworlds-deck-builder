@@ -1,9 +1,63 @@
 <!DOCTYPE html>
-<html>
-<body>
-
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-
-</body>
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <script src="lib/jquery-3.3.1.min.js" defer></script>
+    <script src="lib/knockout-3.4.2.js" defer></script>
+    <script src="js/yawb.min.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="navbar">
+        <ul>
+          <li class="dropdown"><a class="dropbtn" href="javascript:void(0)"><span data-bind="text : selectedWarband() ? selectedWarband().name : 'Select Warband'"></span></a>
+            <div class="dropdown-content">
+              <table class="warband-table">
+                <tbody data-bind="foreach: ShadespireWarbands('Shadespire')">
+                  <tr>
+                    <td>
+                      <div data-bind="click : $root.selectWarband.bind($data, $data.name)"><strong data-bind="text: $data.name"></strong></div>
+                    </td>
+                  </tr>
+                </tbody>
+                <table class="warband-table"></table>
+                <tbody data-bind="foreach: ShadespireWarbands('Nightvault')">
+                  <tr>
+                    <td>
+                      <div data-bind="click : $root.selectWarband.bind($data, $data.name)"><strong data-bind="text: $data.name"></strong></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </li>
+          <li><a href="#Login">
+              <p>Login!</p></a></li>
+        </ul>
+      </div>
+    </div>
+    
+    
+    <div class="deck-manager"><span data-bind="if : selectedWarband"><strong data-bind="text: selectedWarband().name + ':'"></strong></span>
+      <input type="text" data-bind="value : deckname"><span>:</span>
+      <select>
+        <option value="competitive">Competitive</option>
+        <option value="free">Free</option>
+      </select>
+      <div>
+        <button type="button" data-bind="visible : logginedIn">Save</button>
+        <button type="button" data-bind="visible : logginedIn">Save as</button>
+        <button type="button" data-bind="visible : logginedIn">Delete</button>
+        <button type="button" data-bind="visible : logginedIn">Load Warband</button>
+        <button type="button">New Deck</button>
+        <button type="button" data-bind="click:  $root.cardViewButton.bind($data)">Card View</button>
+        <button type="button" data-bind="click:  $root.deckViewButton.bind($data)">Deck View</button>
+      </div>
+      <div>
+        <button data-bind="click: viewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View"></button>
+      </div>
+    </div>
+  </body>
 </html>
