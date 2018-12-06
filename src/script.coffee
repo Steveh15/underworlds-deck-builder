@@ -16,6 +16,10 @@ CardViewerViewModel = ->
 	self.deckPloys = ko.observableArray()
 	self.warbands = exportObj.warbands()
 	self.selectedWarband = ko.observable()
+
+	self.objectives = ko.observableArray(exportObj.objectives())
+	self.gambits = ko.observableArray(exportObj.gambits())
+	self.upgrades = ko.observableArray(exportObj.upgrades())
  
 
 	self.test = ko.observable(exportObj.fighters()[0].name)

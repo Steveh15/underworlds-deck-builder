@@ -174,26 +174,98 @@ exportObj.objectives = ->
 		}
 		{
 			setID: 1
-			cardID: 250
-			name: "Crushing Force"
-			text: "Score this immediately if a friendly fighter makes a successful attack that deals at least twice as much damage as is needed to take their target out of action."
+			cardID: 233
+			name: "Accept Inevitability"
+			text: "Score this in the third end phase if all of your fighters are out of action."
 			glory: 1
 			phase: scoring.immediate
 		}
 		{
 			setID: 1
-			cardID: 250
-			name: "Dauntless"
-			text: "Score this in an end phase if your fighters are outnumbered by at least three to one."
-			glory: 2
-			phase: scoring.endPhase
+			cardID: 234
+			name: "Advancing Strike"
+			text: "Score this immediately when your warband takes an enemy fighter standing in enemy territory out of action."
+			glory: 1
+			phase: scoring.immediate
 		}
-		
-
-		
+		{
+			setID: 1
+			cardID: 235
+			name: "Alone in the Darkness"
+			text: "Score this in an end phase if there are no adjacent fighters on the battlefield."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 236
+			name: "Annihilation"
+			text: "Score this in an end phase if all enemy fighters have been taken out of action."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 237
+			name: "Assassinate"
+			text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 238
+			name: "Balance of Power"
+			text: "Score this immediately when making an Attack action if both the attacker and the target have two supporting fighters."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 239
+			name: "Blooded"
+			text: "Score this in an end phase if all of your surviving fighters (at least three) have at least one wound token."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 240
+			name: "Bloodless"
+			text: "Score this in an end phase if no fighter suffered any damage in the preceding action phase."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 241
+			name: "Brawl"
+			text: "Score this in an end phase if all friendly fighters (at least three) are adjacent to enemy fighters."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 242
+			name: "Butchery"
+			text: "Score this in an end phase if your warband took three or more enemy fighters out of action in the preceding action phase."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 243
+			name: "Change of Tactics"
+			text: "Score this immediately if a friendly fighter on Guard makes a Charge action."
+			glory: 1
+			phase: scoring.immediate
+		}
+		{
+			setID: 1
+			cardID: 244
+			name: "Chosen Champion"
+			text: "Score this in an end phase if a surviving friendly fighter has three or more upgrades."
+			glory: 1
+			phase: scoring.immediate
+		}
 	]
-
-
-# exportObj.fighters().filter(fighter => fighter.warband == self.selectedWarband().name);
-
-# console.log exportObj.objectives().filter (fighter) -> fighter.scoreTime == scoring.endPhase

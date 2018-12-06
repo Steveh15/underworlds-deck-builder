@@ -195,14 +195,41 @@ html(lang="en")
     |
     //- Card Browser
     div(data-bind='if: showCardView, visible: showCardView').card-browser
-      | Card View
-      div
-        i.icon-damage
-      .testclass
-        | Hello there 
-        i.icon-damage
-      span(data-bind='text : test')
-      p Hello!
+      div.objective-pile
+        //- data-bind = "text: selectedWarband().name"
+        label(data-bind="if : $data.selectedWarband()")
+          input(type='checkbox', name='vehicle2', value='Car', checked='')
+          span(data-bind = "text: selectedWarband().name")
+          br
+        input(type='checkbox', name='vehicle2', value='Car', checked='')
+        |  Universal
+        br
+        input(type='checkbox', name='vehicle3', value='Boat')
+        |  Immediate
+        br
+        table
+          tbody(data-bind="foreach: objectives")
+            tr 
+              td
+                div.card-box-wrapper
+                  div.center-title
+                    strong(data-bind="text: $data.name")
+      div.gambit-pile
+        table
+          tbody(data-bind="foreach: gambits")
+            tr 
+              td
+                div.card-box-wrapper
+                  div.center-title
+                    strong(data-bind="text: $data.name")
+      div.upgrade-pile
+        table
+          tbody(data-bind="foreach: upgrades")
+            tr 
+              td
+                div.card-box-wrapper
+                  div.center-title
+                    strong(data-bind="text: $data.name")
 
     |
     |

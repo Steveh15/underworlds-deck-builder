@@ -169,10 +169,51 @@
     </div>
     
     
-    <div class="card-browser" data-bind="if: showCardView, visible: showCardView">Card View
-      <div><i class="icon-damage"></i></div>
-      <div class="testclass">Hello there <i class="icon-damage"></i></div><span data-bind="text : test"></span>
-      <p>Hello!</p>
+    <div class="card-browser" data-bind="if: showCardView, visible: showCardView">
+      <div class="objective-pile">
+        <label data-bind="if : $data.selectedWarband()">
+          <input type="checkbox" name="vehicle2" value="Car" checked=""><span data-bind="text: selectedWarband().name"></span><br>
+        </label>
+        <input type="checkbox" name="vehicle2" value="Car" checked=""> Universal<br>
+        <input type="checkbox" name="vehicle3" value="Boat"> Immediate<br>
+        <table>
+          <tbody data-bind="foreach: objectives">
+            <tr> 
+              <td>
+                <div class="card-box-wrapper">
+                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="gambit-pile">
+        <table>
+          <tbody data-bind="foreach: gambits">
+            <tr> 
+              <td>
+                <div class="card-box-wrapper">
+                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="upgrade-pile">
+        <table>
+          <tbody data-bind="foreach: upgrades">
+            <tr> 
+              <td>
+                <div class="card-box-wrapper">
+                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     
     
