@@ -5,9 +5,9 @@ html(lang="en")
     meta(charset = "utf-8")
     script(src='lib/jquery-3.3.1.min.js' defer).
     script(src='lib/knockout-3.4.2.js' defer).
-    script(src='js/yawb.min.js' defer).
+    script(src='js/yawb.js' defer).
     link(rel='stylesheet' href = 'css/style.css').
-  body
+  body.app-body
     |
     |
     |
@@ -22,35 +22,170 @@ html(lang="en")
                 tbody(data-bind="foreach: ShadespireWarbands('Shadespire')")
                   tr
                     td
-                      div(data-bind="click : $root.selectWarband.bind($data, $data.name)")
+                      div(data-bind="click : $root.selectWarband.bind($data, $data.name)").cardbox
                         strong(data-bind="text: $data.name")
-                table.warband-table
+              table
                 tbody(data-bind="foreach: ShadespireWarbands('Nightvault')")
                   tr
                     td
-                      div(data-bind="click : $root.selectWarband.bind($data, $data.name)")
+                      div(data-bind="click : $root.selectWarband.bind($data, $data.name)").cardbox
                         strong(data-bind="text: $data.name")
-          li
-            a(href = "#Login")
-              p Login!
     |
     |
     |
+    //- Deck Manager
     div.deck-manager
       span(data-bind = "if : selectedWarband")
         strong(data-bind = "text: selectedWarband().name + ':'")
-      input(type = "text", data-bind = "value : deckname")
+      input(type = "text", data-bind = "value : deckName")
       span :
       select
         option(value = "competitive") Competitive
         option(value = "free") Free
       div
-        button(type = "button" data-bind = "visible : logginedIn") Save
-        button(type = "button" data-bind = "visible : logginedIn") Save as
-        button(type = "button" data-bind = "visible : logginedIn") Delete
-        button(type = "button" data-bind = "visible : logginedIn") Load Warband
+        button(type = "button" data-bind = "visible : loggedIn") Save
+        button(type = "button" data-bind = "visible : loggedIn") Save as
+        button(type = "button" data-bind = "visible : loggedIn") Delete
+        button(type = "button" data-bind = "visible : loggedIn") Load Warband
         button(type = "button") New Deck
         button(type = "button" data-bind = "click:  $root.cardViewButton.bind($data)") Card View
         button(type = "button" data-bind = "click:  $root.deckViewButton.bind($data)") Deck View
       div
-        button(data-bind = "click: viewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View")
+        button(data-bind = "click: viewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View'")
+    |
+    |
+    //- Warband Browser
+    div(data-bind="visible: showWarbandBrowser, if: showWarbandBrowser").warvabd-browser
+      |
+      |
+      |
+      //- Fighter Selector
+      table(data-bind="if : selectedWarband")
+        thead
+          tr
+            th Fighter
+        tbody(data-bind="foreach: computedFighters")
+          tr 
+            td
+              div(data-bind="event : {mouseover : $root.selectFighter($data)}").cardbox
+                strong(data-bind="text: $data.captain ? 'Cap: ' : ''")
+                strong(data-bind="text: $data.name")
+      |
+      |
+      |
+      //- Fighter Viewer
+      table.fightertable(data-bind='if : selectedWarband()')
+        tbody
+          tr
+            td
+              div(data-bind='text: selectedFighter().name')
+            td(data-bind='if : $root.selectedFighter().inspiredVersion')
+              div(data-bind='text: selectedFighter().inspiredVersion.name')
+          tr(data-bind='if : (selectedFighter().magic || selectedFighter().inspiredVersion ? true : false) && selectedFighter().inspiredVersion.magic')
+            td
+              div(data-bind='if: selectedFighter().magic')
+                strong Magic: 
+                span(data-bind='text:  selectedFighter().magic')
+            td
+              div(data-bind='if: selectedFighter().inspiredVersion.magic')
+                strong Magic: 
+                span(data-bind='text:  selectedFighter().inspiredVersion.magic')
+          tr
+            td.testclass
+              b.icon-range : 
+              span(data-bind='text:selectedFighter().movement')  
+              span(data-bind='html: selectedFighter().defence.char')
+              b :
+              span(data-bind='text:selectedFighter().defence.value')
+              i.icon-wound
+              b :
+              span(data-bind='text:selectedFighter().wounds')
+            td.testclass(data-bind='if: $root.selectedFighter().inspiredVersion')
+              b.icon-range : 
+              span(data-bind='text:selectedFighter().inspiredVersion.movement')
+              span(data-bind='html:selectedFighter().inspiredVersion.defence.char')
+              b :
+              span(data-bind='text:selectedFighter().inspiredVersion.defence.value')
+              i.icon-wound
+              b : 
+              span(data-bind='text:selectedFighter().inspiredVersion.wounds')
+          tr
+            td
+              table.attacktable
+                tbody(data-bind='foreach: selectedFighter().attacks')
+                  tr
+                    td
+                      div(data-bind='text: name')
+                      span.testclass
+                        b.icon-range : 
+                        span(data-bind='text : range')  
+                        span(data-bind='html: char')
+                        b :
+                        span(data-bind='text:value')
+                        b.icon-damage : 
+                        span(data-bind='text : dmg')  
+            td(data-bind='if : $root.selectedFighter().inspiredVersion')
+              table.attacktable
+                tbody(data-bind='foreach:  selectedFighter().inspiredVersion.attacks')
+                  tr
+                    td
+                      div(data-bind='text: name')
+                      span.testclass
+                        b.icon-range : 
+                        span(data-bind='text : range')  
+                        span(data-bind='html: char')
+                        b :
+                        span(data-bind='text:value')
+                        b.icon-damage : 
+                        span(data-bind='text : dmg')  
+          tr
+            td
+              table.attacktable(data-bind='if: selectedFighter().magic, visible: selectedFighter().magic')
+                tbody(data-bind='foreach: selectedFighter().spells')
+                  tr
+                    td
+                      div(data-bind='text: name')
+                      span.testclass
+                        b.icon-range : 
+                        span(data-bind='text : range')  
+                        b.icon-damage : 
+                        span(data-bind='text : dmg')  
+            td(data-bind='if : $root.selectedFighter().inspiredVersion')
+              table.attacktable(data-bind='if: selectedFighter().inspiredVersion.magic, visible: selectedFighter().inspiredVersion.magic')
+                tbody(data-bind='foreach: selectedFighter().inspiredVersion.spells')
+                  tr
+                    td
+                      div(data-bind='text: name')
+                      span.testclass
+                        b.icon-range : 
+                        span(data-bind='text : range')  
+                        b.icon-damage : 
+                        span(data-bind='text : dmg')  
+          tr
+            td
+              div
+                span(data-bind='html:  selectedFighter().text')  
+              div(data-bind='if : $root.selectedFighter().inspiredVersion')
+                strong
+                  | Inspire condition:
+                span(data-bind='html:  selectedFighter().inspire_cond')
+            td(data-bind='if : $root.selectedFighter().inspiredVersion')
+              span(data-bind='html:  selectedFighter().inspiredVersion.text')  
+|
+|
+|
+//- Card Browser
+div(data-bind='if: showCardView').card-browser
+  | Card View
+  div
+    i.icon-damage
+  .testclass
+    | Hello there 
+    i.icon-damage
+  span(data-bind='text : test')
+|
+|
+|
+//- Deck Browser
+div(data-bind='if: $root.showDeckView').card-browser
+  | Deck View
