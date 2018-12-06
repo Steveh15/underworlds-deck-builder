@@ -8,19 +8,7 @@ module.exports = (grunt) ->
                     runtime: 'window'
                     sourceMap: true
                 files:
-                    'build/coffee-compiled.js': ['src/*.coffee']
-
-
-        watch:
-            files: ['**/*.coffee']
-            tasks: ['coffee']
-
-
-        uglify:
-            my_target:
-              files:
-                'docs/js/yawb.min.js': ['build/coffee-compiled.js']
-
+                    'docs/js/yawb.js': ['src/data/*.coffee','src/*.coffee']
 
         pug:
             compile:
@@ -32,22 +20,36 @@ module.exports = (grunt) ->
                 options:
                     pretty: true
 
+
+                
+        uglify:
+            my_target:
+              files:
+                'docs/js/yawb.min.js': ['build/coffee-compiled.js']
+
+
+        watch:
+            coffee:
+                files: ['**/*.coffee']
+                tasks: ['coffee']
+            pug:
+                files: ['**/*.pug']
+                tasks: ['pug']
+
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-uglify'
     grunt.loadNpmTasks 'grunt-contrib-pug'
 
     grunt.registerTask 'default', [
-        'coffee'
-        'uglify'
-        'pug'
+        'build'
     ]
 
 
     grunt.registerTask 'build', [
         'coffee'
-        
-
+        'pug'
+        'watch'
     ]
 
 

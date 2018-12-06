@@ -2,7 +2,6 @@ CardViewerViewModel = ->
 
 	self = this
 	self.showWarbandBrowser = ko.observable(true)
-	self.showWarbandBrowser = ko.observable(true)
 	self.showCardView = ko.observable(true)
 	self.showDeckView = ko.observable(false)
 	self.loggedIn = ko.observable(false)
