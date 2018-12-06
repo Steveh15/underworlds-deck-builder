@@ -82,15 +82,12 @@
       </table>
       
       
+      <div data-bind="if: selectedFighter()"><span data-bind="text: selectedFighter().name"></span></div>
       <table class="fightertable" data-bind="if : selectedWarband()">
         <tbody>
           <tr>
-            <td>
-              <div data-bind="text: selectedFighter().name"></div>
-            </td>
-            <td data-bind="if : $root.selectedFighter().inspiredVersion">
-              <div data-bind="text: selectedFighter().inspiredVersion.name"></div>
-            </td>
+            <td></td>
+            <td></td>
           </tr>
           <tr data-bind="if : (selectedFighter().magic || selectedFighter().inspiredVersion ? true : false) &amp;&amp; selectedFighter().inspiredVersion.magic">
             <td>
@@ -100,18 +97,23 @@
               <div data-bind="if: selectedFighter().inspiredVersion.magic"><strong>Magic: </strong><span data-bind="text:  selectedFighter().inspiredVersion.magic"></span></div>
             </td>
           </tr>
+          
+          
           <tr>
             <td class="fighter-char-div"><span><i class="icon-range"></i><span data-bind="text:selectedFighter().movement"></span></span><span class="margin-left"><span data-bind="html: selectedFighter().defence.char"></span><span data-bind="text:selectedFighter().defence.value"></span></span><span class="margin-left"><i class="icon-wound"></i><span data-bind="text:selectedFighter().wounds"></span></span></td>
-            <td class="fighter-char-div" data-bind="if: $root.selectedFighter()"><span><i class="icon-range"></i><span data-bind="text:selectedFighter().inspiredVersion.movement"></span></span><span class="margin-left"><span data-bind="html: selectedFighter().inspiredVersion.defence.char"></span><span data-bind="text:selectedFighter().inspiredVersion.defence.value"></span></span><span class="margin-left"><i class="icon-wound"></i><span data-bind="text:selectedFighter().inspiredVersion.wounds"></span></span></td>
+            <td class="fighter-char-div" data-bind="if: $root.selectedFighter().inspiredVersion"><span><i class="icon-range"></i><span data-bind="text:selectedFighter().inspiredVersion.movement"></span></span><span class="margin-left"><span data-bind="html: selectedFighter().inspiredVersion.defence.char"></span><span data-bind="text:selectedFighter().inspiredVersion.defence.value"></span></span><span class="margin-left"><i class="icon-wound"></i><span data-bind="text:selectedFighter().inspiredVersion.wounds"></span></span></td>
           </tr>
+          
+          
           <tr>
             <td>
               <table class="attacktable">
                 <tbody data-bind="foreach: selectedFighter().attacks">
                   <tr>
                     <td>
-                      <div data-bind="text: name"></div>
+                      <div class="attack-title" data-bind="text: name"></div>
                       <div class="fighter-char-div"><span><i class="icon-range"></i><span data-bind="text : range"></span></span><span class="margin-left"><span data-bind="html: char"></span><span data-bind="text:value"></span></span><span class="margin-left"><i class="icon-damage"></i><span data-bind="text : dmg"></span></span></div>
+                      <div class="attack-keyboard" data-bind="if : $data.text"><span data-bind="text : $data.text"></span></div>
                     </td>
                   </tr>
                 </tbody>
@@ -122,7 +124,9 @@
                 <tbody data-bind="foreach:  selectedFighter().inspiredVersion.attacks">
                   <tr>
                     <td>
-                      <div data-bind="text: name"></div><span class="testclass"><b class="icon-range">: </b><span data-bind="text : range"> </span><span data-bind="html: char"></span><b>:</b><span data-bind="text:value"></span><b class="icon-damage">: </b><span data-bind="text : dmg"> </span></span>
+                      <div class="attack-title" data-bind="text: name"></div>
+                      <div class="fighter-char-div"><span><i class="icon-range"></i><span data-bind="text : range"></span></span><span class="margin-left"><span data-bind="html: char"></span><span data-bind="text: value"></span></span><span class="margin-left"><i class="icon-damage"></i><span data-bind="text : dmg"></span></span></div>
+                      <div class="attack-keyboard" data-bind="if : $data.text"><span data-bind="text : $data.text"></span></div>
                     </td>
                   </tr>
                 </tbody>

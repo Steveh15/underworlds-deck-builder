@@ -155,6 +155,17 @@ li.dropdown {
   text-align: center;
 }
 
+.attack-keyboard{
+  font-weight: bold;
+  padding-left: 30px;
+}
+
+.attack-title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
 
 @font-face {
   font-family: 'wu-fonts';

@@ -74,13 +74,14 @@ html(lang="en")
       |
       |
       //- Fighter Viewer
+      div(data-bind =  "if: selectedFighter()")
+        span(data-bind='text: selectedFighter().name')
       table.fightertable(data-bind='if : selectedWarband()')
         tbody
+          //- Empty Column
           tr
             td
-              div(data-bind='text: selectedFighter().name')
-            td(data-bind='if : $root.selectedFighter().inspiredVersion')
-              div(data-bind='text: selectedFighter().inspiredVersion.name')
+            td
           tr(data-bind='if : (selectedFighter().magic || selectedFighter().inspiredVersion ? true : false) && selectedFighter().inspiredVersion.magic')
             td
               div(data-bind='if: selectedFighter().magic')
@@ -90,6 +91,10 @@ html(lang="en")
               div(data-bind='if: selectedFighter().inspiredVersion.magic')
                 strong Magic: 
                 span(data-bind='text:  selectedFighter().inspiredVersion.magic')
+          |
+          |
+          |
+          //- Fighter characteristics
           tr
             td.fighter-char-div
               span
@@ -101,7 +106,7 @@ html(lang="en")
               span.margin-left
                 i.icon-wound
                 span(data-bind='text:selectedFighter().wounds')
-            td.fighter-char-div(data-bind='if: $root.selectedFighter()')
+            td.fighter-char-div(data-bind='if: $root.selectedFighter().inspiredVersion')
               span
                 i.icon-range
                 span(data-bind='text:selectedFighter().inspiredVersion.movement')
@@ -111,13 +116,17 @@ html(lang="en")
               span.margin-left
                 i.icon-wound
                 span(data-bind='text:selectedFighter().inspiredVersion.wounds')
+          |
+          |
+          |
+          //- Attack characteristics
           tr
             td
               table.attacktable
                 tbody(data-bind='foreach: selectedFighter().attacks')
                   tr
                     td
-                      div(data-bind='text: name')
+                      div(data-bind='text: name').attack-title
                       div.fighter-char-div
                         span
                           i.icon-range
@@ -128,20 +137,26 @@ html(lang="en")
                         span.margin-left
                           i.icon-damage
                           span(data-bind='text : dmg')
+                      div(data-bind = "if : $data.text").attack-keyboard
+                        span(data-bind = "text : $data.text")
             td(data-bind='if : $root.selectedFighter().inspiredVersion')
               table.attacktable
                 tbody(data-bind='foreach:  selectedFighter().inspiredVersion.attacks')
                   tr
                     td
-                      div(data-bind='text: name')
-                      span.testclass
-                        b.icon-range : 
-                        span(data-bind='text : range')  
-                        span(data-bind='html: char')
-                        b :
-                        span(data-bind='text:value')
-                        b.icon-damage : 
-                        span(data-bind='text : dmg')  
+                      div(data-bind='text: name').attack-title
+                      div.fighter-char-div
+                        span
+                          i.icon-range
+                          span(data-bind='text : range')
+                        span.margin-left
+                          span(data-bind='html: char')
+                          span(data-bind='text: value')
+                        span.margin-left
+                          i.icon-damage
+                          span(data-bind='text : dmg')
+                      div(data-bind = "if : $data.text").attack-keyboard
+                        span(data-bind = "text : $data.text")
           tr
             td
               table.attacktable(data-bind='if: selectedFighter().magic, visible: selectedFighter().magic')
