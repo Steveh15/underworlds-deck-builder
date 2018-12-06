@@ -146,6 +146,16 @@ li.dropdown {
 }
 
 
+.margin-left{
+  margin-left: 20px;
+}
+
+.fighter-char-div{
+  font-size: 18pt;
+  text-align: center;
+}
+
+
 @font-face {
   font-family: 'wu-fonts';
   src: url('../font/wu-fonts.eot?99681080');
@@ -213,8 +223,4 @@ li.dropdown {
 .icon-crit:before { content: '\e807'; } /* '' */
 .icon-damage:before { content: '\e808'; } /* '' */
 .icon-wound:before { content: '\f111'; color: rgb(161, 11, 9)} /* '' */
-
-.testclass{
-  font-size: 18pt
-}
 

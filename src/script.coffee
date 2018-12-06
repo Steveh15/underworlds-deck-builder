@@ -109,7 +109,10 @@ CardViewerViewModel = ->
 			self.deckName(deckNameParm)
 
 		warbandParm = self.getParameterByName("w")
-		if warbandParm != ""
+		if warbandParm == ""
+			self.selectedWarband(exportObj.warbands()[0])
+		# if warbandParm != ""
+		else
 			loadedWarband = exportObj.warbands().filter((warband) -> warband.name == warbandParm)[0]
 			self.selectedWarband(loadedWarband)
 			
@@ -117,6 +120,7 @@ CardViewerViewModel = ->
 
 
 	self.selectWarband = (warbandName) ->
+		self.showWarbandBrowser(true)
 		self.selectedWarband(exportObj.warbands().filter((warband) -> warband.name == warbandName)[0])
 		return
 

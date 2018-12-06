@@ -62,7 +62,7 @@
       </div>
     </div>
     
-    <div class="warvabd-browser" data-bind="visible: showWarbandBrowser, if: showWarbandBrowser">
+    <div class="warband-browser" data-bind="visible: showWarbandBrowser, if: showWarbandBrowser">
       
       
       
@@ -101,8 +101,8 @@
             </td>
           </tr>
           <tr>
-            <td class="testclass"><b class="icon-range">: </b><span data-bind="text:selectedFighter().movement"> </span><span data-bind="html: selectedFighter().defence.char"></span><b>:</b><span data-bind="text:selectedFighter().defence.value"></span><i class="icon-wound"></i><b>:</b><span data-bind="text:selectedFighter().wounds"></span></td>
-            <td class="testclass" data-bind="if: $root.selectedFighter().inspiredVersion"><b class="icon-range">: </b><span data-bind="text:selectedFighter().inspiredVersion.movement"></span><span data-bind="html:selectedFighter().inspiredVersion.defence.char"></span><b>:</b><span data-bind="text:selectedFighter().inspiredVersion.defence.value"></span><i class="icon-wound"></i><b>: </b><span data-bind="text:selectedFighter().inspiredVersion.wounds"></span></td>
+            <td class="fighter-char-div"><span><i class="icon-range"></i><span data-bind="text:selectedFighter().movement"></span></span><span class="margin-left"><span data-bind="html: selectedFighter().defence.char"></span><span data-bind="text:selectedFighter().defence.value"></span></span><span class="margin-left"><i class="icon-wound"></i><span data-bind="text:selectedFighter().wounds"></span></span></td>
+            <td class="fighter-char-div" data-bind="if: $root.selectedFighter()"><span><i class="icon-range"></i><span data-bind="text:selectedFighter().inspiredVersion.movement"></span></span><span class="margin-left"><span data-bind="html: selectedFighter().inspiredVersion.defence.char"></span><span data-bind="text:selectedFighter().inspiredVersion.defence.value"></span></span><span class="margin-left"><i class="icon-wound"></i><span data-bind="text:selectedFighter().inspiredVersion.wounds"></span></span></td>
           </tr>
           <tr>
             <td>
@@ -110,7 +110,8 @@
                 <tbody data-bind="foreach: selectedFighter().attacks">
                   <tr>
                     <td>
-                      <div data-bind="text: name"></div><span class="testclass"><b class="icon-range">: </b><span data-bind="text : range"> </span><span data-bind="html: char"></span><b>:</b><span data-bind="text:value"></span><b class="icon-damage">: </b><span data-bind="text : dmg"> </span></span>
+                      <div data-bind="text: name"></div>
+                      <div class="fighter-char-div"><span><i class="icon-range"></i><span data-bind="text : range"></span></span><span class="margin-left"><span data-bind="html: char"></span><span data-bind="text:value"></span></span><span class="margin-left"><i class="icon-damage"></i><span data-bind="text : dmg"></span></span></div>
                     </td>
                   </tr>
                 </tbody>
@@ -162,14 +163,15 @@
         </tbody>
       </table>
     </div>
+    
+    
+    <div class="card-browser" data-bind="if: showCardView, visible: showCardView">Card View
+      <div><i class="icon-damage"></i></div>
+      <div class="testclass">Hello there <i class="icon-damage"></i></div><span data-bind="text : test"></span>
+      <p>Hello!</p>
+    </div>
+    
+    
+    <div class="card-browser" data-bind="if: $root.showDeckView, visible: showDeckView">Deck View</div>
   </body>
 </html>
-
-
-<div class="card-browser" data-bind="if: showCardView">Card View
-  <div><i class="icon-damage"></i></div>
-  <div class="testclass">Hello there <i class="icon-damage"></i></div><span data-bind="text : test"></span>
-</div>
-
-
-<div class="card-browser" data-bind="if: $root.showDeckView">Deck View</div>

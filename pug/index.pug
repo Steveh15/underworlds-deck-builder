@@ -55,7 +55,7 @@ html(lang="en")
     |
     |
     //- Warband Browser
-    div(data-bind="visible: showWarbandBrowser, if: showWarbandBrowser").warvabd-browser
+    div(data-bind="visible: showWarbandBrowser, if: showWarbandBrowser").warband-browser
       |
       |
       |
@@ -91,24 +91,26 @@ html(lang="en")
                 strong Magic: 
                 span(data-bind='text:  selectedFighter().inspiredVersion.magic')
           tr
-            td.testclass
-              b.icon-range : 
-              span(data-bind='text:selectedFighter().movement')  
-              span(data-bind='html: selectedFighter().defence.char')
-              b :
-              span(data-bind='text:selectedFighter().defence.value')
-              i.icon-wound
-              b :
-              span(data-bind='text:selectedFighter().wounds')
-            td.testclass(data-bind='if: $root.selectedFighter().inspiredVersion')
-              b.icon-range : 
-              span(data-bind='text:selectedFighter().inspiredVersion.movement')
-              span(data-bind='html:selectedFighter().inspiredVersion.defence.char')
-              b :
-              span(data-bind='text:selectedFighter().inspiredVersion.defence.value')
-              i.icon-wound
-              b : 
-              span(data-bind='text:selectedFighter().inspiredVersion.wounds')
+            td.fighter-char-div
+              span
+                i.icon-range
+                span(data-bind='text:selectedFighter().movement')
+              span.margin-left
+                span(data-bind='html: selectedFighter().defence.char')
+                span(data-bind='text:selectedFighter().defence.value')
+              span.margin-left
+                i.icon-wound
+                span(data-bind='text:selectedFighter().wounds')
+            td.fighter-char-div(data-bind='if: $root.selectedFighter()')
+              span
+                i.icon-range
+                span(data-bind='text:selectedFighter().inspiredVersion.movement')
+              span.margin-left
+                span(data-bind='html: selectedFighter().inspiredVersion.defence.char')
+                span(data-bind='text:selectedFighter().inspiredVersion.defence.value')
+              span.margin-left
+                i.icon-wound
+                span(data-bind='text:selectedFighter().inspiredVersion.wounds')
           tr
             td
               table.attacktable
@@ -116,14 +118,16 @@ html(lang="en")
                   tr
                     td
                       div(data-bind='text: name')
-                      span.testclass
-                        b.icon-range : 
-                        span(data-bind='text : range')  
-                        span(data-bind='html: char')
-                        b :
-                        span(data-bind='text:value')
-                        b.icon-damage : 
-                        span(data-bind='text : dmg')  
+                      div.fighter-char-div
+                        span
+                          i.icon-range
+                          span(data-bind='text : range')
+                        span.margin-left
+                          span(data-bind='html: char')
+                          span(data-bind='text:value')
+                        span.margin-left
+                          i.icon-damage
+                          span(data-bind='text : dmg')
             td(data-bind='if : $root.selectedFighter().inspiredVersion')
               table.attacktable
                 tbody(data-bind='foreach:  selectedFighter().inspiredVersion.attacks')
@@ -171,21 +175,23 @@ html(lang="en")
                 span(data-bind='html:  selectedFighter().inspire_cond')
             td(data-bind='if : $root.selectedFighter().inspiredVersion')
               span(data-bind='html:  selectedFighter().inspiredVersion.text')  
-|
-|
-|
-//- Card Browser
-div(data-bind='if: showCardView').card-browser
-  | Card View
-  div
-    i.icon-damage
-  .testclass
-    | Hello there 
-    i.icon-damage
-  span(data-bind='text : test')
-|
-|
-|
-//- Deck Browser
-div(data-bind='if: $root.showDeckView').card-browser
-  | Deck View
+    |
+    |
+    |
+    //- Card Browser
+    div(data-bind='if: showCardView, visible: showCardView').card-browser
+      | Card View
+      div
+        i.icon-damage
+      .testclass
+        | Hello there 
+        i.icon-damage
+      span(data-bind='text : test')
+      p Hello!
+
+    |
+    |
+    |
+    //- Deck Browser
+    div(data-bind='if: $root.showDeckView, visible: showDeckView').card-browser
+      | Deck View

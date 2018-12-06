@@ -695,7 +695,10 @@ CardViewerViewModel = function() {
       self.deckName(deckNameParm);
     }
     warbandParm = self.getParameterByName("w");
-    if (warbandParm !== "") {
+    if (warbandParm === "") {
+      self.selectedWarband(exportObj.warbands()[0]);
+    } else {
+      // if warbandParm != ""
       loadedWarband = exportObj.warbands().filter(function(warband) {
         return warband.name === warbandParm;
       })[0];
@@ -703,6 +706,7 @@ CardViewerViewModel = function() {
     }
   };
   self.selectWarband = function(warbandName) {
+    self.showWarbandBrowser(true);
     self.selectedWarband(exportObj.warbands().filter(function(warband) {
       return warband.name === warbandName;
     })[0]);
