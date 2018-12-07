@@ -1320,8 +1320,6 @@ CardViewerViewModel = function() {
   self = this;
   self.showWarbandBrowser = ko.observable(true);
   self.showCardView = ko.observable(true);
-  self.showDeckView = ko.observable(false);
-  self.loggedIn = ko.observable(false);
   self.selectedFighter = ko.observable();
   self.deckName = ko.observable();
   self.allObjectives = ko.observableArray();
@@ -1332,19 +1330,21 @@ CardViewerViewModel = function() {
   self.deckPloys = ko.observableArray();
   self.warbands = exportObj.warbands();
   self.selectedWarband = ko.observable();
-  self.warbandObjectives = ko.observableArray();
-  self.warbandGambits = ko.observableArray();
-  self.warbandUpgrades = ko.observableArray();
-  self.objectives = exportObj.objectives().filter(function(objective) {
-    return objective.warband == null;
-  });
-  self.gambits = exportObj.gambits().filter(function(gambit) {
-    return gambit.warband == null;
-  });
-  self.upgrades = exportObj.upgrades().filter(function(upgrade) {
-    return upgrade.warband == null;
-  });
-  self.test = ko.observable(exportObj.fighters()[0].name);
+  
+  //  Contains all the universal cards + cards for selected warband
+  self.allObjectives = ko.observableArray();
+  self.allGambits = ko.observableArray();
+  self.allUpgrades = ko.observableArray();
+  // Contains the filter objectives which are being displayed
+  self.filteredObjectives = ko.observableArray();
+  self.filteredGambits = ko.observableArray();
+  self.filteredUpgrades = ko.observableArray();
+  // Objective Filters
+  self.objWarbandCheck = ko.observable(true);
+  self.objUniversalCheck = ko.observable(true);
+  self.objImmediateCheck = ko.observable(false);
+  self.objEndPhaseCheck = ko.observable(false);
+  self.objThirdPhaseCheck = ko.observable(false);
   self.setURL = function(key, value) {
     var i, keyEn, kvp, newurl, valueEn, x;
     keyEn = encodeURI(key);
@@ -1383,22 +1383,72 @@ CardViewerViewModel = function() {
   self.deckName.subscribe(function(newValue) {
     self.setURL('dn', newValue);
   });
-  self.selectedWarband.subscribe(function(newValue) {
-    if (typeof newValue === "undefined") {
+  self.selectedWarband.subscribe(function(newWarband) {
+    if (typeof newWarband === "undefined") {
       self.setURL('w', "");
     } else {
-      self.setURL('w', newValue.name);
-      self.warbandObjectives(exportObj.objectives().filter(function(objective) {
-        return objective.warband === newValue.name;
+      self.setURL('w', newWarband.name);
+      self.allObjectives(exportObj.objectives().filter(function(objective) {
+        return objective.warband === newWarband.name || (objective.warband == null);
       }));
-      self.warbandGambits(exportObj.gambits().filter(function(gambit) {
-        return gambit.warband === newValue.name;
+      self.allGambits(exportObj.gambits().filter(function(gambit) {
+        return gambit.warband === newWarband.name || (gambit.warband == null);
       }));
-      self.warbandUpgrades(exportObj.upgrades().filter(function(upgrade) {
-        return upgrade.warband === newValue.name;
+      self.allUpgrades(exportObj.upgrades().filter(function(upgrade) {
+        return upgrade.warband === newWarband.name || (upgrade.warband == null);
       }));
+      self.resetObjectiveFilters();
+      self.filteredObjectives(exportObj.objectives());
     }
   });
+  // self.filteredObjectives exportObj.objectives().filter( (objective) -> self.objectiveFilter(objective))
+  self.resetObjectiveFilters = function() {
+    self.objWarbandCheck(true);
+    self.objUniversalCheck(true);
+    self.objImmediateCheck(false);
+    self.objEndPhaseCheck(false);
+    return self.objThirdPhaseCheck(false);
+  };
+  self.warbandPredicate = function(card) {
+    if (!self.objWarbandCheck()) {
+      return true;
+    } else {
+      console.log(card.warband);
+      // console.log (card.warband? && card.warband = self.selectedWarband().name)
+      return (card.warband != null) && (card.warband = self.selectedWarband().name);
+    }
+  };
+  self.universalPredicate = function(card) {
+    return true;
+  };
+  // console.log "p2"
+  // if !self.objUniversalCheck()
+  // 	return true
+  // else
+  // 	return !card.warband?
+  self.immediatePredicate = function(objective) {
+    console.log("p3");
+    if (!self.objImmediateCheck()) {
+      return true;
+    } else {
+      return (objective.scoring != null) && objective.scoring === 1;
+    }
+  };
+  self.objectiveFilter = function(objective) {
+    return self.warbandPredicate(objective);
+  };
+  self.applyObjectiveFilter = function() {
+    return self.filteredObjectives(exportObj.allObjectives().filter(function(objective) {
+      return self.objectiveFilter(objective);
+    }));
+  };
+  self.objWarbandCheck.subscribe(function(newValue) {
+    return self.applyObjectiveFilter();
+  });
+  // if newValue
+  // 	console.log "Turned on!"
+  // else
+  // console.log "Turned off!"
   self.computedFighters = ko.computed(function() {
     if (typeof self.selectedWarband() === "undefined") {
       return [];
@@ -1420,23 +1470,8 @@ CardViewerViewModel = function() {
       return self.showWarbandBrowser(true);
     }
   };
-  self.cardViewButton = function() {
-    if (self.showCardView() === false) {
-      self.showCardView(true);
-      return self.showDeckView(false);
-    }
-  };
-  self.deckViewButton = function() {
-    if (self.showDeckView() === false) {
-      self.showCardView(false);
-      return self.showDeckView(true);
-    }
-  };
-  self.logIn = function() {
-    return self.loggedIn(true);
-  };
-  self.logOut = function() {
-    return self.loggedIn(false);
+  self.changeCardViewButton = function() {
+    return self.showCardView(!self.showCardView());
   };
   self.initFunc = function() {
     var deckNameParm, loadedWarband, warbandParm;

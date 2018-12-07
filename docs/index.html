@@ -43,22 +43,10 @@
     
     
     <div class="deck-manager">
-      <input type="text" data-bind="value : deckName"><span>:</span>
-      <select>
-        <option value="competitive">Competitive</option>
-        <option value="free">Free</option>
-      </select>
-      <div>
-        <button type="button" data-bind="visible : loggedIn">Save</button>
-        <button type="button" data-bind="visible : loggedIn">Save as</button>
-        <button type="button" data-bind="visible : loggedIn">Delete</button>
-        <button type="button" data-bind="visible : loggedIn">Load Warband</button>
-        <button type="button">New Deck</button>
-        <button type="button" data-bind="click:  $root.cardViewButton.bind($data)">Card View</button>
-        <button type="button" data-bind="click:  $root.deckViewButton.bind($data)">Deck View</button>
-      </div>
+      <input type="text" data-bind="value : deckName">
       <div>
         <button data-bind="click: viewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View'"></button>
+        <button type="button" data-bind="click:  $root.changeCardViewButton.bind($data), text: showCardView() ? 'Deck View' : 'Card View'"></button>
       </div>
     </div>
     
@@ -171,25 +159,15 @@
     
     <div class="card-browser" data-bind="if: showCardView, visible: showCardView">
       <div class="objective-pile">
-        <label data-bind="if : $data.selectedWarband()">
-          <input type="checkbox" name="vehicle2" value="Car" checked=""><span data-bind="text: selectedWarband().name"></span><br>
-        </label>
-        <input type="checkbox" name="vehicle2" value="Car" checked=""> Universal<br>
-        <input type="checkbox" name="vehicle3" value="Boat"> Immediate<br>
+        <div data-bind="if : $data.selectedWarband()">
+          <input type="checkbox" data-bind="checked: objWarbandCheck"><span data-bind="text: selectedWarband().name"></span>
+        </div>
+        <input type="checkbox" data-bind="checked: objUniversalCheck">Universal<br>
+        <input type="checkbox" data-bind="checked: objImmediateCheck">Immediate<br>
+        <input type="checkbox" data-bind="checked: objEndPhaseCheck">End phase<br>
+        <input type="checkbox" data-bind="checked: objThirdPhaseCheck">Third Phase<br>
         <table>
-          <tbody data-bind="foreach: warbandObjectives">
-            <tr> 
-              <td>
-                <div class="card-box-wrapper">
-                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p></p>
-        <table>
-          <tbody data-bind="foreach: objectives">
+          <tbody data-bind="foreach: filteredObjectives">
             <tr> 
               <td>
                 <div class="card-box-wrapper">
@@ -202,19 +180,7 @@
       </div>
       <div class="gambit-pile">
         <table>
-          <tbody data-bind="foreach: warbandGambits">
-            <tr> 
-              <td>
-                <div class="card-box-wrapper">
-                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p></p>
-        <table>
-          <tbody data-bind="foreach: gambits">
+          <tbody data-bind="foreach: allGambits">
             <tr> 
               <td>
                 <div class="card-box-wrapper">
@@ -227,19 +193,7 @@
       </div>
       <div class="upgrade-pile">
         <table>
-          <tbody data-bind="foreach: warbandUpgrades">
-            <tr> 
-              <td>
-                <div class="card-box-wrapper">
-                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <p></p>
-        <table>
-          <tbody data-bind="foreach: upgrades">
+          <tbody data-bind="foreach: allUpgrades">
             <tr> 
               <td>
                 <div class="card-box-wrapper">
@@ -253,6 +207,6 @@
     </div>
     
     
-    <div class="card-browser" data-bind="if: $root.showDeckView, visible: showDeckView">Deck View</div>
+    <div class="card-browser" data-bind="if: showCardView() == false, visible: showCardView() == false">Deck View</div>
   </body>
 </html>

@@ -3,8 +3,6 @@ CardViewerViewModel = ->
 	self = this
 	self.showWarbandBrowser = ko.observable(true)
 	self.showCardView = ko.observable(true)
-	self.showDeckView = ko.observable(false)
-	self.loggedIn = ko.observable(false)
 	
 	self.selectedFighter = ko.observable()
 	self.deckName = ko.observable()
@@ -17,17 +15,25 @@ CardViewerViewModel = ->
 	self.warbands = exportObj.warbands()
 	self.selectedWarband = ko.observable()
 
-	self.warbandObjectives = ko.observableArray()
-	self.warbandGambits = ko.observableArray()
-	self.warbandUpgrades = ko.observableArray()
-	
-
-	self.objectives = exportObj.objectives().filter((objective) -> !objective.warband?)
-	self.gambits = exportObj.gambits().filter((gambit) -> !gambit.warband?)
-	self.upgrades = exportObj.upgrades().filter((upgrade) -> !upgrade.warband?)
  
+	#  Contains all the universal cards + cards for selected warband
+	self.allObjectives = ko.observableArray()
+	self.allGambits = ko.observableArray()
+	self.allUpgrades = ko.observableArray()
 
-	self.test = ko.observable(exportObj.fighters()[0].name)
+	# Contains the filter objectives which are being displayed
+	self.filteredObjectives = ko.observableArray()
+	self.filteredGambits = ko.observableArray()
+	self.filteredUpgrades = ko.observableArray()
+
+	# Objective Filters
+	self.objWarbandCheck = ko.observable(true)
+	self.objUniversalCheck = ko.observable(true)
+	self.objImmediateCheck = ko.observable(false)
+	self.objEndPhaseCheck = ko.observable(false)
+	self.objThirdPhaseCheck = ko.observable(false)
+
+
 
 
 	self.setURL = (key, value) ->
@@ -52,8 +58,6 @@ CardViewerViewModel = ->
 		window.history.pushState({ path: newurl }, '', newurl)
 		return
 
-
-
 	# ripped from http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values
 	self.getParameterByName = (name) ->
 		name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]")
@@ -69,15 +73,64 @@ CardViewerViewModel = ->
 		self.setURL 'dn', newValue
 		return
 
-	self.selectedWarband.subscribe (newValue) ->
-		if typeof newValue == "undefined"
+	self.selectedWarband.subscribe (newWarband) ->
+		if typeof newWarband == "undefined"
 			self.setURL 'w', ""
 		else
-			self.setURL 'w', newValue.name
-			self.warbandObjectives(exportObj.objectives().filter((objective) -> objective.warband == newValue.name))
-			self.warbandGambits(exportObj.gambits().filter((gambit) -> gambit.warband == newValue.name))
-			self.warbandUpgrades(exportObj.upgrades().filter((upgrade) -> upgrade.warband == newValue.name))
+			self.setURL 'w', newWarband.name
+
+			self.allObjectives exportObj.objectives().filter((objective) -> objective.warband == newWarband.name || !objective.warband?)
+			self.allGambits exportObj.gambits().filter((gambit) -> gambit.warband == newWarband.name || !gambit.warband?)
+			self.allUpgrades exportObj.upgrades().filter((upgrade) -> upgrade.warband == newWarband.name || !upgrade.warband?)
+			self.resetObjectiveFilters()
+			self.filteredObjectives exportObj.objectives()
+			# self.filteredObjectives exportObj.objectives().filter( (objective) -> self.objectiveFilter(objective))
 		return
+
+	self.resetObjectiveFilters = ->
+		self.objWarbandCheck(true)
+		self.objUniversalCheck(true)
+		self.objImmediateCheck(false)
+		self.objEndPhaseCheck(false)
+		self.objThirdPhaseCheck(false)
+
+	self.warbandPredicate = (card) ->
+		if !self.objWarbandCheck()
+			return true
+		else
+			console.log card.warband
+			# console.log (card.warband? && card.warband = self.selectedWarband().name)
+			return card.warband? && card.warband = self.selectedWarband().name
+
+	self.universalPredicate = (card) ->
+		return true
+		# console.log "p2"
+		# if !self.objUniversalCheck()
+		# 	return true
+		# else
+		# 	return !card.warband?
+
+	self.immediatePredicate = (objective) ->
+		console.log "p3"
+		if !self.objImmediateCheck()
+			return true
+		else
+			return objective.scoring? &&  objective.scoring == 1
+
+	self.objectiveFilter = (objective) ->
+		return self.warbandPredicate(objective)
+
+	self.applyObjectiveFilter = ->
+		self.filteredObjectives exportObj.allObjectives().filter( (objective) -> self.objectiveFilter(objective))
+
+
+	self.objWarbandCheck.subscribe (newValue) ->
+		self.applyObjectiveFilter()
+		# if newValue
+		# 	console.log "Turned on!"
+		# else
+			# console.log "Turned off!"
+
 
 	
 	self.computedFighters = ko.computed () ->
@@ -97,21 +150,10 @@ CardViewerViewModel = ->
 		else
 			self.showWarbandBrowser true
 
-	self.cardViewButton = ->
-		if self.showCardView() == false
-			self.showCardView true
-			self.showDeckView false
 
-	self.deckViewButton = ->
-		if self.showDeckView() == false
-			self.showCardView false
-			self.showDeckView true
+	self.changeCardViewButton = ->
+		self.showCardView(!self.showCardView())
 
-	self.logIn = ->
-		self.loggedIn true
-
-	self.logOut = ->
-		self.loggedIn false
 
 	self.initFunc = ->
 		deckNameParm = self.getParameterByName("dn")

@@ -36,20 +36,14 @@ html(lang="en")
     //- Deck Manager
     div.deck-manager
       input(type = "text", data-bind = "value : deckName")
-      span :
-      select
-        option(value = "competitive") Competitive
-        option(value = "free") Free
-      div
-        button(type = "button" data-bind = "visible : loggedIn") Save
-        button(type = "button" data-bind = "visible : loggedIn") Save as
-        button(type = "button" data-bind = "visible : loggedIn") Delete
-        button(type = "button" data-bind = "visible : loggedIn") Load Warband
-        button(type = "button") New Deck
-        button(type = "button" data-bind = "click:  $root.cardViewButton.bind($data)") Card View
-        button(type = "button" data-bind = "click:  $root.deckViewButton.bind($data)") Deck View
+      //- span :
+      //- select
+      //-   option(value = "competitive") Competitive
+      //-   option(value = "free") Free
       div
         button(data-bind = "click: viewWarband, text : showWarbandBrowser() ? 'Hide Warband View' : 'Show Warband View'")
+        button(type = "button" data-bind = "click:  $root.changeCardViewButton.bind($data), text: showCardView() ? 'Deck View' : 'Card View'")
+        
     |
     |
     //- Warband Browser
@@ -194,66 +188,71 @@ html(lang="en")
     //- Card Browser
     div(data-bind='if: showCardView, visible: showCardView').card-browser
       div.objective-pile
-        label(data-bind="if : $data.selectedWarband()")
-          input(type='checkbox', name='vehicle2', value='Car', checked='')
+        div(data-bind="if : $data.selectedWarband()")
+          input(type='checkbox', data-bind="checked: objWarbandCheck")
           span(data-bind = "text: selectedWarband().name")
-          br
-        input(type='checkbox', name='vehicle2', value='Car', checked='')
-        |  Universal
+        input(type='checkbox', data-bind="checked: objUniversalCheck")
+        | Universal
         br
-        input(type='checkbox', name='vehicle3', value='Boat')
-        |  Immediate
+        input(type='checkbox', data-bind="checked: objImmediateCheck")
+        | Immediate
+        br
+        input(type='checkbox', data-bind="checked: objEndPhaseCheck")
+        | End phase
+        br
+        input(type='checkbox', data-bind="checked: objThirdPhaseCheck")
+        | Third Phase
         br
         table
-          tbody(data-bind="foreach: warbandObjectives")
+          tbody(data-bind="foreach: filteredObjectives")
             tr 
               td
                 div.card-box-wrapper
                   div.center-title
                     strong(data-bind="text: $data.name")
-        p
-        table
-          tbody(data-bind="foreach: objectives")
-            tr 
-              td
-                div.card-box-wrapper
-                  div.center-title
-                    strong(data-bind="text: $data.name")
+        //- p
+        //- table
+        //-   tbody(data-bind="foreach: objectives")
+        //-     tr 
+        //-       td
+        //-         div.card-box-wrapper
+        //-           div.center-title
+        //-             strong(data-bind="text: $data.name")
       div.gambit-pile
         table
-          tbody(data-bind="foreach: warbandGambits")
+          tbody(data-bind="foreach: allGambits")
             tr 
               td
                 div.card-box-wrapper
                   div.center-title
                     strong(data-bind="text: $data.name")
-        p
-        table
-          tbody(data-bind="foreach: gambits")
-            tr 
-              td
-                div.card-box-wrapper
-                  div.center-title
-                    strong(data-bind="text: $data.name")
+        //- p
+        //- table
+        //-   tbody(data-bind="foreach: gambits")
+        //-     tr 
+        //-       td
+        //-         div.card-box-wrapper
+        //-           div.center-title
+        //-             strong(data-bind="text: $data.name")
       div.upgrade-pile
         table
-          tbody(data-bind="foreach: warbandUpgrades")
+          tbody(data-bind="foreach: allUpgrades")
             tr 
               td
                 div.card-box-wrapper
                   div.center-title
                     strong(data-bind="text: $data.name")
-        p
-        table
-          tbody(data-bind="foreach: upgrades")
-            tr 
-              td
-                div.card-box-wrapper
-                  div.center-title
-                    strong(data-bind="text: $data.name")
+        //- p
+        //- table
+        //-   tbody(data-bind="foreach: upgrades")
+        //-     tr 
+        //-       td
+        //-         div.card-box-wrapper
+        //-           div.center-title
+        //-             strong(data-bind="text: $data.name")
     |
     |
     |
     //- Deck Browser
-    div(data-bind='if: $root.showDeckView, visible: showDeckView').card-browser
+    div(data-bind='if: showCardView() == false, visible: showCardView() == false').card-browser
       | Deck View
