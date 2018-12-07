@@ -1332,9 +1332,18 @@ CardViewerViewModel = function() {
   self.deckPloys = ko.observableArray();
   self.warbands = exportObj.warbands();
   self.selectedWarband = ko.observable();
-  self.objectives = ko.observableArray(exportObj.objectives());
-  self.gambits = ko.observableArray(exportObj.gambits());
-  self.upgrades = ko.observableArray(exportObj.upgrades());
+  self.warbandObjectives = ko.observableArray();
+  self.warbandGambits = ko.observableArray();
+  self.warbandUpgrades = ko.observableArray();
+  self.objectives = exportObj.objectives().filter(function(objective) {
+    return objective.warband == null;
+  });
+  self.gambits = exportObj.gambits().filter(function(gambit) {
+    return gambit.warband == null;
+  });
+  self.upgrades = exportObj.upgrades().filter(function(upgrade) {
+    return upgrade.warband == null;
+  });
   self.test = ko.observable(exportObj.fighters()[0].name);
   self.setURL = function(key, value) {
     var i, keyEn, kvp, newurl, valueEn, x;
@@ -1379,6 +1388,15 @@ CardViewerViewModel = function() {
       self.setURL('w', "");
     } else {
       self.setURL('w', newValue.name);
+      self.warbandObjectives(exportObj.objectives().filter(function(objective) {
+        return objective.warband === newValue.name;
+      }));
+      self.warbandGambits(exportObj.gambits().filter(function(gambit) {
+        return gambit.warband === newValue.name;
+      }));
+      self.warbandUpgrades(exportObj.upgrades().filter(function(upgrade) {
+        return upgrade.warband === newValue.name;
+      }));
     }
   });
   self.computedFighters = ko.computed(function() {

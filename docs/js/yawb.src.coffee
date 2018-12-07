@@ -1266,9 +1266,14 @@ CardViewerViewModel = ->
 	self.warbands = exportObj.warbands()
 	self.selectedWarband = ko.observable()
 
-	self.objectives = ko.observableArray(exportObj.objectives())
-	self.gambits = ko.observableArray(exportObj.gambits())
-	self.upgrades = ko.observableArray(exportObj.upgrades())
+	self.warbandObjectives = ko.observableArray()
+	self.warbandGambits = ko.observableArray()
+	self.warbandUpgrades = ko.observableArray()
+	
+
+	self.objectives = exportObj.objectives().filter((objective) -> !objective.warband?)
+	self.gambits = exportObj.gambits().filter((gambit) -> !gambit.warband?)
+	self.upgrades = exportObj.upgrades().filter((upgrade) -> !upgrade.warband?)
  
 
 	self.test = ko.observable(exportObj.fighters()[0].name)
@@ -1318,6 +1323,9 @@ CardViewerViewModel = ->
 			self.setURL 'w', ""
 		else
 			self.setURL 'w', newValue.name
+			self.warbandObjectives(exportObj.objectives().filter((objective) -> objective.warband == newValue.name))
+			self.warbandGambits(exportObj.gambits().filter((gambit) -> gambit.warband == newValue.name))
+			self.warbandUpgrades(exportObj.upgrades().filter((upgrade) -> upgrade.warband == newValue.name))
 		return
 
 	

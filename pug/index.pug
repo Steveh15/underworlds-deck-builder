@@ -35,8 +35,6 @@ html(lang="en")
     |
     //- Deck Manager
     div.deck-manager
-      span(data-bind = "if : selectedWarband")
-        strong(data-bind = "text: selectedWarband().name + ':'")
       input(type = "text", data-bind = "value : deckName")
       span :
       select
@@ -196,7 +194,6 @@ html(lang="en")
     //- Card Browser
     div(data-bind='if: showCardView, visible: showCardView').card-browser
       div.objective-pile
-        //- data-bind = "text: selectedWarband().name"
         label(data-bind="if : $data.selectedWarband()")
           input(type='checkbox', name='vehicle2', value='Car', checked='')
           span(data-bind = "text: selectedWarband().name")
@@ -208,6 +205,14 @@ html(lang="en")
         |  Immediate
         br
         table
+          tbody(data-bind="foreach: warbandObjectives")
+            tr 
+              td
+                div.card-box-wrapper
+                  div.center-title
+                    strong(data-bind="text: $data.name")
+        p
+        table
           tbody(data-bind="foreach: objectives")
             tr 
               td
@@ -215,6 +220,14 @@ html(lang="en")
                   div.center-title
                     strong(data-bind="text: $data.name")
       div.gambit-pile
+        table
+          tbody(data-bind="foreach: warbandGambits")
+            tr 
+              td
+                div.card-box-wrapper
+                  div.center-title
+                    strong(data-bind="text: $data.name")
+        p
         table
           tbody(data-bind="foreach: gambits")
             tr 
@@ -224,13 +237,20 @@ html(lang="en")
                     strong(data-bind="text: $data.name")
       div.upgrade-pile
         table
+          tbody(data-bind="foreach: warbandUpgrades")
+            tr 
+              td
+                div.card-box-wrapper
+                  div.center-title
+                    strong(data-bind="text: $data.name")
+        p
+        table
           tbody(data-bind="foreach: upgrades")
             tr 
               td
                 div.card-box-wrapper
                   div.center-title
                     strong(data-bind="text: $data.name")
-
     |
     |
     |

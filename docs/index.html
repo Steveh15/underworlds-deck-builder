@@ -42,7 +42,7 @@
     </div>
     
     
-    <div class="deck-manager"><span data-bind="if : selectedWarband"><strong data-bind="text: selectedWarband().name + ':'"></strong></span>
+    <div class="deck-manager">
       <input type="text" data-bind="value : deckName"><span>:</span>
       <select>
         <option value="competitive">Competitive</option>
@@ -177,6 +177,18 @@
         <input type="checkbox" name="vehicle2" value="Car" checked=""> Universal<br>
         <input type="checkbox" name="vehicle3" value="Boat"> Immediate<br>
         <table>
+          <tbody data-bind="foreach: warbandObjectives">
+            <tr> 
+              <td>
+                <div class="card-box-wrapper">
+                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p></p>
+        <table>
           <tbody data-bind="foreach: objectives">
             <tr> 
               <td>
@@ -190,6 +202,18 @@
       </div>
       <div class="gambit-pile">
         <table>
+          <tbody data-bind="foreach: warbandGambits">
+            <tr> 
+              <td>
+                <div class="card-box-wrapper">
+                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p></p>
+        <table>
           <tbody data-bind="foreach: gambits">
             <tr> 
               <td>
@@ -202,6 +226,18 @@
         </table>
       </div>
       <div class="upgrade-pile">
+        <table>
+          <tbody data-bind="foreach: warbandUpgrades">
+            <tr> 
+              <td>
+                <div class="card-box-wrapper">
+                  <div class="center-title"><strong data-bind="text: $data.name"></strong></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p></p>
         <table>
           <tbody data-bind="foreach: upgrades">
             <tr> 
