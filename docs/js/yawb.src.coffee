@@ -699,9 +699,9 @@ exportObj.gambits = ->
 
 exportObj = exports ? this
 
-scoring = {
-	endPhase: 1
-	thirdEndPhase: 2
+scoringPhase = {
+	end: 1
+	thirdEnd: 2
 	immiediate: 3
 }
 
@@ -715,7 +715,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -724,7 +724,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if three or more of your fighters made a Charge action in this phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -733,7 +733,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if an enemy fighter begins a Move action adjacent to one of your fighters and ends it adjacent to none of your fighters."
 			glory: 4
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -742,7 +742,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if your warband takes two or more enemy fighters out of action in this phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -751,7 +751,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if at least one fighter from each warband is out of action."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -760,7 +760,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if five or more fighters are out of action."
 			glory: 2
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -769,7 +769,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in the third end phase if all fighters except one of your fighters are out of action."
 			glory: 6
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -778,7 +778,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if three or more of your fighters made a successful Attack action in this phase."
 			glory: 2
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -787,7 +787,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if no fighter is holding an objective."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -796,7 +796,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this immediately if your warband has taken two or more fighters out of action in this phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -805,7 +805,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if you hold all objectives in enemy territory."
 			glory: 3
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -814,7 +814,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if there are no enemy fighters adjacent to your fighters."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -823,7 +823,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in the third end phase if none of your fighters are out of action."
 			glory: 3
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -832,7 +832,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if the same friendly fighter has held the same objective at the end of two consecutive action phases."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -841,7 +841,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this immediately if an enemy fighter is taken out of action by a Charge action made by one of your fighters."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -850,7 +850,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if you hold an objective in enemy territory."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -859,7 +859,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if none of your fighters suffered any damage in the preceding action phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -868,7 +868,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -876,7 +876,7 @@ exportObj.objectives = ->
 			name: "Accept Inevitability"
 			text: "Score this in the third end phase if all of your fighters are out of action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -884,7 +884,7 @@ exportObj.objectives = ->
 			name: "Advancing Strike"
 			text: "Score this immediately when your warband takes an enemy fighter standing in enemy territory out of action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -892,7 +892,7 @@ exportObj.objectives = ->
 			name: "Alone in the Darkness"
 			text: "Score this in an end phase if there are no adjacent fighters on the battlefield."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -900,7 +900,7 @@ exportObj.objectives = ->
 			name: "Annihilation"
 			text: "Score this in an end phase if all enemy fighters have been taken out of action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -908,7 +908,7 @@ exportObj.objectives = ->
 			name: "Assassinate"
 			text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -916,7 +916,7 @@ exportObj.objectives = ->
 			name: "Balance of Power"
 			text: "Score this immediately when making an Attack action if both the attacker and the target have two supporting fighters."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -924,7 +924,7 @@ exportObj.objectives = ->
 			name: "Blooded"
 			text: "Score this in an end phase if all of your surviving fighters (at least three) have at least one wound token."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -932,7 +932,7 @@ exportObj.objectives = ->
 			name: "Bloodless"
 			text: "Score this in an end phase if no fighter suffered any damage in the preceding action phase."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -940,7 +940,7 @@ exportObj.objectives = ->
 			name: "Brawl"
 			text: "Score this in an end phase if all friendly fighters (at least three) are adjacent to enemy fighters."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -948,7 +948,7 @@ exportObj.objectives = ->
 			name: "Butchery"
 			text: "Score this in an end phase if your warband took three or more enemy fighters out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -956,7 +956,7 @@ exportObj.objectives = ->
 			name: "Change of Tactics"
 			text: "Score this immediately if a friendly fighter on Guard makes a Charge action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -964,7 +964,7 @@ exportObj.objectives = ->
 			name: "Chosen Champion"
 			text: "Score this in an end phase if a surviving friendly fighter has three or more upgrades."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 	]
 
@@ -1276,13 +1276,10 @@ CardViewerViewModel = ->
 	self.filteredUpgrades = ko.observableArray()
 
 	# Objective Filters
-	self.objWarbandCheck = ko.observable(true)
-	self.objUniversalCheck = ko.observable(true)
-	self.objImmediateCheck = ko.observable(false)
-	self.objEndPhaseCheck = ko.observable(false)
-	self.objThirdPhaseCheck = ko.observable(false)
+	self.objWarbandCheck = ko.observable(false)
+	self.objUniversalCheck = ko.observable(false)
 
-
+	self.objPhaseFilter = ko.observable(0)
 
 
 	self.setURL = (key, value) ->
@@ -1317,94 +1314,10 @@ CardViewerViewModel = ->
 			return ""
 		else
 			return decodeURIComponent(results[1].replace(/\+/g, " "))
-
-	self.deckName.subscribe (newValue) ->
-		self.setURL 'dn', newValue
-		return
-
-	self.selectedWarband.subscribe (newWarband) ->
-		if typeof newWarband == "undefined"
-			self.setURL 'w', ""
-		else
-			self.setURL 'w', newWarband.name
-
-			self.allObjectives exportObj.objectives().filter((objective) -> objective.warband == newWarband.name || !objective.warband?)
-			self.allGambits exportObj.gambits().filter((gambit) -> gambit.warband == newWarband.name || !gambit.warband?)
-			self.allUpgrades exportObj.upgrades().filter((upgrade) -> upgrade.warband == newWarband.name || !upgrade.warband?)
-			self.resetObjectiveFilters()
-			self.filteredObjectives exportObj.objectives()
-			# self.filteredObjectives exportObj.objectives().filter( (objective) -> self.objectiveFilter(objective))
-		return
-
-	self.resetObjectiveFilters = ->
-		self.objWarbandCheck(true)
-		self.objUniversalCheck(true)
-		self.objImmediateCheck(false)
-		self.objEndPhaseCheck(false)
-		self.objThirdPhaseCheck(false)
-
-	self.warbandPredicate = (card) ->
-		if !self.objWarbandCheck()
-			return true
-		else
-			console.log card.warband
-			# console.log (card.warband? && card.warband = self.selectedWarband().name)
-			return card.warband? && card.warband = self.selectedWarband().name
-
-	self.universalPredicate = (card) ->
-		return true
-		# console.log "p2"
-		# if !self.objUniversalCheck()
-		# 	return true
-		# else
-		# 	return !card.warband?
-
-	self.immediatePredicate = (objective) ->
-		console.log "p3"
-		if !self.objImmediateCheck()
-			return true
-		else
-			return objective.scoring? &&  objective.scoring == 1
-
-	self.objectiveFilter = (objective) ->
-		return self.warbandPredicate(objective)
-
-	self.applyObjectiveFilter = ->
-		self.filteredObjectives exportObj.allObjectives().filter( (objective) -> self.objectiveFilter(objective))
-
-
-	self.objWarbandCheck.subscribe (newValue) ->
-		self.applyObjectiveFilter()
-		# if newValue
-		# 	console.log "Turned on!"
-		# else
-			# console.log "Turned off!"
-
-
 	
-	self.computedFighters = ko.computed () ->
-		if typeof self.selectedWarband() == "undefined"
-			return []
-		else
-			return exportObj.fighters().filter (fighter) -> fighter.warband == self.selectedWarband().name
-
-	self.selectFighter = (fighter) ->
-		if typeof fighter != "undefined"
-			self.selectedFighter fighter
-		return
-
-	self.viewWarband = ->
-		if self.showWarbandBrowser() == true
-			self.showWarbandBrowser false
-		else
-			self.showWarbandBrowser true
-
-
-	self.changeCardViewButton = ->
-		self.showCardView(!self.showCardView())
-
 
 	self.initFunc = ->
+		# exportObj.warbands()[0]
 		deckNameParm = self.getParameterByName("dn")
 		if deckNameParm == ""
 			self.deckName("Unnamed Deck")
@@ -1414,21 +1327,104 @@ CardViewerViewModel = ->
 		warbandParm = self.getParameterByName("w")
 		if warbandParm == ""
 			self.selectedWarband(exportObj.warbands()[0])
-		# if warbandParm != ""
 		else
 			loadedWarband = exportObj.warbands().filter((warband) -> warband.name == warbandParm)[0]
 			self.selectedWarband(loadedWarband)
-			
-		return
 
 
 	self.selectWarband = (warbandName) ->
-		self.showWarbandBrowser(true)
 		self.selectedWarband(exportObj.warbands().filter((warband) -> warband.name == warbandName)[0])
+
+
+	self.getWarbandsInSet = (set) ->
+		return exportObj.warbands().filter((warband) -> warband.set == set)
+
+
+	self.deckName.subscribe (newValue) ->
+		self.setURL 'dn', newValue
 		return
 
-	self.ShadespireWarbands = (set) ->
-		return exportObj.warbands().filter((warband) -> warband.set == set)
+
+	self.selectedWarband.subscribe (newWarband) ->
+		if !newWarband?
+			self.setURL 'w', "" # This should never be triggered
+		else
+			self.setNewWarband(newWarband)
+
+
+	self.setNewWarband = (newWarband) ->
+		self.setURL 'w', newWarband.name
+		self.allObjectives exportObj.objectives().filter((objective) -> objective.warband == newWarband.name || !objective.warband?)
+		self.allGambits exportObj.gambits().filter((gambit) -> gambit.warband == newWarband.name || !gambit.warband?)
+		self.allUpgrades exportObj.upgrades().filter((upgrade) -> upgrade.warband == newWarband.name || !upgrade.warband?)
+		self.filteredObjectives(self.allObjectives())
+		self.filteredGambits(self.allGambits())
+		self.filteredUpgrades(self.allUpgrades())
+		self.resetObjectiveFilters()
+
+
+	self.resetObjectiveFilters = ->
+		self.objWarbandCheck(false)
+		self.objUniversalCheck(false)
+
+
+	self.objWarbandCheck.subscribe (newValue) ->
+		self.applyObjectiveFilter()
+
+	self.objUniversalCheck.subscribe (newValue) ->
+		self.applyObjectiveFilter()
+
+
+	self.warbandPredicate = (card) ->
+		if !self.objWarbandCheck()
+			return true
+		else
+			return card.warband? && card.warband == self.selectedWarband().name
+
+	self.universalPredicate = (card) ->
+		if !self.objUniversalCheck()
+			return true
+		else
+			return !card.warband?
+
+
+
+	self.applyObjectiveFilter = ->
+		self.filteredObjectives(self.allObjectives().filter( (objective) -> self.objectiveFilter(objective)))
+
+	self.objectiveFilter = (objective) ->
+		return self.warbandPredicate(objective) && self.universalPredicate(objective)
+	
+
+
+	# Fighter Functionality
+	#
+	#
+	
+	self.computedFighters = ko.computed () ->
+		if !self.selectedWarband()?
+			return []
+		else
+			return exportObj.fighters().filter (fighter) -> fighter.warband == self.selectedWarband().name
+
+	self.selectFighter = (fighter) ->
+		if fighter?
+			self.selectedFighter fighter
+
+	# UI Functionality
+	#
+	#
+
+	self.viewWarband = ->
+		if self.showWarbandBrowser() == true
+			self.showWarbandBrowser false
+		else
+			self.showWarbandBrowser true
+
+	self.changeCardViewButton = ->
+		self.showCardView(!self.showCardView())
+
+
 
 	return
 

@@ -1,4 +1,4 @@
-var CardViewerViewModel, cvm, exportObj, scoring;
+var CardViewerViewModel, cvm, exportObj, scoringPhase;
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
@@ -768,9 +768,9 @@ exportObj.gambits = function() {
 
 exportObj = typeof exports !== "undefined" && exports !== null ? exports : this;
 
-scoring = {
-  endPhase: 1,
-  thirdEndPhase: 2,
+scoringPhase = {
+  end: 1,
+  thirdEnd: 2,
   immiediate: 3
 };
 
@@ -783,7 +783,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -792,7 +792,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this immediately if three or more of your fighters made a Charge action in this phase.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -801,7 +801,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this immediately if an enemy fighter begins a Move action adjacent to one of your fighters and ends it adjacent to none of your fighters.",
       glory: 4,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -810,7 +810,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this immediately if your warband takes two or more enemy fighters out of action in this phase.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -819,7 +819,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this in an end phase if at least one fighter from each warband is out of action.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -828,7 +828,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this in an end phase if five or more fighters are out of action.",
       glory: 2,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -837,7 +837,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this in the third end phase if all fighters except one of your fighters are out of action.",
       glory: 6,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -846,7 +846,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this immediately if three or more of your fighters made a successful Attack action in this phase.",
       glory: 2,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -855,7 +855,7 @@ exportObj.objectives = function() {
       warband: "Garrek's Reavers",
       text: "Score this in an end phase if no fighter is holding an objective.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -864,7 +864,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this immediately if your warband has taken two or more fighters out of action in this phase.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -873,7 +873,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this in an end phase if you hold all objectives in enemy territory.",
       glory: 3,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -882,7 +882,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this in an end phase if there are no enemy fighters adjacent to your fighters.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -891,7 +891,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this in the third end phase if none of your fighters are out of action.",
       glory: 3,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -900,7 +900,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this in an end phase if the same friendly fighter has held the same objective at the end of two consecutive action phases.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -909,7 +909,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this immediately if an enemy fighter is taken out of action by a Charge action made by one of your fighters.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -918,7 +918,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this in an end phase if you hold an objective in enemy territory.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -927,7 +927,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this in an end phase if none of your fighters suffered any damage in the preceding action phase.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -936,7 +936,7 @@ exportObj.objectives = function() {
       warband: "Steelheart's Champions",
       text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase.",
       glory: 1,
-      phase: scoring.endPhase
+      phase: scoringPhase.end
     },
     {
       setID: 1,
@@ -944,7 +944,7 @@ exportObj.objectives = function() {
       name: "Accept Inevitability",
       text: "Score this in the third end phase if all of your fighters are out of action.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -952,7 +952,7 @@ exportObj.objectives = function() {
       name: "Advancing Strike",
       text: "Score this immediately when your warband takes an enemy fighter standing in enemy territory out of action.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -960,7 +960,7 @@ exportObj.objectives = function() {
       name: "Alone in the Darkness",
       text: "Score this in an end phase if there are no adjacent fighters on the battlefield.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -968,7 +968,7 @@ exportObj.objectives = function() {
       name: "Annihilation",
       text: "Score this in an end phase if all enemy fighters have been taken out of action.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -976,7 +976,7 @@ exportObj.objectives = function() {
       name: "Assassinate",
       text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -984,7 +984,7 @@ exportObj.objectives = function() {
       name: "Balance of Power",
       text: "Score this immediately when making an Attack action if both the attacker and the target have two supporting fighters.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -992,7 +992,7 @@ exportObj.objectives = function() {
       name: "Blooded",
       text: "Score this in an end phase if all of your surviving fighters (at least three) have at least one wound token.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -1000,7 +1000,7 @@ exportObj.objectives = function() {
       name: "Bloodless",
       text: "Score this in an end phase if no fighter suffered any damage in the preceding action phase.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -1008,7 +1008,7 @@ exportObj.objectives = function() {
       name: "Brawl",
       text: "Score this in an end phase if all friendly fighters (at least three) are adjacent to enemy fighters.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -1016,7 +1016,7 @@ exportObj.objectives = function() {
       name: "Butchery",
       text: "Score this in an end phase if your warband took three or more enemy fighters out of action in the preceding action phase.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -1024,7 +1024,7 @@ exportObj.objectives = function() {
       name: "Change of Tactics",
       text: "Score this immediately if a friendly fighter on Guard makes a Charge action.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     },
     {
       setID: 1,
@@ -1032,7 +1032,7 @@ exportObj.objectives = function() {
       name: "Chosen Champion",
       text: "Score this in an end phase if a surviving friendly fighter has three or more upgrades.",
       glory: 1,
-      phase: scoring.immediate
+      phase: scoringPhase.immediate
     }
   ];
 };
@@ -1340,11 +1340,9 @@ CardViewerViewModel = function() {
   self.filteredGambits = ko.observableArray();
   self.filteredUpgrades = ko.observableArray();
   // Objective Filters
-  self.objWarbandCheck = ko.observable(true);
-  self.objUniversalCheck = ko.observable(true);
-  self.objImmediateCheck = ko.observable(false);
-  self.objEndPhaseCheck = ko.observable(false);
-  self.objThirdPhaseCheck = ko.observable(false);
+  self.objWarbandCheck = ko.observable(false);
+  self.objUniversalCheck = ko.observable(false);
+  self.objPhaseFilter = ko.observable(0);
   self.setURL = function(key, value) {
     var i, keyEn, kvp, newurl, valueEn, x;
     keyEn = encodeURI(key);
@@ -1380,77 +1378,98 @@ CardViewerViewModel = function() {
       return decodeURIComponent(results[1].replace(/\+/g, " "));
     }
   };
+  self.initFunc = function() {
+    var deckNameParm, loadedWarband, warbandParm;
+    // exportObj.warbands()[0]
+    deckNameParm = self.getParameterByName("dn");
+    if (deckNameParm === "") {
+      self.deckName("Unnamed Deck");
+    } else {
+      self.deckName(deckNameParm);
+    }
+    warbandParm = self.getParameterByName("w");
+    if (warbandParm === "") {
+      return self.selectedWarband(exportObj.warbands()[0]);
+    } else {
+      loadedWarband = exportObj.warbands().filter(function(warband) {
+        return warband.name === warbandParm;
+      })[0];
+      return self.selectedWarband(loadedWarband);
+    }
+  };
+  self.selectWarband = function(warbandName) {
+    return self.selectedWarband(exportObj.warbands().filter(function(warband) {
+      return warband.name === warbandName;
+    })[0]);
+  };
+  self.getWarbandsInSet = function(set) {
+    return exportObj.warbands().filter(function(warband) {
+      return warband.set === set;
+    });
+  };
   self.deckName.subscribe(function(newValue) {
     self.setURL('dn', newValue);
   });
   self.selectedWarband.subscribe(function(newWarband) {
-    if (typeof newWarband === "undefined") {
-      self.setURL('w', "");
+    if (newWarband == null) {
+      return self.setURL('w', ""); // This should never be triggered
     } else {
-      self.setURL('w', newWarband.name);
-      self.allObjectives(exportObj.objectives().filter(function(objective) {
-        return objective.warband === newWarband.name || (objective.warband == null);
-      }));
-      self.allGambits(exportObj.gambits().filter(function(gambit) {
-        return gambit.warband === newWarband.name || (gambit.warband == null);
-      }));
-      self.allUpgrades(exportObj.upgrades().filter(function(upgrade) {
-        return upgrade.warband === newWarband.name || (upgrade.warband == null);
-      }));
-      self.resetObjectiveFilters();
-      self.filteredObjectives(exportObj.objectives());
+      return self.setNewWarband(newWarband);
     }
   });
-  // self.filteredObjectives exportObj.objectives().filter( (objective) -> self.objectiveFilter(objective))
-  self.resetObjectiveFilters = function() {
-    self.objWarbandCheck(true);
-    self.objUniversalCheck(true);
-    self.objImmediateCheck(false);
-    self.objEndPhaseCheck(false);
-    return self.objThirdPhaseCheck(false);
-  };
-  self.warbandPredicate = function(card) {
-    if (!self.objWarbandCheck()) {
-      return true;
-    } else {
-      console.log(card.warband);
-      // console.log (card.warband? && card.warband = self.selectedWarband().name)
-      return (card.warband != null) && (card.warband = self.selectedWarband().name);
-    }
-  };
-  self.universalPredicate = function(card) {
-    return true;
-  };
-  // console.log "p2"
-  // if !self.objUniversalCheck()
-  // 	return true
-  // else
-  // 	return !card.warband?
-  self.immediatePredicate = function(objective) {
-    console.log("p3");
-    if (!self.objImmediateCheck()) {
-      return true;
-    } else {
-      return (objective.scoring != null) && objective.scoring === 1;
-    }
-  };
-  self.objectiveFilter = function(objective) {
-    return self.warbandPredicate(objective);
-  };
-  self.applyObjectiveFilter = function() {
-    return self.filteredObjectives(exportObj.allObjectives().filter(function(objective) {
-      return self.objectiveFilter(objective);
+  self.setNewWarband = function(newWarband) {
+    self.setURL('w', newWarband.name);
+    self.allObjectives(exportObj.objectives().filter(function(objective) {
+      return objective.warband === newWarband.name || (objective.warband == null);
     }));
+    self.allGambits(exportObj.gambits().filter(function(gambit) {
+      return gambit.warband === newWarband.name || (gambit.warband == null);
+    }));
+    self.allUpgrades(exportObj.upgrades().filter(function(upgrade) {
+      return upgrade.warband === newWarband.name || (upgrade.warband == null);
+    }));
+    self.filteredObjectives(self.allObjectives());
+    self.filteredGambits(self.allGambits());
+    self.filteredUpgrades(self.allUpgrades());
+    return self.resetObjectiveFilters();
+  };
+  self.resetObjectiveFilters = function() {
+    self.objWarbandCheck(false);
+    return self.objUniversalCheck(false);
   };
   self.objWarbandCheck.subscribe(function(newValue) {
     return self.applyObjectiveFilter();
   });
-  // if newValue
-  // 	console.log "Turned on!"
-  // else
-  // console.log "Turned off!"
+  self.objUniversalCheck.subscribe(function(newValue) {
+    return self.applyObjectiveFilter();
+  });
+  self.warbandPredicate = function(card) {
+    if (!self.objWarbandCheck()) {
+      return true;
+    } else {
+      return (card.warband != null) && card.warband === self.selectedWarband().name;
+    }
+  };
+  self.universalPredicate = function(card) {
+    if (!self.objUniversalCheck()) {
+      return true;
+    } else {
+      return card.warband == null;
+    }
+  };
+  self.applyObjectiveFilter = function() {
+    return self.filteredObjectives(self.allObjectives().filter(function(objective) {
+      return self.objectiveFilter(objective);
+    }));
+  };
+  self.objectiveFilter = function(objective) {
+    return self.warbandPredicate(objective) && self.universalPredicate(objective);
+  };
+  
+  // Fighter Functionality
+
   self.computedFighters = ko.computed(function() {
-    if (typeof self.selectedWarband() === "undefined") {
+    if (self.selectedWarband() == null) {
       return [];
     } else {
       return exportObj.fighters().filter(function(fighter) {
@@ -1459,10 +1478,12 @@ CardViewerViewModel = function() {
     }
   });
   self.selectFighter = function(fighter) {
-    if (typeof fighter !== "undefined") {
-      self.selectedFighter(fighter);
+    if (fighter != null) {
+      return self.selectedFighter(fighter);
     }
   };
+  // UI Functionality
+
   self.viewWarband = function() {
     if (self.showWarbandBrowser() === true) {
       return self.showWarbandBrowser(false);
@@ -1472,36 +1493,6 @@ CardViewerViewModel = function() {
   };
   self.changeCardViewButton = function() {
     return self.showCardView(!self.showCardView());
-  };
-  self.initFunc = function() {
-    var deckNameParm, loadedWarband, warbandParm;
-    deckNameParm = self.getParameterByName("dn");
-    if (deckNameParm === "") {
-      self.deckName("Unnamed Deck");
-    } else {
-      self.deckName(deckNameParm);
-    }
-    warbandParm = self.getParameterByName("w");
-    if (warbandParm === "") {
-      self.selectedWarband(exportObj.warbands()[0]);
-    } else {
-      // if warbandParm != ""
-      loadedWarband = exportObj.warbands().filter(function(warband) {
-        return warband.name === warbandParm;
-      })[0];
-      self.selectedWarband(loadedWarband);
-    }
-  };
-  self.selectWarband = function(warbandName) {
-    self.showWarbandBrowser(true);
-    self.selectedWarband(exportObj.warbands().filter(function(warband) {
-      return warband.name === warbandName;
-    })[0]);
-  };
-  self.ShadespireWarbands = function(set) {
-    return exportObj.warbands().filter(function(warband) {
-      return warband.set === set;
-    });
   };
 };
 

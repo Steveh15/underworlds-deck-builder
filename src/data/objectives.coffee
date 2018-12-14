@@ -1,9 +1,9 @@
 
 exportObj = exports ? this
 
-scoring = {
-	endPhase: 1
-	thirdEndPhase: 2
+scoringPhase = {
+	end: 1
+	thirdEnd: 2
 	immiediate: 3
 }
 
@@ -17,7 +17,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -26,7 +26,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if three or more of your fighters made a Charge action in this phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -35,7 +35,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if an enemy fighter begins a Move action adjacent to one of your fighters and ends it adjacent to none of your fighters."
 			glory: 4
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -44,7 +44,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if your warband takes two or more enemy fighters out of action in this phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -53,7 +53,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if at least one fighter from each warband is out of action."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -62,7 +62,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if five or more fighters are out of action."
 			glory: 2
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -71,7 +71,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in the third end phase if all fighters except one of your fighters are out of action."
 			glory: 6
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -80,7 +80,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this immediately if three or more of your fighters made a successful Attack action in this phase."
 			glory: 2
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -89,7 +89,7 @@ exportObj.objectives = ->
 			warband: "Garrek's Reavers"
 			text: "Score this in an end phase if no fighter is holding an objective."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -98,7 +98,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this immediately if your warband has taken two or more fighters out of action in this phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -107,7 +107,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if you hold all objectives in enemy territory."
 			glory: 3
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -116,7 +116,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if there are no enemy fighters adjacent to your fighters."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -125,7 +125,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in the third end phase if none of your fighters are out of action."
 			glory: 3
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -134,7 +134,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if the same friendly fighter has held the same objective at the end of two consecutive action phases."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -143,7 +143,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this immediately if an enemy fighter is taken out of action by a Charge action made by one of your fighters."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -152,7 +152,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if you hold an objective in enemy territory."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -161,7 +161,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if none of your fighters suffered any damage in the preceding action phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -170,7 +170,7 @@ exportObj.objectives = ->
 			warband: "Steelheart's Champions"
 			text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.endPhase
+			phase: scoringPhase.end
 		}
 		{
 			setID: 1
@@ -178,7 +178,7 @@ exportObj.objectives = ->
 			name: "Accept Inevitability"
 			text: "Score this in the third end phase if all of your fighters are out of action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -186,7 +186,7 @@ exportObj.objectives = ->
 			name: "Advancing Strike"
 			text: "Score this immediately when your warband takes an enemy fighter standing in enemy territory out of action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -194,7 +194,7 @@ exportObj.objectives = ->
 			name: "Alone in the Darkness"
 			text: "Score this in an end phase if there are no adjacent fighters on the battlefield."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -202,7 +202,7 @@ exportObj.objectives = ->
 			name: "Annihilation"
 			text: "Score this in an end phase if all enemy fighters have been taken out of action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -210,7 +210,7 @@ exportObj.objectives = ->
 			name: "Assassinate"
 			text: "Score this in an end phase if your warband took an enemy leader out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -218,7 +218,7 @@ exportObj.objectives = ->
 			name: "Balance of Power"
 			text: "Score this immediately when making an Attack action if both the attacker and the target have two supporting fighters."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -226,7 +226,7 @@ exportObj.objectives = ->
 			name: "Blooded"
 			text: "Score this in an end phase if all of your surviving fighters (at least three) have at least one wound token."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -234,7 +234,7 @@ exportObj.objectives = ->
 			name: "Bloodless"
 			text: "Score this in an end phase if no fighter suffered any damage in the preceding action phase."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -242,7 +242,7 @@ exportObj.objectives = ->
 			name: "Brawl"
 			text: "Score this in an end phase if all friendly fighters (at least three) are adjacent to enemy fighters."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -250,7 +250,7 @@ exportObj.objectives = ->
 			name: "Butchery"
 			text: "Score this in an end phase if your warband took three or more enemy fighters out of action in the preceding action phase."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -258,7 +258,7 @@ exportObj.objectives = ->
 			name: "Change of Tactics"
 			text: "Score this immediately if a friendly fighter on Guard makes a Charge action."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 		{
 			setID: 1
@@ -266,6 +266,6 @@ exportObj.objectives = ->
 			name: "Chosen Champion"
 			text: "Score this in an end phase if a surviving friendly fighter has three or more upgrades."
 			glory: 1
-			phase: scoring.immediate
+			phase: scoringPhase.immediate
 		}
 	]

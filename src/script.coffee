@@ -27,13 +27,10 @@ CardViewerViewModel = ->
 	self.filteredUpgrades = ko.observableArray()
 
 	# Objective Filters
-	self.objWarbandCheck = ko.observable(true)
-	self.objUniversalCheck = ko.observable(true)
-	self.objImmediateCheck = ko.observable(false)
-	self.objEndPhaseCheck = ko.observable(false)
-	self.objThirdPhaseCheck = ko.observable(false)
+	self.objWarbandCheck = ko.observable(false)
+	self.objUniversalCheck = ko.observable(false)
 
-
+	self.objPhaseFilter = ko.observable(0)
 
 
 	self.setURL = (key, value) ->
@@ -68,94 +65,10 @@ CardViewerViewModel = ->
 			return ""
 		else
 			return decodeURIComponent(results[1].replace(/\+/g, " "))
-
-	self.deckName.subscribe (newValue) ->
-		self.setURL 'dn', newValue
-		return
-
-	self.selectedWarband.subscribe (newWarband) ->
-		if typeof newWarband == "undefined"
-			self.setURL 'w', ""
-		else
-			self.setURL 'w', newWarband.name
-
-			self.allObjectives exportObj.objectives().filter((objective) -> objective.warband == newWarband.name || !objective.warband?)
-			self.allGambits exportObj.gambits().filter((gambit) -> gambit.warband == newWarband.name || !gambit.warband?)
-			self.allUpgrades exportObj.upgrades().filter((upgrade) -> upgrade.warband == newWarband.name || !upgrade.warband?)
-			self.resetObjectiveFilters()
-			self.filteredObjectives exportObj.objectives()
-			# self.filteredObjectives exportObj.objectives().filter( (objective) -> self.objectiveFilter(objective))
-		return
-
-	self.resetObjectiveFilters = ->
-		self.objWarbandCheck(true)
-		self.objUniversalCheck(true)
-		self.objImmediateCheck(false)
-		self.objEndPhaseCheck(false)
-		self.objThirdPhaseCheck(false)
-
-	self.warbandPredicate = (card) ->
-		if !self.objWarbandCheck()
-			return true
-		else
-			console.log card.warband
-			# console.log (card.warband? && card.warband = self.selectedWarband().name)
-			return card.warband? && card.warband = self.selectedWarband().name
-
-	self.universalPredicate = (card) ->
-		return true
-		# console.log "p2"
-		# if !self.objUniversalCheck()
-		# 	return true
-		# else
-		# 	return !card.warband?
-
-	self.immediatePredicate = (objective) ->
-		console.log "p3"
-		if !self.objImmediateCheck()
-			return true
-		else
-			return objective.scoring? &&  objective.scoring == 1
-
-	self.objectiveFilter = (objective) ->
-		return self.warbandPredicate(objective)
-
-	self.applyObjectiveFilter = ->
-		self.filteredObjectives exportObj.allObjectives().filter( (objective) -> self.objectiveFilter(objective))
-
-
-	self.objWarbandCheck.subscribe (newValue) ->
-		self.applyObjectiveFilter()
-		# if newValue
-		# 	console.log "Turned on!"
-		# else
-			# console.log "Turned off!"
-
-
 	
-	self.computedFighters = ko.computed () ->
-		if typeof self.selectedWarband() == "undefined"
-			return []
-		else
-			return exportObj.fighters().filter (fighter) -> fighter.warband == self.selectedWarband().name
-
-	self.selectFighter = (fighter) ->
-		if typeof fighter != "undefined"
-			self.selectedFighter fighter
-		return
-
-	self.viewWarband = ->
-		if self.showWarbandBrowser() == true
-			self.showWarbandBrowser false
-		else
-			self.showWarbandBrowser true
-
-
-	self.changeCardViewButton = ->
-		self.showCardView(!self.showCardView())
-
 
 	self.initFunc = ->
+		# exportObj.warbands()[0]
 		deckNameParm = self.getParameterByName("dn")
 		if deckNameParm == ""
 			self.deckName("Unnamed Deck")
@@ -165,21 +78,104 @@ CardViewerViewModel = ->
 		warbandParm = self.getParameterByName("w")
 		if warbandParm == ""
 			self.selectedWarband(exportObj.warbands()[0])
-		# if warbandParm != ""
 		else
 			loadedWarband = exportObj.warbands().filter((warband) -> warband.name == warbandParm)[0]
 			self.selectedWarband(loadedWarband)
-			
-		return
 
 
 	self.selectWarband = (warbandName) ->
-		self.showWarbandBrowser(true)
 		self.selectedWarband(exportObj.warbands().filter((warband) -> warband.name == warbandName)[0])
+
+
+	self.getWarbandsInSet = (set) ->
+		return exportObj.warbands().filter((warband) -> warband.set == set)
+
+
+	self.deckName.subscribe (newValue) ->
+		self.setURL 'dn', newValue
 		return
 
-	self.ShadespireWarbands = (set) ->
-		return exportObj.warbands().filter((warband) -> warband.set == set)
+
+	self.selectedWarband.subscribe (newWarband) ->
+		if !newWarband?
+			self.setURL 'w', "" # This should never be triggered
+		else
+			self.setNewWarband(newWarband)
+
+
+	self.setNewWarband = (newWarband) ->
+		self.setURL 'w', newWarband.name
+		self.allObjectives exportObj.objectives().filter((objective) -> objective.warband == newWarband.name || !objective.warband?)
+		self.allGambits exportObj.gambits().filter((gambit) -> gambit.warband == newWarband.name || !gambit.warband?)
+		self.allUpgrades exportObj.upgrades().filter((upgrade) -> upgrade.warband == newWarband.name || !upgrade.warband?)
+		self.filteredObjectives(self.allObjectives())
+		self.filteredGambits(self.allGambits())
+		self.filteredUpgrades(self.allUpgrades())
+		self.resetObjectiveFilters()
+
+
+	self.resetObjectiveFilters = ->
+		self.objWarbandCheck(false)
+		self.objUniversalCheck(false)
+
+
+	self.objWarbandCheck.subscribe (newValue) ->
+		self.applyObjectiveFilter()
+
+	self.objUniversalCheck.subscribe (newValue) ->
+		self.applyObjectiveFilter()
+
+
+	self.warbandPredicate = (card) ->
+		if !self.objWarbandCheck()
+			return true
+		else
+			return card.warband? && card.warband == self.selectedWarband().name
+
+	self.universalPredicate = (card) ->
+		if !self.objUniversalCheck()
+			return true
+		else
+			return !card.warband?
+
+
+
+	self.applyObjectiveFilter = ->
+		self.filteredObjectives(self.allObjectives().filter( (objective) -> self.objectiveFilter(objective)))
+
+	self.objectiveFilter = (objective) ->
+		return self.warbandPredicate(objective) && self.universalPredicate(objective)
+	
+
+
+	# Fighter Functionality
+	#
+	#
+	
+	self.computedFighters = ko.computed () ->
+		if !self.selectedWarband()?
+			return []
+		else
+			return exportObj.fighters().filter (fighter) -> fighter.warband == self.selectedWarband().name
+
+	self.selectFighter = (fighter) ->
+		if fighter?
+			self.selectedFighter fighter
+
+	# UI Functionality
+	#
+	#
+
+	self.viewWarband = ->
+		if self.showWarbandBrowser() == true
+			self.showWarbandBrowser false
+		else
+			self.showWarbandBrowser true
+
+	self.changeCardViewButton = ->
+		self.showCardView(!self.showCardView())
+
+
 
 	return
 

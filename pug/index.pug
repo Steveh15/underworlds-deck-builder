@@ -19,13 +19,13 @@ html(lang="en")
               span(data-bind="text : selectedWarband() ? selectedWarband().name : 'Select Warband'")
             div.dropdown-content
               table.warband-table
-                tbody(data-bind="foreach: ShadespireWarbands('Shadespire')")
+                tbody(data-bind="foreach: getWarbandsInSet('Shadespire')")
                   tr
                     td
                       div(data-bind="click : $root.selectWarband.bind($data, $data.name)").cardbox
                         strong(data-bind="text: $data.name")
               table
-                tbody(data-bind="foreach: ShadespireWarbands('Nightvault')")
+                tbody(data-bind="foreach: getWarbandsInSet('Nightvault')")
                   tr
                     td
                       div(data-bind="click : $root.selectWarband.bind($data, $data.name)").cardbox
@@ -194,15 +194,29 @@ html(lang="en")
         input(type='checkbox', data-bind="checked: objUniversalCheck")
         | Universal
         br
-        input(type='checkbox', data-bind="checked: objImmediateCheck")
-        | Immediate
         br
-        input(type='checkbox', data-bind="checked: objEndPhaseCheck")
-        | End phase
-        br
-        input(type='checkbox', data-bind="checked: objThirdPhaseCheck")
-        | Third Phase
-        br
+        form
+          input(type = "radio" name = "scoringPhase" value = 0)
+          | Any
+          br
+          input(type = "radio" name = "scoringPhase" value = 1)
+          | Immediate
+          br
+          input(type = "radio" name = "scoringPhase" value = 2)
+          | End phase
+          br
+          input(type = "radio" name = "scoringPhase" value = 3)
+          | Third end phase
+          br
+        //- input(type='checkbox', data-bind="checked: objImmediateCheck")
+        //- | Immediate
+        //- br
+        //- input(type='checkbox', data-bind="checked: objEndPhaseCheck")
+        //- | End phase
+        //- br
+        //- input(type='checkbox', data-bind="checked: objThirdPhaseCheck")
+        //- | Third Phase
+        //- br
         table
           tbody(data-bind="foreach: filteredObjectives")
             tr 
@@ -210,14 +224,6 @@ html(lang="en")
                 div.card-box-wrapper
                   div.center-title
                     strong(data-bind="text: $data.name")
-        //- p
-        //- table
-        //-   tbody(data-bind="foreach: objectives")
-        //-     tr 
-        //-       td
-        //-         div.card-box-wrapper
-        //-           div.center-title
-        //-             strong(data-bind="text: $data.name")
       div.gambit-pile
         table
           tbody(data-bind="foreach: allGambits")
@@ -226,14 +232,6 @@ html(lang="en")
                 div.card-box-wrapper
                   div.center-title
                     strong(data-bind="text: $data.name")
-        //- p
-        //- table
-        //-   tbody(data-bind="foreach: gambits")
-        //-     tr 
-        //-       td
-        //-         div.card-box-wrapper
-        //-           div.center-title
-        //-             strong(data-bind="text: $data.name")
       div.upgrade-pile
         table
           tbody(data-bind="foreach: allUpgrades")
@@ -242,14 +240,6 @@ html(lang="en")
                 div.card-box-wrapper
                   div.center-title
                     strong(data-bind="text: $data.name")
-        //- p
-        //- table
-        //-   tbody(data-bind="foreach: upgrades")
-        //-     tr 
-        //-       td
-        //-         div.card-box-wrapper
-        //-           div.center-title
-        //-             strong(data-bind="text: $data.name")
     |
     |
     |

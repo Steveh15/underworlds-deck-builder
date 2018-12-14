@@ -18,7 +18,7 @@
           <li class="dropdown"><a class="dropbtn" href="javascript:void(0)"><span data-bind="text : selectedWarband() ? selectedWarband().name : 'Select Warband'"></span></a>
             <div class="dropdown-content">
               <table class="warband-table">
-                <tbody data-bind="foreach: ShadespireWarbands('Shadespire')">
+                <tbody data-bind="foreach: getWarbandsInSet('Shadespire')">
                   <tr>
                     <td>
                       <div class="cardbox" data-bind="click : $root.selectWarband.bind($data, $data.name)"><strong data-bind="text: $data.name"></strong></div>
@@ -27,7 +27,7 @@
                 </tbody>
               </table>
               <table>
-                <tbody data-bind="foreach: ShadespireWarbands('Nightvault')">
+                <tbody data-bind="foreach: getWarbandsInSet('Nightvault')">
                   <tr>
                     <td>
                       <div class="cardbox" data-bind="click : $root.selectWarband.bind($data, $data.name)"><strong data-bind="text: $data.name"></strong></div>
@@ -162,10 +162,13 @@
         <div data-bind="if : $data.selectedWarband()">
           <input type="checkbox" data-bind="checked: objWarbandCheck"><span data-bind="text: selectedWarband().name"></span>
         </div>
-        <input type="checkbox" data-bind="checked: objUniversalCheck">Universal<br>
-        <input type="checkbox" data-bind="checked: objImmediateCheck">Immediate<br>
-        <input type="checkbox" data-bind="checked: objEndPhaseCheck">End phase<br>
-        <input type="checkbox" data-bind="checked: objThirdPhaseCheck">Third Phase<br>
+        <input type="checkbox" data-bind="checked: objUniversalCheck">Universal<br><br>
+        <form>
+          <input type="radio" name="scoringPhase" value="0">Any<br>
+          <input type="radio" name="scoringPhase" value="1">Immediate<br>
+          <input type="radio" name="scoringPhase" value="2">End phase<br>
+          <input type="radio" name="scoringPhase" value="3">Third end phase<br>
+        </form>
         <table>
           <tbody data-bind="foreach: filteredObjectives">
             <tr> 
